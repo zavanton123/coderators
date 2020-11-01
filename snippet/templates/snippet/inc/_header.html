@@ -10,12 +10,17 @@
             <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
             <ul class="menu">
                 <li class="menu-item current-menu-item"><a href="{% url 'snippet:home' %}">Home</a></li>
-                <li class="menu-item"><a href="{% url 'snippet:add_snippet' %}">Add Snippet</a></li>
                 <li class="menu-item"><a href="{% url 'snippet:about' %}">About</a></li>
-                <li class="menu-item"><a href="{% url 'snippet:profile' %}">Profile</a></li>
-                <li class="menu-item"><a href="{% url 'snippet:login' %}">Login</a></li>
-                <li class="menu-item"><a href="{% url 'snippet:logout' %}">Logout</a></li>
-                <li class="menu-item"><a href="{% url 'snippet:register' %}">Register</a></li>
+
+                {% if request.user.is_authenticated %}
+                    <li class="menu-item"><a href="{% url 'snippet:add_snippet' %}">Add Snippet</a></li>
+                    <li class="menu-item"><a href="{% url 'snippet:profile' %}">Profile</a></li>
+                    <li class="menu-item"><a href="{% url 'snippet:logout' %}">Logout</a></li>
+                {% else %}
+                    <li class="menu-item"><a href="{% url 'snippet:register' %}">Register</a></li>
+                    <li class="menu-item"><a href="{% url 'snippet:login' %}">Login</a></li>
+                {% endif %}
+
             </ul> <!-- .menu -->
         </div> <!-- .main-navigation -->
 

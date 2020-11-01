@@ -1,10 +1,11 @@
 from django.contrib import messages
+from django.contrib.auth import login
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import DetailView, ListView, TemplateView, CreateView, DeleteView, UpdateView
 
-from snippet.forms import SnippetForm, RegisterForm
+from snippet.forms import SnippetForm, RegisterForm, LoginForm
 from snippet.models import Snippet
 
 
@@ -24,8 +25,24 @@ class ContactsView(TemplateView):
     template_name = 'snippet/contact.html'
 
 
-class LoginView(TemplateView):
-    template_name = 'snippet/login.html'
+class LoginView(View):
+    def get(self, request):
+        form = LoginForm()
+        return render(request, 'snippet/login.html', context={'form': form})
+
+    def post(self, request):
+        print("post is called")
+        form = LoginForm(data=request.POST)
+        if form.is_valid():
+            print("form is valid")
+            user = form.get_user()
+            login(request, user)
+            return redirect('snippet:home')
+        else:
+            print("form is invalid")
+            messages.error(request, 'Something is wrong! You have failed to log in!')
+            form = LoginForm()
+            return render(request, 'snippet/login.html', context={'form': form})
 
 
 class LogoutView(TemplateView):

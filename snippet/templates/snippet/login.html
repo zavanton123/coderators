@@ -12,7 +12,14 @@
     <div class="fullwidth-block">
         <div class="container">
 
-            <p>Login here...</p>
+            <form method="post" action="{% url 'snippet:login' %}">
+
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <p><input type="submit" value="Login"></p>
+            </form>
 
             <br/>
             <br/>
