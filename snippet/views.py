@@ -1,7 +1,9 @@
-from django.urls import reverse_lazy, reverse
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.views import View
 from django.views.generic import DetailView, ListView, TemplateView, CreateView, DeleteView, UpdateView
 
-from snippet.forms import SnippetForm
+from snippet.forms import SnippetForm, RegisterForm
 from snippet.models import Snippet
 
 
@@ -29,8 +31,19 @@ class LogoutView(TemplateView):
     template_name = 'snippet/logout.html'
 
 
-class RegisterView(TemplateView):
-    template_name = 'snippet/register.html'
+class RegisterView(View):
+    def get(self, request, *args, **kwargs):
+        form = RegisterForm()
+        return render(request, 'snippet/register.html', context={'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('snippet:login')
+        else:
+            form = RegisterForm()
+            return render(request, 'snippet/register.html', context={'form': form})
 
 
 class ProfileView(TemplateView):
