@@ -13,7 +13,8 @@ class Snippet(models.Model):
     )
     author = models.ForeignKey(
         to=User,
-        on_delete=models.CASCADE
+        null=True,
+        on_delete=models.SET_NULL
     )
     published_at = models.DateTimeField(
         auto_now_add=True,
