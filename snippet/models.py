@@ -29,3 +29,6 @@ class Snippet(models.Model):
 
     def get_absolute_url(self):
         return reverse('snippet:show_snippet_by_id', kwargs={'pk': self.pk})
+
+    def get_delete_url(self):
+        return reverse('snippet:delete_snippet', kwargs={'pk': self.pk})

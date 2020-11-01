@@ -1,4 +1,5 @@
-from django.views.generic import DetailView, ListView, TemplateView, CreateView
+from django.urls import reverse_lazy
+from django.views.generic import DetailView, ListView, TemplateView, CreateView, DeleteView
 
 from snippet.forms import SnippetForm
 from snippet.models import Snippet
@@ -45,6 +46,12 @@ class AddSnippet(CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+
+class DeleteSnippet(DeleteView):
+    model = Snippet
+    template_name = 'snippet/delete_snippet.html'
+    success_url = reverse_lazy('snippet:home')
 
 
 class HomeView(ListView):
