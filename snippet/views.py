@@ -1,6 +1,10 @@
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, TemplateView
 
 from snippet.models import Snippet
+
+
+class IndexView(TemplateView):
+    template_name = 'snippet/index.html'
 
 
 class HomeView(ListView):
