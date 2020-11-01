@@ -15,8 +15,12 @@ class Snippet(models.Model):
         to=User,
         on_delete=models.CASCADE
     )
-    latest_update = models.DateTimeField(
-        auto_now=True
+    published_at = models.DateTimeField(
+        verbose_name='Published'
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True,
+        verbose_name='Updated'
     )
 
     def __str__(self):

@@ -1,9 +1,12 @@
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import DetailView, ListView
 
 from snippet.models import Snippet
 
 
-class HomeView(TemplateView):
+class HomeView(ListView):
+    ordering = ['-published_at']
+    context_object_name = 'snippets'
+    model = Snippet
     template_name = 'snippet/home.html'
 
 
