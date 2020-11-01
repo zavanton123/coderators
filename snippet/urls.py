@@ -1,13 +1,14 @@
 from django.urls import path
 
 from snippet.views import HomeView, SnippetView, IndexView, AboutView, ClientView, ContactsView, LoginView, \
-    RegisterView, LogoutView, ProfileView
+    RegisterView, LogoutView, ProfileView, AddSnippet
 
 app_name = 'snippet'
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('snippets/<int:pk>', SnippetView.as_view(), name='show_snippet_by_id'),
+    path('snippets/add', AddSnippet.as_view(), name='add_snippet'),
     path('index', IndexView.as_view(), name='index'),
     path('about', AboutView.as_view(), name='about'),
     path('clients', ClientView.as_view(), name='clients'),

@@ -3,11 +3,17 @@
 {% block page-title %}Home{% endblock %}
 
 {% block main-content-header %}
-    <p>Home</p>
+    <h1>{{ snippet.title }}</h1>
 {% endblock %}
 
 {% block main-content-body %}
-    <h1>{{ snippet.title }}</h1>
-    <p>{{ snippet.content }}</p>
-    <p>By {{ snippet.author.username }}</p>
+
+    <div class="fullwidth-block">
+        <div class="container">
+
+            <p>{{ snippet.content }}</p>
+            <p>By {{ snippet.author.username }}</p>
+        </div>
+    </div>
+
 {% endblock %}

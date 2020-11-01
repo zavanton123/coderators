@@ -1,5 +1,6 @@
-from django.views.generic import DetailView, ListView, TemplateView
+from django.views.generic import DetailView, ListView, TemplateView, CreateView
 
+from snippet.forms import SnippetForm
 from snippet.models import Snippet
 
 
@@ -33,6 +34,17 @@ class RegisterView(TemplateView):
 
 class ProfileView(TemplateView):
     template_name = 'snippet/profile.html'
+
+
+class AddSnippet(CreateView):
+    form_class = SnippetForm
+    context_object_name = 'snippet'
+    model = Snippet
+    template_name = 'snippet/add_snippet.html'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
 class HomeView(ListView):

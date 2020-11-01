@@ -16,6 +16,7 @@ class Snippet(models.Model):
         on_delete=models.CASCADE
     )
     published_at = models.DateTimeField(
+        auto_now_add=True,
         verbose_name='Published'
     )
     updated_at = models.DateTimeField(
