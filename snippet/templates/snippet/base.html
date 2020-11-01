@@ -51,39 +51,28 @@
     <main class="main-content">
         <div class="page-head">
             <div class="container">
-                <h1 class="page-title">Our Clients. <br>We cooperate with the best companies</h1>
+                <h1 class="page-title">{% block main-content-header %}
+                    <p>Page Header</p>
+                    <p>We do our best</p>
+                {% endblock %}</h1>
             </div>
         </div>
 
         <div class="fullwidth-block">
             <div class="container">
 
-                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-                    deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
-                    provident, similique sunt in culpa qui officia deserunt mollitia animi est laborum et dolorum
-                    fuga.</p>
+                {% block main-content-body %}
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                        deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+                        provident, similique sunt in culpa qui officia deserunt mollitia animi est laborum et dolorum
+                        fuga.</p>
 
-                <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
-                    placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem
-                    quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates
-                    repudiandae sint et molestiae.</p>
-
-            </div>
-        </div>
-
-        <div class="fullwidth-block">
-            <div class="container">
-
-                <div class="client-grid">
-                    <div class="client"><img src="{% static 'theme/images/logo-hp.png' %}" alt=""></div>
-                    <div class="client"><img src="{% static 'theme/images/logo-microsoft.png' %}" alt=""></div>
-                    <div class="client"><img src="{% static 'theme/images/logo-sony.png' %}" alt=""></div>
-                    <div class="client"><img src="{% static 'theme/images/logo-cocacola.png' %}" alt=""></div>
-                    <div class="client"><img src="{% static 'theme/images/logo-ford.png' %}" alt=""></div>
-                    <div class="client"><img src="{% static 'theme/images/logo-intel.png' %}" alt=""></div>
-                    <div class="client"><img src="{% static 'theme/images/logo-disney.png' %}" alt=""></div>
-                    <div class="client"><img src="{% static 'theme/images/logo-subway.png' %}" alt=""></div>
-                </div>
+                    <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod
+                        maxime
+                        placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem
+                        quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates
+                        repudiandae sint et molestiae.</p>
+                {% endblock %}
 
             </div>
         </div>

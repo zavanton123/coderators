@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
 
-    <title>Compass Starter by Ariona, Rian</title>
+    <title>{% block page-title %}Title{% endblock %}</title>
 
     <!-- Loading third party fonts -->
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -17,9 +17,9 @@
     <link rel="stylesheet" href="{% static 'theme/style.css' %}">
 
     <!--[if lt IE 9]>
-    <script src="{% static 'theme/js/ie-support/html5.js' %}"></script>
-    <script src="{% static 'theme/js/ie-support/respond.js' %}"></script>
-    <![endif]-->
+		<script src="{% static 'theme/js/ie-support/html5.js' %}"></script>
+		<script src="{% static 'theme/js/ie-support/respond.js' %}"></script>
+		<![endif]-->
 
 </head>
 
@@ -30,14 +30,17 @@
 
     <header class="site-header">
         <div class="container">
-            <a href="index-template.html" class="logo"><img src="{% static 'theme/images/logo.png' %}" alt="Perfect Lab"></a>
+            <a href="index-template.html" class="logo"><img src="{% static 'theme/images/logo.png' %}"
+                                                            alt="Perfect Lab"></a>
 
             <!-- Default snippet for navigation -->
             <div class="main-navigation">
                 <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                 <ul class="menu">
-                    <li class="menu-item current-menu-item"><a href="index-template.html">Home</a></li>
-                    <li class="menu-item"><a href="{% url 'snippet:home' %}">About</a></li>
+                    <li class="menu-item current-menu-item"><a href="{% url 'snippet:home' %}">Home</a></li>
+                    <li class="menu-item"><a href="{% url 'snippet:clients' %}">Clients</a></li>
+                    <li class="menu-item"><a href="{% url 'snippet:about' %}">About</a></li>
+                    <li class="menu-item"><a href="{% url 'snippet:contacts' %}">Contact</a></li>
                 </ul> <!-- .menu -->
             </div> <!-- .main-navigation -->
 

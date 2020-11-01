@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-</head>
-<body>
-<h1>Snippets</h1>
-<ul>
-    {% for snippet in snippets %}
-        <li><a href="{{ snippet.get_absolute_url }}">{{ snippet.title }}</a></li>
-    {% endfor %}
-</ul>
-</body>
-</html>
+{% extends 'snippet/base.html' %}
+
+{% block page-title %}Home{% endblock %}
+
+{% block main-content-header %}
+    <p>Home</p>
+{% endblock %}
+
+{% block main-content-body %}
+    <ul>
+        {% for snippet in snippets %}
+            <li><a href="{{ snippet.get_absolute_url }}">{{ snippet.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

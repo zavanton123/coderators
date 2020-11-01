@@ -9,6 +9,6 @@ urlpatterns = [
     path('snippets/<int:pk>', SnippetView.as_view(), name='show_snippet_by_id'),
     path('index', IndexView.as_view(), name='index'),
     path('about', AboutView.as_view(), name='about'),
-    path('client', ClientView.as_view(), name='client'),
-    path('contact', ContactView.as_view(), name='contact'),
+    path('clients', ClientView.as_view(), name='clients'),
+    path('contacts', ContactView.as_view(), name='contacts'),
 ]

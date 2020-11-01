@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
 
-    <title>Compass Starter by Ariona, Rian</title>
+    <title>{% block page-title %}Title{% endblock %}</title>
 
     <!-- Loading third party fonts -->
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -37,11 +37,10 @@
             <div class="main-navigation">
                 <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                 <ul class="menu">
-                    <li class="menu-item"><a href="index-template.html">Home</a></li>
-                    <li class="menu-item"><a href="about-template.html">About</a></li>
-                    <li class="menu-item"><a href="#">Features</a></li>
-                    <li class="menu-item"><a href="clients-template.html">Clients</a></li>
-                    <li class="menu-item current-menu-item"><a href="contact-template.html">Contact</a></li>
+                    <li class="menu-item current-menu-item"><a href="{% url 'snippet:home' %}">Home</a></li>
+                    <li class="menu-item"><a href="{% url 'snippet:clients' %}">Clients</a></li>
+                    <li class="menu-item"><a href="{% url 'snippet:about' %}">About</a></li>
+                    <li class="menu-item"><a href="{% url 'snippet:contacts' %}">Contact</a></li>
                 </ul> <!-- .menu -->
             </div> <!-- .main-navigation -->
 
