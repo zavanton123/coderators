@@ -61,7 +61,9 @@ class EditSnippet(UpdateView):
     fields = ['title', 'content']
 
     def get_success_url(self):
-        return reverse('snippet:home')
+        context = self.get_context_data()
+        snippet = context['snippet']
+        return snippet.get_absolute_url()
 
 
 class HomeView(ListView):

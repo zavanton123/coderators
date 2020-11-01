@@ -3,7 +3,7 @@
 {% block page-title %}Home{% endblock %}
 
 {% block main-content-header %}
-    <h1>{{ snippet.title }}</h1>
+    <h1>Snippet</h1>
 {% endblock %}
 
 {% block main-content-body %}
@@ -11,8 +11,8 @@
     <div class="fullwidth-block">
         <div class="container">
 
-            <p><a href="{{ snippet.get_edit_url }}">Edit</a></p>
-            <p><a href="{{ snippet.get_delete_url }}">Delete</a></p>
+            <h1>{{ snippet.title }}</h1>
+            <p><a href="{{ snippet.get_edit_url }}">Edit</a> • <a href="{{ snippet.get_delete_url }}">Delete</a></p>
 
             <p>{{ snippet.content }}</p>
             <p>By {{ snippet.author.username }}</p>

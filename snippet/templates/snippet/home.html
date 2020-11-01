@@ -3,7 +3,7 @@
 {% block page-title %}Home{% endblock %}
 
 {% block main-content-header %}
-    <p>Home</p>
+    <h1 class="page-title">Home</h1>
 {% endblock %}
 
 {% block main-content-body %}
@@ -14,8 +14,20 @@
             <ul>
                 {% for snippet in snippets %}
                     <li><a href="{{ snippet.get_absolute_url }}">{{ snippet.title }}</a></li>
+                {% empty %}
+                    <h2>You have no snippets yet...</h2>
                 {% endfor %}
             </ul>
+
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
 
         </div>
     </div>
