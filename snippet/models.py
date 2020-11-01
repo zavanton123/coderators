@@ -32,3 +32,6 @@ class Snippet(models.Model):
 
     def get_delete_url(self):
         return reverse('snippet:delete_snippet', kwargs={'pk': self.pk})
+
+    def get_edit_url(self):
+        return reverse('first-snippet:edit_snippet', kwargs={'pk': self.pk})

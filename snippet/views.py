@@ -1,5 +1,5 @@
-from django.urls import reverse_lazy
-from django.views.generic import DetailView, ListView, TemplateView, CreateView, DeleteView
+from django.urls import reverse_lazy, reverse
+from django.views.generic import DetailView, ListView, TemplateView, CreateView, DeleteView, UpdateView
 
 from snippet.forms import SnippetForm
 from snippet.models import Snippet
@@ -52,6 +52,16 @@ class DeleteSnippet(DeleteView):
     model = Snippet
     template_name = 'snippet/delete_snippet.html'
     success_url = reverse_lazy('snippet:home')
+
+
+class EditSnippet(UpdateView):
+    context_object_name = 'snippet'
+    model = Snippet
+    template_name = 'snippet/edit_snippet.html'
+    fields = ['title', 'content']
+
+    def get_success_url(self):
+        return reverse('snippet:home')
 
 
 class HomeView(ListView):
