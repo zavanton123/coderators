@@ -4,7 +4,19 @@ from snippet.models import Snippet
 
 
 class IndexView(TemplateView):
-    template_name = 'snippet/index.html'
+    template_name = 'snippet/index-template.html'
+
+
+class AboutView(TemplateView):
+    template_name = 'snippet/about-template.html'
+
+
+class ClientView(TemplateView):
+    template_name = 'snippet/clients-template.html'
+
+
+class ContactView(TemplateView):
+    template_name = 'snippet/contact-template.html'
 
 
 class HomeView(ListView):
