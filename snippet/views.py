@@ -19,6 +19,22 @@ class ContactsView(TemplateView):
     template_name = 'snippet/contact.html'
 
 
+class LoginView(TemplateView):
+    template_name = 'snippet/login.html'
+
+
+class LogoutView(TemplateView):
+    template_name = 'snippet/logout.html'
+
+
+class RegisterView(TemplateView):
+    template_name = 'snippet/register.html'
+
+
+class ProfileView(TemplateView):
+    template_name = 'snippet/profile.html'
+
+
 class HomeView(ListView):
     ordering = ['-published_at']
     context_object_name = 'snippets'

@@ -15,13 +15,12 @@
             </div>
             <div class="col-xs-6 col-sm-3">
                 <div class="widget">
-                    <h3 class="widget-title">Help</h3>
+                    <h3 class="widget-title">Pages</h3>
                     <ul class="dash-list">
-                        <li><a href="#">Praesentium deleniti</a></li>
-                        <li><a href="#">Atque corrupti</a></li>
-                        <li><a href="#">Quos dolores quas molestias</a></li>
-                        <li><a href="#">Excepturi sint occaecati</a></li>
-                        <li><a href="#">Cupiditate provident</a></li>
+                        <li><a href="{% url 'snippet:home' %}">Home</a></li>
+                        <li><a href="{% url 'snippet:clients' %}">Clients</a></li>
+                        <li><a href="{% url 'snippet:about' %}">About</a></li>
+                        <li><a href="{% url 'snippet:contacts' %}">Contacts</a></li>
                     </ul>
                 </div>
             </div>
