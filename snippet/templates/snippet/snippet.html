@@ -12,10 +12,13 @@
         <div class="container">
 
             <h1>{{ snippet.title }}</h1>
-            <p><a href="{{ snippet.get_edit_url }}">Edit</a> • <a href="{{ snippet.get_delete_url }}">Delete</a></p>
+            <p>By <a href="{% url 'snippet:home' %}">{{ snippet.author.username }}</a></p>
+
+            {% if request.user.is_authenticated %}
+                <p><a href="{{ snippet.get_edit_url }}">Edit</a> • <a href="{{ snippet.get_delete_url }}">Delete</a></p>
+            {% endif %}
 
             <p>{{ snippet.content }}</p>
-            <p>By {{ snippet.author.username }}</p>
         </div>
     </div>
 

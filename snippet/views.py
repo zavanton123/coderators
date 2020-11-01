@@ -107,8 +107,14 @@ class EditSnippet(UpdateView):
 class HomeView(ListView):
     ordering = ['-published_at']
     context_object_name = 'snippets'
-    model = Snippet
     template_name = 'snippet/home.html'
+
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_authenticated:
+            return Snippet.objects.filter(author=user)
+        else:
+            return Snippet.objects.all()
 
 
 class SnippetView(DetailView):
