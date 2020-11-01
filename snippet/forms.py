@@ -14,7 +14,6 @@ class SnippetForm(forms.ModelForm):
 class RegisterForm(UserCreationForm):
     username = forms.CharField(
         label='Username:',
-        help_text='Please, enter a username',
         widget=forms.TextInput()
     )
     password1 = forms.CharField(

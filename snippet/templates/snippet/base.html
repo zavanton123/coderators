@@ -40,6 +40,20 @@
             </div>
         </div>
 
+        {#    show messages    #}
+        <div class="container">
+            {% if messages %}
+                <br>
+                {% for message in messages %}
+                    {% if message.tag == 'error' %}
+                        <p style="color: red">{{ message }}</p>
+                    {% else %}
+                        <p>{{ message }}</p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+
         {% block main-content-body %}
             <div class="fullwidth-block">
                 <div class="container">

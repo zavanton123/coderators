@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
@@ -40,8 +41,10 @@ class RegisterView(View):
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Congrats! You have registered!')
             return redirect('snippet:login')
         else:
+            messages.error(request, "Epic fail! You haven't registered yet!")
             form = RegisterForm()
             return render(request, 'snippet/register.html', context={'form': form})
 
