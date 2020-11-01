@@ -1,0 +1,41 @@
+{% extends 'snippet/base.html' %}
+
+{% block page-title %}Home{% endblock %}
+
+{% block main-content-header %}
+    <h1 class="page-title">Home</h1>
+{% endblock %}
+
+{% block main-content-body %}
+
+    <div class="fullwidth-block">
+        <div class="container">
+
+            {% if request.user.is_authenticated %}
+                <h1>Snippets by {{ request.user }}</h1>
+            {% else %}
+                <h1>Snippets by all users</h1>
+            {% endif %}
+
+            <ul>
+                {% for snippet in snippets %}
+                    <li><a href="{{ snippet.get_absolute_url }}">{{ snippet.title }}</a></li>
+                {% empty %}
+                    <h2>You have no snippets yet...</h2>
+                {% endfor %}
+            </ul>
+
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+
+        </div>
+    </div>
+
+{% endblock %}

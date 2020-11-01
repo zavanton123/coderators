@@ -1,0 +1,25 @@
+{% extends 'snippet/base.html' %}
+{% load static %}
+
+{% block page-title %}Add Snippet{% endblock %}
+
+{% block main-content-header %}
+    <h1 class="page-title">Add Snippet</h1>
+{% endblock %}
+
+{% block main-content-body %}
+
+    <div class="fullwidth-block">
+        <div class="container">
+
+            <form method="post">
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <p><input type="submit" value="Publish"></p>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
