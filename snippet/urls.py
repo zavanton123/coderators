@@ -1,6 +1,6 @@
 from django.urls import path
 
-from snippet.views import HomeView, SnippetView, IndexView, AboutView, ClientView, ContactView
+from snippet.views import HomeView, SnippetView, IndexView, AboutView, ClientView, ContactsView
 
 app_name = 'snippet'
 
@@ -10,5 +10,5 @@ urlpatterns = [
     path('index', IndexView.as_view(), name='index'),
     path('about', AboutView.as_view(), name='about'),
     path('clients', ClientView.as_view(), name='clients'),
-    path('contacts', ContactView.as_view(), name='contacts'),
+    path('contacts', ContactsView.as_view(), name='contacts'),
 ]
