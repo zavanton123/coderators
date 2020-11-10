@@ -62,8 +62,12 @@ WSGI_APPLICATION = 'coderators.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd1lqflfua2fuo7',
+        'HOST': 'ec2-54-172-219-218.compute-1.amazonaws.com',
+        'PORT': 5432,
+        'USER': 'umvnrlulqbdsul',
+        'PASSWORD': 'ffc5fecb53092246bd99a5fd639696a693b6d9785d977e4efaa75af46cdf744b'
     }
 }
 
