@@ -1,0 +1,26 @@
+{% extends 'snippet/base.html' %}
+
+{% block page-title %}Tag{% endblock %}
+
+{% block main-content-header %}
+    <h1>Tag</h1>
+{% endblock %}
+
+{% block main-content-body %}
+
+    <div class="fullwidth-block">
+        <div class="container">
+
+            <h1>{{ tag }}</h1>
+
+            <p>Created at: {{ tag.created_at|date:'d.m.y' }}</p>
+
+            <p>Updated at: {{ tag.updated_at|date:'d.m.y' }}</p>
+
+            <p><a href="{{ tag.get_delete_url }}">Delete</a></p>
+            <p><a href="{{ tag.get_update_url }}">Update</a></p>
+
+        </div>
+    </div>
+
+{% endblock %}

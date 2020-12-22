@@ -1,5 +1,5 @@
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, DetailView
 
 from snippet.forms.tag import TagForm
 from snippet.models.tag import Tag
@@ -9,6 +9,12 @@ class ShowTags(ListView):
     template_name = 'snippet/tag/show_tags.html'
     model = Tag
     context_object_name = 'tags'
+
+
+class ShowTag(DetailView):
+    template_name = 'snippet/tag/show_tag.html'
+    context_object_name = 'tag'
+    model = Tag
 
 
 class AddTag(CreateView):
