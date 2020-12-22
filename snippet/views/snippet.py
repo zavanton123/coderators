@@ -2,7 +2,7 @@ from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 
 from snippet.forms import SnippetForm
-from snippet.models import Snippet
+from snippet.models.snippet import Snippet
 
 
 class SnippetView(DetailView):

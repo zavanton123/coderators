@@ -2,6 +2,8 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 
+from snippet.models.category import Category
+
 
 class Snippet(models.Model):
     title = models.CharField(
@@ -10,6 +12,13 @@ class Snippet(models.Model):
     )
     content = models.TextField(
         blank=False
+    )
+    category = models.ForeignKey(
+        to=Category,
+        on_delete=models.SET_NULL,
+        related_name='snippets',
+        null=True,
+        blank=True,
     )
     author = models.ForeignKey(
         to=User,
