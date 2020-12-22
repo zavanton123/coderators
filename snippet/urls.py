@@ -1,6 +1,6 @@
 from django.urls import path
 
-from snippet.views import SnippetView, AddSnippet, EditSnippet, DeleteSnippet
+from snippet.views import SnippetView, AddSnippet, UpdateSnippet, DeleteSnippet
 from snippet.views.authentication import LoginView, LogoutView, RegisterView, ProfileView
 from snippet.views.category import ShowCategory, AddCategory, ShowCategories, DeleteCategory, UpdateCategory
 from snippet.views.home import HomeView
@@ -15,7 +15,7 @@ urlpatterns = [
     # snippet views
     path('snippets/<int:pk>', SnippetView.as_view(), name='show_snippet'),
     path('snippets/add', AddSnippet.as_view(), name='add_snippet'),
-    path('snippets/edit/<int:pk>', EditSnippet.as_view(), name='edit_snippet'),
+    path('snippets/edit/<int:pk>', UpdateSnippet.as_view(), name='edit_snippet'),
     path('snippets/delete/<int:pk>', DeleteSnippet.as_view(), name='delete_snippet'),
 
     # category views

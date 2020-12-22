@@ -1,6 +1,6 @@
 from .snippet import SnippetView
 from .snippet import AddSnippet
-from .snippet import EditSnippet
+from .snippet import UpdateSnippet
 from .snippet import DeleteSnippet
 
 from .authentication import RegisterView

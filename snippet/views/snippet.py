@@ -26,11 +26,11 @@ class AddSnippet(CreateView):
         return super().form_valid(form)
 
 
-class EditSnippet(UpdateView):
-    template_name = 'snippet/edit_snippet.html'
+class UpdateSnippet(UpdateView):
+    template_name = 'snippet/update_snippet.html'
     context_object_name = 'snippet'
     model = Snippet
-    fields = ['title', 'content']
+    form_class = SnippetForm
 
     def get_success_url(self):
         context = self.get_context_data()
