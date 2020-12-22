@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Category(models.Model):
@@ -17,6 +18,9 @@ class Category(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True
     )
+
+    def get_absolute_url(self):
+        return reverse('snippet:show_category', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.name

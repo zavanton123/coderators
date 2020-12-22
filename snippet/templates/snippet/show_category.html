@@ -1,0 +1,23 @@
+{% extends 'snippet/base.html' %}
+
+{% block page-title %}Home{% endblock %}
+
+{% block main-content-header %}
+    <h1>Category</h1>
+{% endblock %}
+
+{% block main-content-body %}
+
+    <div class="fullwidth-block">
+        <div class="container">
+
+            <h1>{{ category.name }}</h1>
+
+            <p>Created at: {{ category.created_at|date:'d.m.y' }}</p>
+
+            <p>Updated at: {{ category.updated_at|date:'d.m.y' }}</p>
+
+        </div>
+    </div>
+
+{% endblock %}

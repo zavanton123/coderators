@@ -20,7 +20,7 @@
 
             {# show category #}
             <h3>Category:</h3>
-            <p>{{ snippet.category }}</p>
+            <p><a href="{{ snippet.category.get_absolute_url }}">{{ snippet.category }}</a></p>
 
             {# show tags #}
             {% if snippet.tags.all %}
