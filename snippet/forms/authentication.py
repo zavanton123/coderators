@@ -27,6 +27,11 @@ class RegisterForm(UserCreationForm):
 
 
 class LoginForm(AuthenticationForm):
+    email = forms.EmailField(
+        required=False,
+        label="Email:",
+        widget=forms.EmailInput(),
+    )
     username = forms.CharField(
         label='Username:',
         widget=forms.TextInput()

@@ -1,37 +1,17 @@
+import logging
+
 from django.contrib import messages
-from django.contrib.auth import login, logout
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, PasswordResetForm, SetPasswordForm
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView, \
+    PasswordResetView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetCompleteView
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
+from django.urls import reverse
 from django.views import View
-from django.views.generic import RedirectView, TemplateView
+from django.views.generic import TemplateView
 
-from snippet.forms import LoginForm, RegisterForm
+from snippet.forms import RegisterForm
 
-
-class LoginView(View):
-    def get(self, request):
-        form = LoginForm()
-        return render(request, 'snippet/authentication/login.html', context={'form': form})
-
-    def post(self, request):
-        form = LoginForm(data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            return redirect('snippet:home')
-        else:
-            messages.error(request, 'Something is wrong! You have failed to log in!')
-            form = LoginForm()
-            return render(request, 'snippet/authentication/login.html', context={'form': form})
-
-
-class LogoutView(RedirectView):
-    url = reverse_lazy('snippet:home')
-
-    def dispatch(self, request, *args, **kwargs):
-        logout(request)
-        messages.success(request, 'You have logged out!')
-        return super().dispatch(request, *args, **kwargs)
+log = logging.getLogger(__name__)
 
 
 class RegisterView(View):
@@ -49,6 +29,60 @@ class RegisterView(View):
             messages.error(request, "Epic fail! You haven't registered yet!")
             form = RegisterForm()
             return render(request, 'snippet/authentication/register.html', context={'form': form})
+
+
+class UserLoginView(LoginView):
+    template_name = 'snippet/authentication/login.html'
+    authentication_form = AuthenticationForm
+    redirect_field_name = 'next'
+    redirect_authenticated_user = True
+
+    def get_success_url(self):
+        return reverse('snippet:home')
+
+
+class UserLogoutView(LogoutView):
+    redirect_field_name = 'next'
+    next_page = 'snippet:login'
+
+
+class UserPasswordChangeView(PasswordChangeView):
+    form_class = PasswordChangeForm
+    template_name = 'snippet/authentication/user_password_change.html'
+
+    def get_success_url(self):
+        return reverse('snippet:password_change_done')
+
+
+class UserPasswordChangeDoneView(PasswordChangeDoneView):
+    template_name = 'snippet/authentication/user_password_change_done.html'
+
+
+class UserPasswordResetView(PasswordResetView):
+    template_name = 'snippet/authentication/user_password_reset.html'
+    form_class = PasswordResetForm
+    from_email = 'zavialov2010@gmail.com'
+    email_template_name = 'snippet/authentication/user_password_reset_email.html'
+
+    def get_success_url(self):
+        return reverse('snippet:password_reset_done')
+
+
+class UserPasswordResetDoneView(PasswordResetDoneView):
+    template_name = 'snippet/authentication/user_password_reset_done.html'
+
+
+class UserPasswordResetConfirmView(PasswordResetConfirmView):
+    template_name = 'snippet/authentication/user_password_reset_confirm.html'
+    form_class = SetPasswordForm
+    post_reset_login = False
+
+    def get_success_url(self):
+        return reverse('snippet:password_reset_complete')
+
+
+class UserPasswordResetCompleteView(PasswordResetCompleteView):
+    template_name = 'snippet/authentication/user_password_reset_complete.html'
 
 
 class ProfileView(TemplateView):
