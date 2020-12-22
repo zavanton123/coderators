@@ -6,13 +6,13 @@ from snippet.models.category import Category
 
 
 class ShowCategories(ListView):
-    template_name = 'snippet/show_categories.html'
+    template_name = 'snippet/category/show_categories.html'
     context_object_name = 'categories'
     model = Category
 
 
 class ShowCategory(DetailView):
-    template_name = 'snippet/show_category.html'
+    template_name = 'snippet/category/show_category.html'
     context_object_name = 'category'
     model = Category
 
@@ -20,17 +20,17 @@ class ShowCategory(DetailView):
 class AddCategory(CreateView):
     model = Category
     form_class = CategoryForm
-    template_name = 'snippet/add_category.html'
+    template_name = 'snippet/category/add_category.html'
 
 
 class UpdateCategory(UpdateView):
-    template_name = 'snippet/update_category.html'
+    template_name = 'snippet/category/update_category.html'
     success_url = reverse_lazy('snippet:show_categories')
     form_class = CategoryForm
     model = Category
 
 
 class DeleteCategory(DeleteView):
-    template_name = 'snippet/delete_category.html'
+    template_name = 'snippet/category/delete_category.html'
     success_url = reverse_lazy('snippet:show_categories')
     model = Category

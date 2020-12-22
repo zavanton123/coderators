@@ -11,7 +11,7 @@ from snippet.forms import LoginForm, RegisterForm
 class LoginView(View):
     def get(self, request):
         form = LoginForm()
-        return render(request, 'snippet/login.html', context={'form': form})
+        return render(request, 'snippet/authentication/login.html', context={'form': form})
 
     def post(self, request):
         form = LoginForm(data=request.POST)
@@ -22,7 +22,7 @@ class LoginView(View):
         else:
             messages.error(request, 'Something is wrong! You have failed to log in!')
             form = LoginForm()
-            return render(request, 'snippet/login.html', context={'form': form})
+            return render(request, 'snippet/authentication/login.html', context={'form': form})
 
 
 class LogoutView(RedirectView):
@@ -37,7 +37,7 @@ class LogoutView(RedirectView):
 class RegisterView(View):
     def get(self, request, *args, **kwargs):
         form = RegisterForm()
-        return render(request, 'snippet/register.html', context={'form': form})
+        return render(request, 'snippet/authentication/register.html', context={'form': form})
 
     def post(self, request, *args, **kwargs):
         form = RegisterForm(request.POST)
@@ -48,8 +48,8 @@ class RegisterView(View):
         else:
             messages.error(request, "Epic fail! You haven't registered yet!")
             form = RegisterForm()
-            return render(request, 'snippet/register.html', context={'form': form})
+            return render(request, 'snippet/authentication/register.html', context={'form': form})
 
 
 class ProfileView(TemplateView):
-    template_name = 'snippet/profile.html'
+    template_name = 'snippet/authentication/profile.html'

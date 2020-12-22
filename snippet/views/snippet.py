@@ -10,13 +10,13 @@ log = logging.getLogger(__name__)
 
 
 class SnippetView(DetailView):
-    template_name = 'snippet/snippet.html'
+    template_name = 'snippet/snippet/show_snippet.html'
     model = Snippet
     context_object_name = 'snippet'
 
 
 class AddSnippet(CreateView):
-    template_name = 'snippet/add_snippet.html'
+    template_name = 'snippet/snippet/add_snippet.html'
     context_object_name = 'snippet'
     model = Snippet
     form_class = SnippetForm
@@ -27,7 +27,7 @@ class AddSnippet(CreateView):
 
 
 class UpdateSnippet(UpdateView):
-    template_name = 'snippet/update_snippet.html'
+    template_name = 'snippet/snippet/update_snippet.html'
     context_object_name = 'snippet'
     model = Snippet
     form_class = SnippetForm
@@ -39,6 +39,6 @@ class UpdateSnippet(UpdateView):
 
 
 class DeleteSnippet(DeleteView):
-    template_name = 'snippet/delete_snippet.html'
+    template_name = 'snippet/snippet/delete_snippet.html'
     model = Snippet
     success_url = reverse_lazy('snippet:home')
