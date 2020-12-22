@@ -14,7 +14,6 @@
             <h1>{{ tag }}</h1>
 
             <p>Created at: {{ tag.created_at|date:'d.m.y' }}</p>
-
             <p>Updated at: {{ tag.updated_at|date:'d.m.y' }}</p>
 
             <p><a href="{{ tag.get_delete_url }}">Delete</a></p>

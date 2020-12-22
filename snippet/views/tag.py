@@ -1,5 +1,5 @@
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView, DetailView, UpdateView
+from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 
 from snippet.forms.tag import TagForm
 from snippet.models.tag import Tag
@@ -29,3 +29,9 @@ class UpdateTag(UpdateView):
     success_url = reverse_lazy('snippet:show_tags')
     form_class = TagForm
     model = Tag
+
+
+class DeleteTag(DeleteView):
+    model = Tag
+    success_url = reverse_lazy('snippet:show_tags')
+    template_name = 'snippet/tag/delete_tag.html'

@@ -5,7 +5,7 @@ from snippet.views.authentication import LoginView, LogoutView, RegisterView, Pr
 from snippet.views.category import ShowCategory, AddCategory, ShowCategories, DeleteCategory, UpdateCategory
 from snippet.views.home import HomeView
 from snippet.views.misc import AboutView, ClientView, ContactsView
-from snippet.views.tag import AddTag, ShowTags, ShowTag, UpdateTag
+from snippet.views.tag import AddTag, ShowTags, ShowTag, UpdateTag, DeleteTag
 
 app_name = 'snippet'
 
@@ -31,6 +31,7 @@ urlpatterns = [
     path('tags/add', AddTag.as_view(), name='add_tag'),
     path('tags/<int:pk>', ShowTag.as_view(), name='show_tag'),
     path('tags/update/<int:pk>', UpdateTag.as_view(), name='update_tag'),
+    path('tags/delete/<int:pk>', DeleteTag.as_view(), name='delete_tag'),
 
     # authentication views
     path('login', LoginView.as_view(), name='login'),
