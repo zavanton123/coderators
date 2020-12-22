@@ -1,7 +1,7 @@
 from django import forms
 
 
-class ContactForm(forms.Form):
+class FeedbackForm(forms.Form):
     email = forms.EmailField(
         max_length=100,
         widget=forms.EmailInput()

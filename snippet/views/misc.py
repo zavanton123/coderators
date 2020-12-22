@@ -6,7 +6,7 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView
 
-from snippet.forms.contacts import ContactForm
+from snippet.forms.feedback import FeedbackForm
 
 log = logging.getLogger(__name__)
 
@@ -20,9 +20,9 @@ class ClientView(TemplateView):
 
 
 class SendFeedback(FormView):
-    template_name = 'snippet/misc/contact.html'
+    template_name = 'snippet/misc/send_feedback.html'
     success_url = reverse_lazy('snippet:home')
-    form_class = ContactForm
+    form_class = FeedbackForm
 
     def form_valid(self, form):
         if form.is_valid():

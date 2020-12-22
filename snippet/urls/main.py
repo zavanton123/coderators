@@ -20,5 +20,5 @@ urlpatterns = [
     # misc views
     path('about', AboutView.as_view(), name='about'),
     path('clients', ClientView.as_view(), name='clients'),
-    path('contacts', SendFeedback.as_view(), name='contacts'),
+    path('feedback', SendFeedback.as_view(), name='feedback'),
 ]
