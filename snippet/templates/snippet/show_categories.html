@@ -1,9 +1,9 @@
 {% extends 'snippet/base.html' %}
 
-{% block page-title %}Home{% endblock %}
+{% block page-title %}All Categories{% endblock %}
 
 {% block main-content-header %}
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">All Categories</h1>
 {% endblock %}
 
 {% block main-content-body %}
@@ -11,17 +11,15 @@
     <div class="fullwidth-block">
         <div class="container">
 
-            {% if request.user.is_authenticated %}
-                <h1>Snippets by {{ request.user }}</h1>
-            {% else %}
-                <h1>Snippets by all users</h1>
-            {% endif %}
+            <h1>All Categories</h1>
+
+            <h3><a href="{% url 'snippet:add_category' %}">Create New Category</a></h3>
 
             <ul>
-                {% for snippet in snippets %}
-                    <li><a href="{{ snippet.get_absolute_url }}">{{ snippet }}</a></li>
+                {% for category in categories %}
+                    <li><a href="{{ category.get_absolute_url }}">{{ category }}</a></li>
                 {% empty %}
-                    <h2>You have no snippets yet...</h2>
+                    <h2>No category has been created yet...</h2>
                 {% endfor %}
             </ul>
 
