@@ -3,7 +3,7 @@ from django.urls import path
 from snippet.views import ShowSnippet, AddSnippet, UpdateSnippet, DeleteSnippet
 from snippet.views.snippet import ShowSnippetsByCategory, ShowSnippetsByTag
 
-snippets_urlpatterns = [
+urlpatterns = [
     path('<int:pk>', ShowSnippet.as_view(), name='show_snippet'),
     path('add', AddSnippet.as_view(), name='add_snippet'),
     path('edit/<int:pk>', UpdateSnippet.as_view(), name='edit_snippet'),
