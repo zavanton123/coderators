@@ -1,7 +1,9 @@
 from django.urls import path
 
-from snippet.views import HomeView, SnippetView, AboutView, ClientView, ContactsView, LoginView, \
-    RegisterView, LogoutView, ProfileView, AddSnippet, DeleteSnippet, EditSnippet
+from snippet.views import SnippetView, AddSnippet, EditSnippet, DeleteSnippet
+from snippet.views.authentication import LoginView, LogoutView, RegisterView, ProfileView
+from snippet.views.home import HomeView
+from snippet.views.misc import AboutView, ClientView, ContactsView
 
 app_name = 'snippet'
 
