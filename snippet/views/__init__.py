@@ -1,4 +1,4 @@
-from .snippet import SnippetView
+from .snippet import ShowSnippet
 from .snippet import AddSnippet
 from .snippet import UpdateSnippet
 from .snippet import DeleteSnippet

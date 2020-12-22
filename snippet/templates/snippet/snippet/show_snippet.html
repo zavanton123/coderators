@@ -33,7 +33,7 @@
                 <p><a href="{% url 'snippet:add_tag' %}">(Create new tag)</a></p>
                 <ul>
                     {% for tag in snippet.tags.all %}
-                        <li>{{ tag }}</li>
+                        <li><a href="{{ tag.get_absolute_url }}">{{ tag }}</a></li>
                     {% endfor %}
                 </ul>
                 <br/>

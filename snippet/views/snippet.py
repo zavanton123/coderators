@@ -9,7 +9,7 @@ from snippet.models.snippet import Snippet
 log = logging.getLogger(__name__)
 
 
-class SnippetView(DetailView):
+class ShowSnippet(DetailView):
     template_name = 'snippet/snippet/show_snippet.html'
     model = Snippet
     context_object_name = 'snippet'
