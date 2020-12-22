@@ -17,6 +17,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'snippet.apps.SnippetConfig',
+    # simple captcha
+    'captcha',
 ]
 
 MIDDLEWARE = [

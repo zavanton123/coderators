@@ -1,3 +1,4 @@
+from captcha.fields import CaptchaField
 from django import forms
 
 
@@ -16,3 +17,4 @@ class FeedbackForm(forms.Form):
             attrs={'rows': 10}
         ),
     )
+    captcha = CaptchaField()
