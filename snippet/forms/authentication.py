@@ -2,14 +2,6 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
-from snippet.models import Snippet
-
-
-class SnippetForm(forms.ModelForm):
-    class Meta:
-        model = Snippet
-        fields = ['title', 'content']
-
 
 class RegisterForm(UserCreationForm):
     username = forms.CharField(

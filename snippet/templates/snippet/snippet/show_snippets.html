@@ -1,9 +1,9 @@
 {% extends 'snippet/base.html' %}
 
-{% block page-title %}Home{% endblock %}
+{% block page-title %}Snippets{% endblock %}
 
 {% block main-content-header %}
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Snippets</h1>
 {% endblock %}
 
 {% block main-content-body %}
@@ -11,11 +11,7 @@
     <div class="fullwidth-block">
         <div class="container">
 
-            {% if request.user.is_authenticated %}
-                <h1>Snippets by {{ request.user }}</h1>
-            {% else %}
-                <h1>Snippets by all users</h1>
-            {% endif %}
+            <h1>Snippets by {{ taxonomy_type }}: {{ taxonomy_name }}</h1>
 
             <ul>
                 {% for snippet in snippets %}
