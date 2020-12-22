@@ -72,7 +72,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# setup logging
+# Logging
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -87,16 +87,24 @@ LOGGING = {
     }
 }
 
+# Email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_SSL = False
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'zavialov2010@gmail.com'
+EMAIL_HOST_PASSWORD = "tpuydqfzynavkvkh"
+DEFAULT_FROM_EMAIL = 'zavialov2010@gmail.com'
+
+# Localization
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'Europe/Moscow'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
+# Static files
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
