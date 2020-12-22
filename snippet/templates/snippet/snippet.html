@@ -11,14 +11,34 @@
     <div class="fullwidth-block">
         <div class="container">
 
+            {# show title #}
             <h1>{{ snippet.title }}</h1>
+
+            {# show author and publication date #}
             <p>By <a href="{% url 'snippet:home' %}">{{ snippet.author.username }}</a>
                 on {{ snippet.published_at|date:'d.m.y' }}</p>
 
+            {# show category #}
+            <h3>Category:</h3>
+            <p>{{ snippet.category }}</p>
+
+            {# show tags #}
+            {% if snippet.tags.all %}
+                <h3>Tags</h3>
+                <ul>
+                    {% for tag in snippet.tags.all %}
+                        <li>{{ tag }}</li>
+                    {% endfor %}
+                </ul>
+                <br/>
+            {% endif %}
+
+            {# show edit/delete snippet #}
             {% if request.user.is_authenticated %}
                 <p><a href="{{ snippet.get_edit_url }}">Edit</a> • <a href="{{ snippet.get_delete_url }}">Delete</a></p>
             {% endif %}
 
+            {# show snippet content #}
             <pre><code class="language-css">{{ snippet.content }}</code></pre>
 
         </div>

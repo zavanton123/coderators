@@ -1,8 +1,12 @@
+import logging
+
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 
 from snippet.forms import SnippetForm
 from snippet.models.snippet import Snippet
+
+log = logging.getLogger(__name__)
 
 
 class SnippetView(DetailView):
