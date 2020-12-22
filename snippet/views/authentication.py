@@ -1,13 +1,12 @@
 import logging
 
 from django.contrib import messages
-from django.contrib.auth import logout
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse
 from django.views import View
-from django.views.generic import RedirectView, TemplateView
+from django.views.generic import TemplateView
 
 from snippet.forms import RegisterForm
 
@@ -24,13 +23,9 @@ class MyLoginView(LoginView):
         return reverse('snippet:home')
 
 
-class LogoutView(RedirectView):
-    url = reverse_lazy('snippet:home')
-
-    def dispatch(self, request, *args, **kwargs):
-        logout(request)
-        messages.success(request, 'You have logged out!')
-        return super().dispatch(request, *args, **kwargs)
+class MyLogoutView(LogoutView):
+    redirect_field_name = 'next'
+    next_page = 'snippet:login'
 
 
 class RegisterView(View):

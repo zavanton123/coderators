@@ -5,7 +5,7 @@ from .snippet import DeleteSnippet
 
 from .authentication import RegisterView
 from .authentication import MyLoginView
-from .authentication import LogoutView
+from .authentication import MyLogoutView
 from .authentication import ProfileView
 
 from .category import ShowCategory
