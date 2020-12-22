@@ -17,6 +17,8 @@
 
             <p>Updated at: {{ category.updated_at|date:'d.m.y' }}</p>
 
+            <p><a href="{{ category.get_delete_url }}">Delete</a></p>
+
         </div>
     </div>
 
