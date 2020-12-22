@@ -1,0 +1,39 @@
+{% extends 'snippet/base.html' %}
+
+{% block page-title %}All Tags{% endblock %}
+
+{% block main-content-header %}
+    <h1 class="page-title">All Tags</h1>
+{% endblock %}
+
+{% block main-content-body %}
+
+    <div class="fullwidth-block">
+        <div class="container">
+
+            <h1>All Tags</h1>
+
+            <h3><a href="{% url 'snippet:add_tag' %}">Create New Tag</a></h3>
+
+            <ul>
+                {% for tag in tags %}
+                    <li><a href="{{ tag.get_absolute_url }}">{{ tag }}</a></li>
+                {% empty %}
+                    <h2>No tag has been created yet...</h2>
+                {% endfor %}
+            </ul>
+
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+
+        </div>
+    </div>
+
+{% endblock %}

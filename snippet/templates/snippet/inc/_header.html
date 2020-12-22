@@ -12,6 +12,7 @@
                 <li class="menu-item current-menu-item"><a href="{% url 'snippet:home' %}">Home</a></li>
 
                 <li class="menu-item"><a href="{% url 'snippet:show_categories' %}">Categories</a></li>
+                <li class="menu-item"><a href="{% url 'snippet:show_tags' %}">Tags</a></li>
 
                 {% if request.user.is_authenticated %}
                     <li class="menu-item"><a href="{% url 'snippet:add_snippet' %}">Add Snippet</a></li>
