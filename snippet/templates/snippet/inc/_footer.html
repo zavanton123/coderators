@@ -23,6 +23,7 @@
                         <li><a href="{% url 'snippet:feedback' %}">Feedback</a></li>
                         {% if user.is_authenticated %}
                             <li><a href="{% url 'snippet:password_change' %}">Change Password</a></li>
+                            <li><a href="{% url 'snippet:password_reset' %}">Reset Password</a></li>
                         {% endif %}
                     </ul>
                 </div>
