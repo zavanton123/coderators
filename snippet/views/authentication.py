@@ -1,28 +1,27 @@
+import logging
+
 from django.contrib import messages
-from django.contrib.auth import login, logout
+from django.contrib.auth import logout
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views import View
 from django.views.generic import RedirectView, TemplateView
 
-from snippet.forms import LoginForm, RegisterForm
+from snippet.forms import RegisterForm
+
+log = logging.getLogger(__name__)
 
 
-class LoginView(View):
-    def get(self, request):
-        form = LoginForm()
-        return render(request, 'snippet/authentication/login.html', context={'form': form})
+class MyLoginView(LoginView):
+    template_name = 'snippet/authentication/login.html'
+    authentication_form = AuthenticationForm
+    redirect_field_name = 'next'
+    redirect_authenticated_user = True
 
-    def post(self, request):
-        form = LoginForm(data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            return redirect('snippet:home')
-        else:
-            messages.error(request, 'Something is wrong! You have failed to log in!')
-            form = LoginForm()
-            return render(request, 'snippet/authentication/login.html', context={'form': form})
+    def get_success_url(self):
+        return reverse('snippet:home')
 
 
 class LogoutView(RedirectView):

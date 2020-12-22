@@ -1,5 +1,6 @@
 from django.urls import path, include
 
+from snippet.views import ProfileView
 from snippet.views.home import HomeView
 from snippet.views.misc import AboutView, ClientView, SendFeedback
 
@@ -15,6 +16,8 @@ urlpatterns = [
     path('tags/', include('snippet.urls.tag')),
 
     # authentication views
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/profile/', ProfileView.as_view(), name='profile'),
     path('auth/', include('snippet.urls.authentication')),
 
     # misc views

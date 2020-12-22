@@ -1,5 +1,6 @@
 import logging
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView, ListView
@@ -18,7 +19,7 @@ class ShowSnippet(DetailView):
     context_object_name = 'snippet'
 
 
-class AddSnippet(CreateView):
+class AddSnippet(LoginRequiredMixin, CreateView):
     template_name = 'snippet/snippet/add_snippet.html'
     context_object_name = 'snippet'
     model = Snippet
