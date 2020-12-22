@@ -7,7 +7,7 @@ app_name = 'snippet'
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
-    path('snippets/<int:pk>', SnippetView.as_view(), name='show_snippet_by_id'),
+    path('snippets/<int:pk>', SnippetView.as_view(), name='show_snippet'),
     path('snippets/add', AddSnippet.as_view(), name='add_snippet'),
     path('snippets/delete/<int:pk>', DeleteSnippet.as_view(), name='delete_snippet'),
     path('snippets/edit/<int:pk>', EditSnippet.as_view(), name='edit_snippet'),

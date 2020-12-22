@@ -105,9 +105,9 @@ class EditSnippet(UpdateView):
 
 
 class HomeView(ListView):
-    ordering = ['-published_at']
-    context_object_name = 'snippets'
     template_name = 'snippet/home.html'
+    context_object_name = 'snippets'
+    ordering = ['-published_at']
 
     def get_queryset(self):
         user = self.request.user
