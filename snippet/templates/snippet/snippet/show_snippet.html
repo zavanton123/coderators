@@ -19,7 +19,11 @@
                 By <a href="{% url 'snippet:home' %}">{{ snippet.author.username }}</a>
                 on {{ snippet.published_at|date:'d.m.y' }}
             </p>
-            <br/>
+            {# show edit/delete snippet #}
+            {% if request.user.is_authenticated %}
+                <p><a href="{{ snippet.get_edit_url }}">(edit</a> • <a href="{{ snippet.get_delete_url }}">delete)</a></p>
+                <br />
+            {% endif %}
 
             {# show category #}
             <h3>Category:</h3>
@@ -33,7 +37,7 @@
                 <p><a href="{% url 'snippet:add_tag' %}">(Create new tag)</a></p>
                 <ul>
                     {% for tag in snippet.tags.all %}
-                        <li><a href="{{ tag.get_absolute_url }}">{{ tag }}</a></li>
+                        <li><a href="{{ tag.get_snippets_url }}">{{ tag }}</a></li>
                     {% endfor %}
                 </ul>
                 <br/>
@@ -41,12 +45,6 @@
 
             {# show snippet content #}
             <pre><code class="language-css">{{ snippet.content }}</code></pre>
-
-            {# show edit/delete snippet #}
-            {% if request.user.is_authenticated %}
-                <p><a href="{{ snippet.get_edit_url }}">Edit</a> • <a href="{{ snippet.get_delete_url }}">Delete</a></p>
-            {% endif %}
-
         </div>
     </div>
 

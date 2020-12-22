@@ -17,21 +17,20 @@
 
             <ul>
                 {% for tag in tags %}
-                    <li><a href="{{ tag.get_absolute_url }}">{{ tag }}</a></li>
+                    <li>
+                        <p><a href="{{ tag.get_snippets_url }}">{{ tag }}</a></p>
+                        <p>
+                            (
+                            <a href="{{ tag.get_update_url }}">edit</a>
+                            •
+                            <a href="{{ tag.get_delete_url }}">delete</a>
+                            )
+                        </p>
+                    </li>
                 {% empty %}
                     <h2>No tag has been created yet...</h2>
                 {% endfor %}
             </ul>
-
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
 
         </div>
     </div>

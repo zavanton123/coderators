@@ -25,6 +25,9 @@ class Tag(models.Model):
     def get_delete_url(self):
         return reverse('snippet:delete_tag', kwargs={'pk': self.pk})
 
+    def get_snippets_url(self):
+        return reverse('snippet:show_snippets_by_tag', kwargs={'pk': self.pk})
+
     def __str__(self):
         return self.name
 

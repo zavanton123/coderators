@@ -1,10 +1,12 @@
 import logging
 
+from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView, ListView
 
 from snippet.forms import SnippetForm
 from snippet.models.snippet import Snippet
+from snippet.models.tag import Tag
 
 log = logging.getLogger(__name__)
 
@@ -49,8 +51,15 @@ class ShowSnippetsByCategory(ListView):
     context_object_name = 'snippets'
 
     def get_queryset(self):
-        category_pk = self.kwargs['pk']
-        log.debug(f'category_pk: {category_pk}')
-        result = Snippet.objects.filter(category_id=category_pk)
-        log.debug(f'result: {result}')
-        return result
+        search_category_id = self.kwargs['pk']
+        return Snippet.objects.filter(category_id=search_category_id)
+
+
+class ShowSnippetsByTag(ListView):
+    template_name = 'snippet/snippet/show_snippets.html'
+    context_object_name = 'snippets'
+    model = Snippet
+
+    def get_queryset(self):
+        search_tag = get_object_or_404(Tag, pk=self.kwargs['pk'])
+        return Snippet.objects.filter(tags__slug=search_tag.slug)
