@@ -20,7 +20,11 @@
                         <li><a href="{% url 'snippet:home' %}">Home</a></li>
                         <li><a href="{% url 'snippet:clients' %}">Clients</a></li>
                         <li><a href="{% url 'snippet:about' %}">About</a></li>
-                        <li><a href="{% url 'snippet:contacts' %}">Contacts</a></li>
+                        <li><a href="{% url 'snippet:feedback' %}">Feedback</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url 'snippet:password_change' %}">Change Password</a></li>
+                            <li><a href="{% url 'snippet:password_reset' %}">Reset Password</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>

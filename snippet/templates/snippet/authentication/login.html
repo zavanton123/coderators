@@ -1,7 +1,7 @@
 {% extends 'snippet/base.html' %}
 {% load static %}
 
-{% block page-title %}Logout{% endblock %}
+{% block page-title %}Login{% endblock %}
 
 {% block main-content-header %}
     <h1 class="page-title">Login</h1>
@@ -19,16 +19,10 @@
                 {{ form.as_p }}
 
                 <p><input type="submit" value="Login"></p>
+
+                <input type="hidden" value="{{ next }}"/>
             </form>
 
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
         </div>
     </div>
 

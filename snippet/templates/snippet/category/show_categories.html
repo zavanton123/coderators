@@ -1,0 +1,37 @@
+{% extends 'snippet/base.html' %}
+
+{% block page-title %}All Categories{% endblock %}
+
+{% block main-content-header %}
+    <h1 class="page-title">All Categories</h1>
+{% endblock %}
+
+{% block main-content-body %}
+
+    <div class="fullwidth-block">
+        <div class="container">
+
+            <h1>All Categories</h1>
+
+            <h3><a href="{% url 'snippet:add_category' %}">Create New Category</a></h3>
+
+            <ul>
+                {% for category in categories %}
+                    <li>
+                        <p><a href="{{ category.get_snippets_url }}">{{ category }}</a></p>
+                        <p>
+                            (
+                            <a href="{{ category.get_update_url }}">edit</a>
+                            •
+                            <a href="{{ category.get_delete_url }}">delete</a>
+                            )
+                        </p>
+                    </li>
+                {% empty %}
+                    <h2>No category has been created yet...</h2>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}

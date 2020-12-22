@@ -1,0 +1,51 @@
+{% extends 'snippet/base.html' %}
+
+{% block page-title %}Home{% endblock %}
+
+{% block main-content-header %}
+    <h1>Snippet</h1>
+{% endblock %}
+
+{% block main-content-body %}
+
+    <div class="fullwidth-block">
+        <div class="container">
+
+            {# show title #}
+            <h1>{{ snippet.title }}</h1>
+
+            {# show author and publication date #}
+            <p>
+                By <a href="{% url 'snippet:home' %}">{{ snippet.author.username }}</a>
+                on {{ snippet.published_at|date:'d.m.y' }}
+            </p>
+            {# show edit/delete snippet #}
+            {% if request.user.is_authenticated %}
+                <p><a href="{{ snippet.get_edit_url }}">(edit</a> • <a href="{{ snippet.get_delete_url }}">delete)</a></p>
+                <br />
+            {% endif %}
+
+            {# show category #}
+            <h3>Category:</h3>
+            <p><a href="{% url 'snippet:add_category' %}">(Create new category)</a></p>
+            <p><a href="{{ snippet.category.get_snippets_url }}">{{ snippet.category }}</a></p>
+
+            {# show tags #}
+            {% if snippet.tags.all %}
+                <br/>
+                <h3>Tags</h3>
+                <p><a href="{% url 'snippet:add_tag' %}">(Create new tag)</a></p>
+                <ul>
+                    {% for tag in snippet.tags.all %}
+                        <li><a href="{{ tag.get_snippets_url }}">{{ tag }}</a></li>
+                    {% endfor %}
+                </ul>
+                <br/>
+            {% endif %}
+
+            {# show snippet content #}
+            <pre><code class="language-css">{{ snippet.content }}</code></pre>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'snippet/base.html' %}
+
+{% block page-title %}
+    Contact Form
+{% endblock %}
+
+{% block main-content-header %}
+    <h1 class="page-title">Contact Form</h1>
+{% endblock %}
+
+{% block main-content-body %}
+
+    <div class="fullwidth-block">
+        <div class="container">
+
+            <form method="post" action="{% url 'snippet:feedback' %}">
+
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <input type="submit" value="Send"/>
+
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}

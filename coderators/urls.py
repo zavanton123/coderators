@@ -3,5 +3,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('snippet.urls', namespace='first-snippet')),
+    # simple captcha
+    path('captcha/', include('captcha.urls')),
+    path('', include('snippet.urls.main', namespace='first-snippet')),
 ]

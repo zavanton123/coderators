@@ -1,20 +1,30 @@
+import json
 import os
 from pathlib import Path
 
+from django.core.exceptions import ImproperlyConfigured
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
+# get private data from json file (untracked by git)
+secrets_filename = 'secrets-debug.json'
+with open(os.path.join(BASE_DIR, secrets_filename)) as secrets_file:
+    secrets = json.load(secrets_file)
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'some-key-here'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+def get_secret(setting, source=secrets):
+    """Get secret setting or fail with ImproperlyConfigured"""
+    try:
+        return source[setting]
+    except KeyError:
+        raise ImproperlyConfigured("Set the {} setting".format(setting))
 
-ALLOWED_HOSTS = ['*']
 
-# Application definition
+SECRET_KEY = get_secret('SECRET_KEY')
+
+DEBUG = True
+
+ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -24,6 +34,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'snippet.apps.SnippetConfig',
+    # simple captcha
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -34,7 +46,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'coderators.urls'
@@ -58,22 +69,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'coderators.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd1lqflfua2fuo7',
-        'HOST': 'ec2-54-172-219-218.compute-1.amazonaws.com',
-        'PORT': 5432,
-        'USER': 'umvnrlulqbdsul',
-        'PASSWORD': 'ffc5fecb53092246bd99a5fd639696a693b6d9785d977e4efaa75af46cdf744b'
+        'ENGINE': get_secret('ENGINE'),
+        'NAME': get_secret('NAME'),
+        "HOST": get_secret('HOST'),
+        "PORT": get_secret('PORT'),
+        "USER": get_secret('USER'),
+        "PASSWORD": get_secret('PASSWORD')
     }
 }
-
-# Password validation
-# https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -90,24 +95,44 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Internationalization
-# https://docs.djangoproject.com/en/3.1/topics/i18n/
+# Logging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler'
+        }
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'DEBUG'
+    }
+}
 
+# Email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_SSL = False
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = get_secret('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = get_secret('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = get_secret('DEFAULT_FROM_EMAIL')
+
+# Localization
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'Europe/Moscow'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
-
+# Static files
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'snippet/static')
 ]
+
+# Login
+LOGIN_URL = "/auth/login"
