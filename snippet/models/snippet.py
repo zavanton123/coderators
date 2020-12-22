@@ -3,6 +3,7 @@ from django.db import models
 from django.urls import reverse
 
 from snippet.models.category import Category
+from snippet.models.tag import Tag
 
 
 class Snippet(models.Model):
@@ -17,6 +18,12 @@ class Snippet(models.Model):
         to=Category,
         on_delete=models.SET_NULL,
         related_name='snippets',
+        null=True,
+        blank=True,
+    )
+    tags = models.ManyToManyField(
+        related_name='snippets',
+        to=Tag,
         null=True,
         blank=True,
     )
