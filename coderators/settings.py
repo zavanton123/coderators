@@ -1,9 +1,26 @@
+import json
 import os
 from pathlib import Path
 
+from django.core.exceptions import ImproperlyConfigured
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'some-key-here'
+# get private data from json file (untracked by git)
+secrets_filename = 'secrets-debug.json'
+with open(os.path.join(BASE_DIR, secrets_filename)) as secrets_file:
+    secrets = json.load(secrets_file)
+
+
+def get_secret(setting, source=secrets):
+    """Get secret setting or fail with ImproperlyConfigured"""
+    try:
+        return source[setting]
+    except KeyError:
+        raise ImproperlyConfigured("Set the {} setting".format(setting))
+
+
+SECRET_KEY = get_secret('SECRET_KEY')
 
 DEBUG = True
 
@@ -54,8 +71,12 @@ WSGI_APPLICATION = 'coderators.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': get_secret('ENGINE'),
+        'NAME': get_secret('NAME'),
+        "HOST": get_secret('HOST'),
+        "PORT": get_secret('PORT'),
+        "USER": get_secret('USER'),
+        "PASSWORD": get_secret('PASSWORD')
     }
 }
 
@@ -95,9 +116,9 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_SSL = False
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'zavialov2010@gmail.com'
-EMAIL_HOST_PASSWORD = "tpuydqfzynavkvkh"
-DEFAULT_FROM_EMAIL = 'zavialov2010@gmail.com'
+EMAIL_HOST_USER = get_secret('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = get_secret('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = get_secret('DEFAULT_FROM_EMAIL')
 
 # Localization
 LANGUAGE_CODE = 'en-us'
