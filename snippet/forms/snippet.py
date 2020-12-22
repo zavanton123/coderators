@@ -6,4 +6,4 @@ from snippet.models import Snippet
 class SnippetForm(forms.ModelForm):
     class Meta:
         model = Snippet
-        fields = ['title', 'content']
+        fields = ['title', 'content', 'category', 'tags']
