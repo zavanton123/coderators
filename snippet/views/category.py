@@ -1,7 +1,7 @@
 from django.urls import reverse_lazy
-from django.views.generic import DetailView, CreateView, ListView, DeleteView
+from django.views.generic import DetailView, CreateView, ListView, DeleteView, UpdateView
 
-from snippet.forms.category import CreateCategoryForm
+from snippet.forms.category import CategoryForm
 from snippet.models.category import Category
 
 
@@ -19,8 +19,15 @@ class ShowCategory(DetailView):
 
 class AddCategory(CreateView):
     model = Category
-    form_class = CreateCategoryForm
+    form_class = CategoryForm
     template_name = 'snippet/add_category.html'
+
+
+class UpdateCategory(UpdateView):
+    template_name = 'snippet/update_category.html'
+    success_url = reverse_lazy('snippet:show_categories')
+    form_class = CategoryForm
+    model = Category
 
 
 class DeleteCategory(DeleteView):

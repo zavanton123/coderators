@@ -2,7 +2,7 @@ from django.urls import path
 
 from snippet.views import SnippetView, AddSnippet, EditSnippet, DeleteSnippet
 from snippet.views.authentication import LoginView, LogoutView, RegisterView, ProfileView
-from snippet.views.category import ShowCategory, AddCategory, ShowCategories, DeleteCategory
+from snippet.views.category import ShowCategory, AddCategory, ShowCategories, DeleteCategory, UpdateCategory
 from snippet.views.home import HomeView
 from snippet.views.misc import AboutView, ClientView, ContactsView
 
@@ -22,6 +22,7 @@ urlpatterns = [
     path('categories/', ShowCategories.as_view(), name='show_categories'),
     path('categories/<int:pk>', ShowCategory.as_view(), name='show_category'),
     path('categories/add', AddCategory.as_view(), name='add_category'),
+    path('categories/update/<int:pk>', UpdateCategory.as_view(), name='update_category'),
     path('categories/delete/<int:pk>', DeleteCategory.as_view(), name='delete_category'),
 
     # authentication views

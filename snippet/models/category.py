@@ -25,6 +25,9 @@ class Category(models.Model):
     def get_delete_url(self):
         return reverse('snippet:delete_category', kwargs={'pk': self.pk})
 
+    def get_update_url(self):
+        return reverse('snippet:update_category', kwargs={'pk': self.pk})
+
     def __str__(self):
         return self.name
 
