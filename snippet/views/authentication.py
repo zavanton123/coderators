@@ -1,8 +1,8 @@
 import logging
 
 from django.contrib import messages
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
@@ -13,7 +13,7 @@ from snippet.forms import RegisterForm
 log = logging.getLogger(__name__)
 
 
-class MyLoginView(LoginView):
+class UserLoginView(LoginView):
     template_name = 'snippet/authentication/login.html'
     authentication_form = AuthenticationForm
     redirect_field_name = 'next'
@@ -23,9 +23,14 @@ class MyLoginView(LoginView):
         return reverse('snippet:home')
 
 
-class MyLogoutView(LogoutView):
+class UserLogoutView(LogoutView):
     redirect_field_name = 'next'
     next_page = 'snippet:login'
+
+
+class UserPasswordChangeView(PasswordChangeView):
+    form_class = PasswordChangeForm
+    template_name = 'snippet/authentication/user_password_change.html'
 
 
 class RegisterView(View):
