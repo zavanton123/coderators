@@ -2,7 +2,7 @@ import logging
 
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
-from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
@@ -31,6 +31,13 @@ class UserLogoutView(LogoutView):
 class UserPasswordChangeView(PasswordChangeView):
     form_class = PasswordChangeForm
     template_name = 'snippet/authentication/user_password_change.html'
+
+    def get_success_url(self):
+        return reverse('snippet:password_change_done')
+
+
+class UserPasswordChangeDoneView(PasswordChangeDoneView):
+    template_name = 'snippet/authentication/user_password_change_done.html'
 
 
 class RegisterView(View):
