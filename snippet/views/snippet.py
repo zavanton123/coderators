@@ -1,7 +1,7 @@
 import logging
 
 from django.urls import reverse_lazy
-from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import DetailView, CreateView, UpdateView, DeleteView, ListView
 
 from snippet.forms import SnippetForm
 from snippet.models.snippet import Snippet
@@ -42,3 +42,15 @@ class DeleteSnippet(DeleteView):
     template_name = 'snippet/snippet/delete_snippet.html'
     model = Snippet
     success_url = reverse_lazy('snippet:home')
+
+
+class ShowSnippetsByCategory(ListView):
+    template_name = 'snippet/snippet/show_snippets.html'
+    context_object_name = 'snippets'
+
+    def get_queryset(self):
+        category_pk = self.kwargs['pk']
+        log.debug(f'category_pk: {category_pk}')
+        result = Snippet.objects.filter(category_id=category_pk)
+        log.debug(f'result: {result}')
+        return result

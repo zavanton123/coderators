@@ -24,7 +24,7 @@
             {# show category #}
             <h3>Category:</h3>
             <p><a href="{% url 'snippet:add_category' %}">(Create new category)</a></p>
-            <p><a href="{{ snippet.category.get_absolute_url }}">{{ snippet.category }}</a></p>
+            <p><a href="{{ snippet.category.get_snippets_url }}">{{ snippet.category }}</a></p>
 
             {# show tags #}
             {% if snippet.tags.all %}
