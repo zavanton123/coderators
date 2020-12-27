@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-27 17:04+0300\n"
+"POT-Creation-Date: 2020-12-27 17:12+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -285,6 +285,15 @@ msgstr "Добавить сниппет"
 msgid "Logout"
 msgstr "Выйти"
 
+#: snippet/templates/snippet/misc/send_feedback.html:4
+#: snippet/templates/snippet/misc/send_feedback.html:7
+msgid "Contact Form"
+msgstr "Контакты"
+
+#: snippet/templates/snippet/misc/send_feedback.html:17
+msgid "Send"
+msgstr "Отправить"
+
 #: snippet/templates/snippet/snippet/add_snippet.html:21
 msgid "Publish"
 msgstr "Опубликовать"
@@ -323,7 +332,6 @@ msgstr "Обновить сниппет"
 
 #: snippet/templates/snippet/tag/add_tag.html:5
 #: snippet/templates/snippet/tag/add_tag.html:8
-#| msgid "Add Category"
 msgid "Add Tag"
 msgstr "Добавить тэг"
 
