@@ -1,10 +1,11 @@
 {% extends 'snippet/base.html' %}
 {% load static %}
+{% load i18n %}
 
-{% block page-title %}Login{% endblock %}
+{% block page-title %}{% translate 'Login' %}{% endblock %}
 
 {% block main-content-header %}
-    <h1 class="page-title">Login</h1>
+    <h1 class="page-title">{% translate 'Login' %}</h1>
 {% endblock %}
 
 {% block main-content-body %}
@@ -18,7 +19,7 @@
 
                 {{ form.as_p }}
 
-                <p><input type="submit" value="Login"></p>
+                <p><input type="submit" value="{% translate 'Login' %}"></p>
 
                 <input type="hidden" value="{{ next }}"/>
             </form>

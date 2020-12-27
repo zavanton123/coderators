@@ -1,9 +1,10 @@
 {% extends 'snippet/base.html' %}
+{% load i18n %}
 
-{% block page-title %}Snippets{% endblock %}
+{% block page-title %}{% translate 'Snippets' %}{% endblock %}
 
 {% block main-content-header %}
-    <h1 class="page-title">Snippets</h1>
+    <h1 class="page-title">{% translate 'Snippets' %}</h1>
 {% endblock %}
 
 {% block main-content-body %}
@@ -11,26 +12,16 @@
     <div class="fullwidth-block">
         <div class="container">
 
+            {# todo zavanton - translate #}
             <h1>Snippets by {{ taxonomy_type }}: {{ taxonomy_name }}</h1>
 
             <ul>
                 {% for snippet in snippets %}
                     <li><a href="{{ snippet.get_absolute_url }}">{{ snippet }}</a></li>
                 {% empty %}
-                    <h2>You have no snippets yet...</h2>
+                    <h2>{% translate 'You have no snippets yet...' %}</h2>
                 {% endfor %}
             </ul>
-
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-
         </div>
     </div>
 

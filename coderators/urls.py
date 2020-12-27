@@ -19,6 +19,7 @@ urlpatterns += i18n_patterns(
     prefix_default_language=False
 )
 
+# urls available only in DEBUG mode
 if settings.DEBUG:
     urlpatterns += [
         # django debug toolbar
