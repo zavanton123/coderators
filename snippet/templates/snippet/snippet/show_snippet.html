@@ -17,9 +17,8 @@
 
             {# show author and publication date #}
             <p>
-                {# todo zavanton - translate #}
-                By <a href="{% url 'snippet:home' %}">{{ snippet.author.username }}</a>
-                on {{ snippet.published_at|date:'d.m.y' }}
+                {% translate 'By' context 'created-by' %} <a href="{% url 'snippet:home' %}">{{ snippet.author.username }}</a>
+                {% translate 'on' context 'creation-date' %} {{ snippet.published_at|date:'d.m.y' }}
             </p>
             {# show edit/delete snippet #}
             {% if request.user.is_authenticated %}

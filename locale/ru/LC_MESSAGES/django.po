@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-27 17:12+0300\n"
+"POT-Creation-Date: 2020-12-27 17:56+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,12 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
+
+msgid "category"
+msgstr "категория"
+
+msgid "tag"
+msgstr "тэг"
 
 #: coderators/settings.py:144
 msgid "English"
@@ -144,13 +150,13 @@ msgid "view"
 msgstr "просмотреть"
 
 #: snippet/templates/snippet/category/show_categories.html:25
-#: snippet/templates/snippet/snippet/show_snippet.html:27
+#: snippet/templates/snippet/snippet/show_snippet.html:26
 #: snippet/templates/snippet/tag/show_tags.html:25
 msgid "edit"
 msgstr "редактировать"
 
 #: snippet/templates/snippet/category/show_categories.html:27
-#: snippet/templates/snippet/snippet/show_snippet.html:29
+#: snippet/templates/snippet/snippet/show_snippet.html:28
 #: snippet/templates/snippet/tag/show_tags.html:27
 msgid "delete"
 msgstr "удалить"
@@ -161,7 +167,7 @@ msgstr "Ни одной категории еще не создано..."
 
 #: snippet/templates/snippet/category/show_category.html:4
 #: snippet/templates/snippet/category/show_category.html:7
-#: snippet/templates/snippet/snippet/show_snippet.html:37
+#: snippet/templates/snippet/snippet/show_snippet.html:36
 msgid "Category"
 msgstr "Категории"
 
@@ -209,7 +215,7 @@ msgid "Snippets by all users"
 msgstr "Сниппеты всех пользователей"
 
 #: snippet/templates/snippet/home.html:25
-#: snippet/templates/snippet/snippet/show_snippets.html:22
+#: snippet/templates/snippet/snippet/show_snippets.html:26
 msgid "You have no snippets yet..."
 msgstr "Вы еще не сохранили ни одного сниппета..."
 
@@ -271,7 +277,7 @@ msgid "Categories"
 msgstr "Категории"
 
 #: snippet/templates/snippet/inc/_header.html:19
-#: snippet/templates/snippet/snippet/show_snippet.html:44
+#: snippet/templates/snippet/snippet/show_snippet.html:43
 msgid "Tags"
 msgstr "Тэги"
 
@@ -312,11 +318,21 @@ msgstr "Вы уверены, что хотите удалить этот сни�
 msgid "Snippet"
 msgstr "Сниппет"
 
-#: snippet/templates/snippet/snippet/show_snippet.html:38
+#: snippet/templates/snippet/snippet/show_snippet.html:20
+msgctxt "created-by"
+msgid "By"
+msgstr "Автор:"
+
+#: snippet/templates/snippet/snippet/show_snippet.html:21
+msgctxt "creation-date"
+msgid "on"
+msgstr "дата:"
+
+#: snippet/templates/snippet/snippet/show_snippet.html:37
 msgid "Create new category"
 msgstr "Создать новую категорию"
 
-#: snippet/templates/snippet/snippet/show_snippet.html:45
+#: snippet/templates/snippet/snippet/show_snippet.html:44
 msgid "Create new tag"
 msgstr "Создать новый тэг"
 
@@ -324,6 +340,11 @@ msgstr "Создать новый тэг"
 #: snippet/templates/snippet/snippet/show_snippets.html:7
 msgid "Snippets"
 msgstr "Сниппеты"
+
+#: snippet/templates/snippet/snippet/show_snippets.html:17
+#, python-format
+msgid "Snippets by %(translated_taxonomy_type)s: %(taxonomy_name)s"
+msgstr "Сниппеты • %(translated_taxonomy_type)s: %(taxonomy_name)s"
 
 #: snippet/templates/snippet/snippet/update_snippet.html:5
 #: snippet/templates/snippet/snippet/update_snippet.html:8

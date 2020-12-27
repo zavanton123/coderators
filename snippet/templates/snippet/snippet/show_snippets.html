@@ -12,8 +12,12 @@
     <div class="fullwidth-block">
         <div class="container">
 
-            {# todo zavanton - translate #}
-            <h1>Snippets by {{ taxonomy_type }}: {{ taxonomy_name }}</h1>
+            <h1>
+                {% translate taxonomy_type as translated_taxonomy_type %}
+                {% blocktranslate trimmed %}
+                    Snippets by {{ translated_taxonomy_type }}: {{ taxonomy_name }}
+                {% endblocktranslate %}
+            </h1>
 
             <ul>
                 {% for snippet in snippets %}
