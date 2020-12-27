@@ -1,10 +1,12 @@
 {% load static %}
+{% load i18n %}
+
 <footer class="site-footer">
     <div class="container">
         <div class="row">
             <div class="col-xs-6 col-sm-3">
                 <div class="widget">
-                    <h3 class="widget-title">Contact</h3>
+                    <h3 class="widget-title">{% translate 'Contact' %}</h3>
                     <address>
                         <strong>Prefect Labs</strong>
                         <p>186 W Canfield St Detroit, MI 48201</p>
@@ -15,33 +17,33 @@
             </div>
             <div class="col-xs-6 col-sm-3">
                 <div class="widget">
-                    <h3 class="widget-title">Pages</h3>
+                    <h3 class="widget-title">{% translate 'Pages' %}</h3>
                     <ul class="dash-list">
-                        <li><a href="{% url 'snippet:home' %}">Home</a></li>
-                        <li><a href="{% url 'snippet:clients' %}">Clients</a></li>
-                        <li><a href="{% url 'snippet:about' %}">About</a></li>
-                        <li><a href="{% url 'snippet:feedback' %}">Feedback</a></li>
+                        <li><a href="{% url 'snippet:home' %}">{% translate 'Home' %}</a></li>
+                        <li><a href="{% url 'snippet:clients' %}">{% translate 'Clients' %}</a></li>
+                        <li><a href="{% url 'snippet:about' %}">{% translate 'About' %}</a></li>
+                        <li><a href="{% url 'snippet:feedback' %}">{% translate 'Feedback' %}</a></li>
                         {% if user.is_authenticated %}
-                            <li><a href="{% url 'snippet:password_change' %}">Change Password</a></li>
-                            <li><a href="{% url 'snippet:password_reset' %}">Reset Password</a></li>
+                            <li><a href="{% url 'snippet:password_change' %}">{% translate 'Change Password' %}</a></li>
+                            <li><a href="{% url 'snippet:password_reset' %}">{% translate 'Reset Password' %}</a></li>
                         {% endif %}
                     </ul>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-3">
                 <div class="widget">
-                    <h3 class="widget-title">Jobs</h3>
+                    <h3 class="widget-title">{% translate 'Jobs' %}</h3>
                     <ul class="dash-list">
-                        <li><a href="#">Web designer</a></li>
-                        <li><a href="#">Project manager</a></li>
-                        <li><a href="#">Web developer</a></li>
-                        <li><a href="#">Art director</a></li>
+                        <li><a href="#">{% translate 'Web designer' %}</a></li>
+                        <li><a href="#">{% translate 'Project manager' %}</a></li>
+                        <li><a href="#">{% translate 'Web developer' %}</a></li>
+                        <li><a href="#">{% translate 'Art director' %}</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-3">
                 <div class="widget">
-                    <h3 class="widget-title">Follow us</h3>
+                    <h3 class="widget-title">{% translate 'Follow us' %}</h3>
                     <div class="social-links">
                         <a href="#"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-google-plus"></i></a>

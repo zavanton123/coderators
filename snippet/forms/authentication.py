@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
 
+# todo zavanton - add form localization
 class RegisterForm(UserCreationForm):
     username = forms.CharField(
         label='Username:',

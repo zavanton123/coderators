@@ -1,9 +1,10 @@
 {% extends 'snippet/base.html' %}
+{% load i18n %}
 
-{% block page-title %}All Tags{% endblock %}
+{% block page-title %}{% translate 'All Tags' %}{% endblock %}
 
 {% block main-content-header %}
-    <h1 class="page-title">All Tags</h1>
+    <h1 class="page-title">{% translate 'All Tags' %}</h1>
 {% endblock %}
 
 {% block main-content-body %}
@@ -11,9 +12,9 @@
     <div class="fullwidth-block">
         <div class="container">
 
-            <h1>All Tags</h1>
+            <h1>{% translate 'All Tags' %}</h1>
 
-            <h3><a href="{% url 'snippet:add_tag' %}">Create New Tag</a></h3>
+            <h3><a href="{% url 'snippet:add_tag' %}">{% translate 'Create New Tag' %}</a></h3>
 
             <ul>
                 {% for tag in tags %}
@@ -21,17 +22,16 @@
                         <p><a href="{{ tag.get_snippets_url }}">{{ tag }}</a></p>
                         <p>
                             (
-                            <a href="{{ tag.get_update_url }}">edit</a>
+                            <a href="{{ tag.get_update_url }}">{% translate 'edit' %}</a>
                             •
-                            <a href="{{ tag.get_delete_url }}">delete</a>
+                            <a href="{{ tag.get_delete_url }}">{% translate 'delete' %}</a>
                             )
                         </p>
                     </li>
                 {% empty %}
-                    <h2>No tag has been created yet...</h2>
+                    <h2>{% translate 'No tag has been created yet...' %}</h2>
                 {% endfor %}
             </ul>
-
         </div>
     </div>
 
