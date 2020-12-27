@@ -13,7 +13,7 @@
         <div class="container">
 
             {% if request.user.is_authenticated %}
-                <h1>Snippets by {{ request.user }}</h1>
+                <h1>{% translate 'Snippets by' %} {{ request.user }}</h1>
             {% else %}
                 <h1>{% translate 'Snippets by all users' %}</h1>
             {% endif %}
@@ -22,7 +22,7 @@
                 {% for snippet in snippets %}
                     <li><a href="{{ snippet.get_absolute_url }}">{{ snippet }}</a></li>
                 {% empty %}
-                    <h2>You have no snippets yet...</h2>
+                    <h2>{% translate 'You have no snippets yet...' %}</h2>
                 {% endfor %}
             </ul>
 
