@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-27 17:56+0300\n"
+"POT-Creation-Date: 2020-12-27 18:03+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,12 +19,6 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
-
-msgid "category"
-msgstr "категория"
-
-msgid "tag"
-msgstr "тэг"
 
 #: coderators/settings.py:144
 msgid "English"
@@ -215,7 +209,7 @@ msgid "Snippets by all users"
 msgstr "Сниппеты всех пользователей"
 
 #: snippet/templates/snippet/home.html:25
-#: snippet/templates/snippet/snippet/show_snippets.html:26
+#: snippet/templates/snippet/snippet/show_snippets.html:33
 msgid "You have no snippets yet..."
 msgstr "Вы еще не сохранили ни одного сниппета..."
 
@@ -341,7 +335,15 @@ msgstr "Создать новый тэг"
 msgid "Snippets"
 msgstr "Сниппеты"
 
-#: snippet/templates/snippet/snippet/show_snippets.html:17
+#: snippet/templates/snippet/snippet/show_snippets.html:20
+msgid "category"
+msgstr "категория"
+
+#: snippet/templates/snippet/snippet/show_snippets.html:21
+msgid "tag"
+msgstr "тэг"
+
+#: snippet/templates/snippet/snippet/show_snippets.html:24
 #, python-format
 msgid "Snippets by %(translated_taxonomy_type)s: %(taxonomy_name)s"
 msgstr "Сниппеты • %(translated_taxonomy_type)s: %(taxonomy_name)s"
