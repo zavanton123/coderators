@@ -6,8 +6,15 @@ from django.core.exceptions import ImproperlyConfigured
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+DEBUG = True
+
+# Choose debug or prod secrets
+if DEBUG == True:
+    secrets_filename = 'secrets-debug.json'
+else:
+    secrets_filename = 'secrets-prod.json'
+
 # get private data from json file (untracked by git)
-secrets_filename = 'secrets-debug.json'
 with open(os.path.join(BASE_DIR, secrets_filename)) as secrets_file:
     secrets = json.load(secrets_file)
 
@@ -21,8 +28,6 @@ def get_secret(setting, source=secrets):
 
 
 SECRET_KEY = get_secret('SECRET_KEY')
-
-DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
