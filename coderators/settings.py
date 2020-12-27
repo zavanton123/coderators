@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 
 from django.core.exceptions import ImproperlyConfigured
+from django.utils.translation import gettext_lazy as _
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -48,13 +49,15 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # middleware for url i18n
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # django debug toolbar middleware
-    'debug_toolbar.middleware.DebugToolbarMiddleware'
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 # for django debug toolbar
@@ -132,11 +135,30 @@ EMAIL_HOST_USER = get_secret('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = get_secret('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = get_secret('DEFAULT_FROM_EMAIL')
 
-# Localization
-LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'Europe/Moscow'
+# Internationalization and localization
+# Default language
+LANGUAGE_CODE = 'en'
+
+# Limit available languages to:
+LANGUAGES = [
+    ('en', _('English')),
+    ('ru', _('Russian')),
+    ('de', _('German')),
+]
+
+# Translation files (.po and .mo files) location
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale')
+]
+
+# Override the default 'django-language' cookie name
+LANGUAGE_COOKIE_NAME = 'user-language'
+
+# Enable i18n and l10n
 USE_I18N = True
 USE_L10N = True
+
+TIME_ZONE = 'Europe/Moscow'
 USE_TZ = True
 
 # Static files
@@ -146,5 +168,5 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'snippet/static')
 ]
 
-# Login
+# Default login url
 LOGIN_URL = "/auth/login"

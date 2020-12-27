@@ -5,9 +5,11 @@ from django.urls import path, include
 from coderators import settings
 
 urlpatterns = [
+    # admin
     path('admin/', admin.site.urls),
     # simple captcha
     path('captcha/', include('captcha.urls')),
+    # snippets app
     path('', include('snippet.urls.main', namespace='first-snippet')),
 ]
 
