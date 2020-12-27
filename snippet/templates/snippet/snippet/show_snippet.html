@@ -1,9 +1,10 @@
 {% extends 'snippet/base.html' %}
+{% load i18n %}
 
-{% block page-title %}Home{% endblock %}
+{% block page-title %}{% translate 'Snippet' %}{% endblock %}
 
 {% block main-content-header %}
-    <h1>Snippet</h1>
+    <h1 class="page-title">{% translate 'Snippet' %}</h1>
 {% endblock %}
 
 {% block main-content-body %}
@@ -16,25 +17,31 @@
 
             {# show author and publication date #}
             <p>
-                By <a href="{% url 'snippet:home' %}">{{ snippet.author.username }}</a>
-                on {{ snippet.published_at|date:'d.m.y' }}
+                {% translate 'By' context 'created-by' %} <a href="{% url 'snippet:home' %}">{{ snippet.author.username }}</a>
+                {% translate 'on' context 'creation-date' %} {{ snippet.published_at|date:'d.m.y' }}
             </p>
             {# show edit/delete snippet #}
             {% if request.user.is_authenticated %}
-                <p><a href="{{ snippet.get_edit_url }}">(edit</a> • <a href="{{ snippet.get_delete_url }}">delete)</a></p>
-                <br />
+                <p><a href="{{ snippet.get_edit_url }}">(
+                    {% translate 'edit' %}</a> •
+                    <a href="{{ snippet.get_delete_url }}">
+                        {% translate 'delete' %}
+                        )
+                    </a>
+                </p>
+                <br/>
             {% endif %}
 
             {# show category #}
-            <h3>Category:</h3>
-            <p><a href="{% url 'snippet:add_category' %}">(Create new category)</a></p>
+            <h3>{% translate 'Category' %}:</h3>
+            <p><a href="{% url 'snippet:add_category' %}">({% translate 'Create new category' %})</a></p>
             <p><a href="{{ snippet.category.get_snippets_url }}">{{ snippet.category }}</a></p>
 
             {# show tags #}
             {% if snippet.tags.all %}
                 <br/>
-                <h3>Tags</h3>
-                <p><a href="{% url 'snippet:add_tag' %}">(Create new tag)</a></p>
+                <h3>{% translate 'Tags' %}</h3>
+                <p><a href="{% url 'snippet:add_tag' %}">({% translate 'Create new tag' %})</a></p>
                 <ul>
                     {% for tag in snippet.tags.all %}
                         <li><a href="{{ tag.get_snippets_url }}">{{ tag }}</a></li>
