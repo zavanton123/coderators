@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = True
 
 # Choose debug or prod secrets
-if DEBUG == True:
+if DEBUG:
     secrets_filename = 'secrets-debug.json'
 else:
     secrets_filename = 'secrets-prod.json'
@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'snippet.apps.SnippetConfig',
     # simple captcha
     'captcha',
+    # django debug toolbar
+    'debug_toolbar'
 ]
 
 MIDDLEWARE = [
@@ -51,7 +53,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # django debug toolbar middleware
+    'debug_toolbar.middleware.DebugToolbarMiddleware'
 ]
+
+# for django debug toolbar
+INTERNAL_IPS = ['127.0.0.1']
 
 ROOT_URLCONF = 'coderators.urls'
 
