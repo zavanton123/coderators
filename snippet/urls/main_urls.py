@@ -1,4 +1,5 @@
 from django.urls import path, include
+from django.utils.translation import gettext_lazy as _
 
 from snippet.views import ProfileView
 from snippet.views.home_views import HomeView
@@ -21,7 +22,7 @@ urlpatterns = [
     path('auth/', include('snippet.urls.auth_urls')),
 
     # misc views
-    path('about', AboutView.as_view(), name='about'),
+    path(_('about'), AboutView.as_view(), name='about'),
     path('clients', ClientView.as_view(), name='clients'),
     path('feedback', SendFeedback.as_view(), name='feedback'),
     path('language', ChooseLanguage.as_view(), name='language'),

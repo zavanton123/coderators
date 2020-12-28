@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-28 12:34+0300\n"
+"POT-Creation-Date: 2020-12-28 12:48+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,10 +27,6 @@ msgstr "Английский"
 #: coderators/settings.py:145
 msgid "Russian"
 msgstr "Русский"
-
-#: coderators/settings.py:146
-msgid "German"
-msgstr "Немецкий"
 
 #: snippet/templates/snippet/authentication/login.html:5
 #: snippet/templates/snippet/authentication/login.html:8
@@ -400,3 +396,7 @@ msgstr "Ни одного тэга еще не создано..."
 #: snippet/templates/snippet/tag/update_tag.html:8
 msgid "Update Tag"
 msgstr "Обновить тэг"
+
+#: snippet/urls/main_urls.py:25
+msgid "about"
+msgstr "о_нас"
