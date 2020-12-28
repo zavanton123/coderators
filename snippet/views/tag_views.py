@@ -1,8 +1,8 @@
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 
-from snippet.forms.tag import TagForm
-from snippet.models.tag import Tag
+from snippet.forms.tag_forms import TagForm
+from snippet.models.tag_models import Tag
 
 
 class ShowTags(ListView):

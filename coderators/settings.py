@@ -63,7 +63,7 @@ MIDDLEWARE = [
 # for django debug toolbar
 INTERNAL_IPS = ['127.0.0.1']
 
-ROOT_URLCONF = 'coderators.urls'
+ROOT_URLCONF = 'coderators.root_urls'
 
 TEMPLATES = [
     {
@@ -143,7 +143,6 @@ LANGUAGE_CODE = 'en'
 LANGUAGES = [
     ('en', _('English')),
     ('ru', _('Russian')),
-    ('de', _('German')),
 ]
 
 # Translation files (.po and .mo files) location

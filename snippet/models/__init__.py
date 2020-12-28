@@ -1,1 +1,1 @@
-from .snippet import Snippet
+from .snippet_models import Snippet

@@ -7,8 +7,8 @@ from django.views import View
 from django.views.generic import TemplateView, FormView
 
 from coderators import settings
-from snippet.forms.feedback import FeedbackForm
-from snippet.forms.language_form import ChooseLanguageForm
+from snippet.forms.feedback_forms import FeedbackForm
+from snippet.forms.language_forms import ChooseLanguageForm
 
 
 class AboutView(TemplateView):

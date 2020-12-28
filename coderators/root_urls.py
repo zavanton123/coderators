@@ -15,7 +15,7 @@ urlpatterns = [
 # add i18n to urls
 urlpatterns += i18n_patterns(
     # snippets app
-    path('', include('snippet.urls.main', namespace='first-snippet')),
+    path('', include('snippet.urls.main_urls', namespace='first-snippet')),
     prefix_default_language=False
 )
 

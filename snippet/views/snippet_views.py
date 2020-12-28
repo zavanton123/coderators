@@ -6,9 +6,9 @@ from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView, ListView
 
 from snippet.forms import SnippetForm
-from snippet.models.category import Category
-from snippet.models.snippet import Snippet
-from snippet.models.tag import Tag
+from snippet.models.category_models import Category
+from snippet.models.snippet_models import Snippet
+from snippet.models.tag_models import Tag
 
 log = logging.getLogger(__name__)
 

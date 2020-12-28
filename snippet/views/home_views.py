@@ -2,7 +2,7 @@ import logging
 
 from django.views.generic import ListView
 
-from snippet.models.snippet import Snippet
+from snippet.models.snippet_models import Snippet
 
 log = logging.getLogger(__name__)
 

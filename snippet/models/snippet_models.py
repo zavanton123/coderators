@@ -2,8 +2,8 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 
-from snippet.models.category import Category
-from snippet.models.tag import Tag
+from snippet.models.category_models import Category
+from snippet.models.tag_models import Tag
 
 
 class Snippet(models.Model):
