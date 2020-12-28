@@ -137,7 +137,7 @@ DEFAULT_FROM_EMAIL = get_secret('DEFAULT_FROM_EMAIL')
 
 # Internationalization and localization
 # Default language
-LANGUAGE_CODE = 'ru'
+LANGUAGE_CODE = 'en'
 
 # Limit available languages to:
 LANGUAGES = [

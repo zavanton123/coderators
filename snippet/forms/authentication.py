@@ -27,6 +27,7 @@ class RegisterForm(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2']
 
 
+# todo zavanton - add form localization
 class LoginForm(AuthenticationForm):
     email = forms.EmailField(
         required=False,

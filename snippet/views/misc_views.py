@@ -1,14 +1,14 @@
-import logging
-
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.shortcuts import redirect, render
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
+from django.utils.translation import activate
+from django.views import View
 from django.views.generic import TemplateView, FormView
 
+from coderators import settings
 from snippet.forms.feedback import FeedbackForm
-
-log = logging.getLogger(__name__)
+from snippet.forms.language_form import ChooseLanguageForm
 
 
 class AboutView(TemplateView):
@@ -46,8 +46,17 @@ class SendFeedback(FormView):
         return super().form_valid(form)
 
 
-def choose_language(request):
-    context = {
-        'redirect_to': reverse('snippet:home')
-    }
-    return render(request, 'snippet/misc/language_choice.html', context=context)
+class ChooseLanguage(View):
+    def get(self, request, *args, **kwargs):
+        form = ChooseLanguageForm()
+        return render(request, 'snippet/misc/language_choice.html', {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = ChooseLanguageForm(request.POST)
+        if form.is_valid():
+            selected_language = form.cleaned_data['language']
+            activate(selected_language)
+            response = redirect('snippet:home')
+            response.set_cookie(settings.LANGUAGE_COOKIE_NAME, selected_language)
+            return response
+        return render(request, 'snippet/misc/language_choice.html', {'form': form})

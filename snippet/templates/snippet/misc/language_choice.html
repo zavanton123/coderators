@@ -13,27 +13,9 @@
     <div class="fullwidth-block">
         <div class="container">
 
-            {# set_language is from 'django.conf.urls.i18n', #}
-            {# it saves the language to the cookie and redirects to target url #}
-            <form action="{% url 'set_language' %}" method="post">
+            <form action="{% url 'snippet:language' %}" method="post">
                 {% csrf_token %}
-
-                {# 'next' is the url to redirect to #}
-                <input name="next" type="hidden" value="{{ redirect_to }}"/>
-
-                {# 'language' is the chosen language code #}
-                <select name="language">
-                    {% get_current_language as LANGUAGE_CODE %}
-                    {% get_available_languages as LANGUAGES %}
-                    {% get_language_info_list for LANGUAGES as languages %}
-                    {% for language in languages %}
-                        <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}
-                                selected{% endif %} >
-                            {{ language.name_local }} ({{ language.code }})
-                        </option>
-                    {% endfor %}
-                </select>
-
+                {{ form.as_p }}
                 <p><input type="submit" value="{% translate 'Confirm' %}"></p>
             </form>
         </div>
