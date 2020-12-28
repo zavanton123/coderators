@@ -2,8 +2,8 @@ import logging
 
 from django.contrib import messages
 from django.core.mail import send_mail
-from django.shortcuts import redirect
-from django.urls import reverse_lazy
+from django.shortcuts import redirect, render
+from django.urls import reverse_lazy, reverse
 from django.views.generic import TemplateView, FormView
 
 from snippet.forms.feedback import FeedbackForm
@@ -44,3 +44,10 @@ class SendFeedback(FormView):
                 messages.error(self.request, 'Failed to send your feedback... Try again!')
 
         return super().form_valid(form)
+
+
+def choose_language(request):
+    context = {
+        'redirect_to': reverse('snippet:home')
+    }
+    return render(request, 'snippet/misc/language_choice.html', context=context)

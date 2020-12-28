@@ -1,0 +1,42 @@
+{% extends 'snippet/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block page-title %}{% translate 'Choose Language' %}{% endblock %}
+
+{% block main-content-header %}
+    <h1 class="page-title">{% translate 'Choose Language' %}</h1>
+{% endblock %}
+
+{% block main-content-body %}
+
+    <div class="fullwidth-block">
+        <div class="container">
+
+            {# set_language is from 'django.conf.urls.i18n', #}
+            {# it saves the language to the cookie and redirects to target url #}
+            <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+
+                {# 'next' is the url to redirect to #}
+                <input name="next" type="hidden" value="{{ redirect_to }}"/>
+
+                {# 'language' is the chosen language code #}
+                <select name="language">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                        <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}
+                                selected{% endif %} >
+                            {{ language.name_local }} ({{ language.code }})
+                        </option>
+                    {% endfor %}
+                </select>
+
+                <p><input type="submit" value="{% translate 'Confirm' %}"></p>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

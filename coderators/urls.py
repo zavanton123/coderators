@@ -10,6 +10,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # simple captcha
     path('captcha/', include('captcha.urls')),
+    # set_language is used for choosing a language and redirecting
+    path('i18n/', include('django.conf.urls.i18n')),
 ]
 
 # add i18n to urls
