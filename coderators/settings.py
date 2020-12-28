@@ -63,7 +63,7 @@ MIDDLEWARE = [
 # for django debug toolbar
 INTERNAL_IPS = ['127.0.0.1']
 
-ROOT_URLCONF = 'coderators.urls'
+ROOT_URLCONF = 'coderators.root_urls'
 
 TEMPLATES = [
     {
@@ -137,13 +137,12 @@ DEFAULT_FROM_EMAIL = get_secret('DEFAULT_FROM_EMAIL')
 
 # Internationalization and localization
 # Default language
-LANGUAGE_CODE = 'ru'
+LANGUAGE_CODE = 'en'
 
 # Limit available languages to:
 LANGUAGES = [
     ('en', _('English')),
     ('ru', _('Russian')),
-    ('de', _('German')),
 ]
 
 # Translation files (.po and .mo files) location

@@ -1,10 +1,10 @@
 from django import forms
 
-from snippet.models.category import Category
+from snippet.models.tag_models import Tag
 
 
 # todo zavanton - add form localization
-class CategoryForm(forms.ModelForm):
+class TagForm(forms.ModelForm):
     class Meta:
-        model = Category
+        model = Tag
         fields = ['name', 'slug']

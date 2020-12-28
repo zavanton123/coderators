@@ -1,8 +1,8 @@
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, ListView, DeleteView, UpdateView
 
-from snippet.forms.category import CategoryForm
-from snippet.models.category import Category
+from snippet.forms.category_forms import CategoryForm
+from snippet.models.category_models import Category
 
 
 class ShowCategories(ListView):

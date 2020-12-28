@@ -1,7 +1,7 @@
 from django.urls import path
 
 from snippet.views import UserLoginView, UserLogoutView, RegisterView
-from snippet.views.authentication import UserPasswordChangeView, UserPasswordChangeDoneView, UserPasswordResetView, \
+from snippet.views.auth_views import UserPasswordChangeView, UserPasswordChangeDoneView, UserPasswordResetView, \
     UserPasswordResetConfirmView, UserPasswordResetDoneView, UserPasswordResetCompleteView
 
 urlpatterns = [
