@@ -1,5 +1,5 @@
 from django import forms
-from django.utils.translation import get_language
+from django.utils.translation import get_language, gettext_lazy as _
 
 from coderators import settings
 
@@ -11,6 +11,8 @@ class ChooseLanguageForm(forms.Form):
         self.initial['language'] = get_language()
 
     language = forms.ChoiceField(
+        label=_('Language'),
         choices=settings.LANGUAGES,
-        widget=forms.RadioSelect()
+        widget=forms.RadioSelect(),
+        localize=True
     )
