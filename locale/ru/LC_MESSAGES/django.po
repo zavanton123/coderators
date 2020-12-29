@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-29 14:08+0300\n"
+"POT-Creation-Date: 2020-12-29 14:26+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,6 +27,14 @@ msgstr "Английский"
 #: coderators/settings.py:145
 msgid "Russian"
 msgstr "Русский"
+
+#: snippet/forms/category_forms.py:13
+msgid "Name"
+msgstr "Название"
+
+#: snippet/forms/category_forms.py:13
+msgid "Slug"
+msgstr "Слаг"
 
 #: snippet/forms/feedback_forms.py:10
 #: snippet/templates/snippet/authentication/profile.html:17
