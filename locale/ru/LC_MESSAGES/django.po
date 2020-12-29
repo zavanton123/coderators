@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-28 12:48+0300\n"
+"POT-Creation-Date: 2020-12-29 14:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,6 +28,19 @@ msgstr "Английский"
 msgid "Russian"
 msgstr "Русский"
 
+#: snippet/forms/feedback_forms.py:10
+#: snippet/templates/snippet/authentication/profile.html:17
+msgid "Email"
+msgstr "Эл. почта"
+
+#: snippet/forms/feedback_forms.py:16
+msgid "Subject"
+msgstr "Тема"
+
+#: snippet/forms/feedback_forms.py:22
+msgid "Content"
+msgstr "Содержание"
+
 #: snippet/templates/snippet/authentication/login.html:5
 #: snippet/templates/snippet/authentication/login.html:8
 #: snippet/templates/snippet/authentication/login.html:22
@@ -44,10 +57,6 @@ msgstr "Профиль"
 #: snippet/templates/snippet/authentication/profile.html:16
 msgid "Username"
 msgstr "Имя пользователя"
-
-#: snippet/templates/snippet/authentication/profile.html:17
-msgid "Email"
-msgstr "Эл. почта"
 
 #: snippet/templates/snippet/authentication/register.html:5
 #: snippet/templates/snippet/authentication/register.html:8

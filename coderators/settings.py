@@ -156,6 +156,7 @@ LANGUAGE_COOKIE_NAME = 'user-language'
 # Enable i18n and l10n
 USE_I18N = True
 USE_L10N = True
+USE_THOUSAND_SEPARATOR = True
 
 TIME_ZONE = 'Europe/Moscow'
 USE_TZ = True
