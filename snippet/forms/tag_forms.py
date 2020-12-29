@@ -1,10 +1,12 @@
 from django import forms
+from django.utils.translation import gettext_lazy as _
 
 from snippet.models.tag_models import Tag
 
 
-# todo zavanton - add form localization
 class TagForm(forms.ModelForm):
     class Meta:
         model = Tag
+        labels = {'name': _('Name'), 'slug': _('Slug')}
+        localized_fields = ['name', 'slug']
         fields = ['name', 'slug']
