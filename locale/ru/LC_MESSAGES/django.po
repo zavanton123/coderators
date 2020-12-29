@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-29 14:34+0300\n"
+"POT-Creation-Date: 2020-12-29 14:39+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,6 +28,24 @@ msgstr "Английский"
 msgid "Russian"
 msgstr "Русский"
 
+#: snippet/forms/auth_forms.py:10
+#: snippet/templates/snippet/authentication/profile.html:16
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: snippet/forms/auth_forms.py:15
+msgid "Enter password"
+msgstr "Ввести пароль"
+
+#: snippet/forms/auth_forms.py:20
+msgid "Confirm password"
+msgstr "Подтвердить пароль"
+
+#: snippet/forms/auth_forms.py:25 snippet/forms/feedback_forms.py:9
+#: snippet/templates/snippet/authentication/profile.html:17
+msgid "Email"
+msgstr "Эл. почта"
+
 #: snippet/forms/category_forms.py:12 snippet/forms/tag_forms.py:10
 msgid "Name"
 msgstr "Название"
@@ -36,11 +54,6 @@ msgstr "Название"
 msgid "Slug"
 msgstr "Слаг"
 
-#: snippet/forms/feedback_forms.py:9
-#: snippet/templates/snippet/authentication/profile.html:17
-msgid "Email"
-msgstr "Эл. почта"
-
 #: snippet/forms/feedback_forms.py:15
 msgid "Subject"
 msgstr "Тема"
@@ -48,6 +61,11 @@ msgstr "Тема"
 #: snippet/forms/feedback_forms.py:21 snippet/forms/snippet_forms.py:13
 msgid "Content"
 msgstr "Содержание"
+
+#: snippet/forms/language_forms.py:14
+#: snippet/templates/snippet/inc/_header.html:21
+msgid "Language"
+msgstr "Язык"
 
 #: snippet/forms/snippet_forms.py:12
 msgid "Title"
@@ -78,10 +96,6 @@ msgstr "Войти"
 #: snippet/templates/snippet/inc/_header.html:26
 msgid "Profile"
 msgstr "Профиль"
-
-#: snippet/templates/snippet/authentication/profile.html:16
-msgid "Username"
-msgstr "Имя пользователя"
 
 #: snippet/templates/snippet/authentication/register.html:5
 #: snippet/templates/snippet/authentication/register.html:8
@@ -294,10 +308,6 @@ msgstr "Подписывайтесь на нас"
 #: snippet/templates/snippet/inc/_header.html:17
 msgid "Categories"
 msgstr "Категории"
-
-#: snippet/templates/snippet/inc/_header.html:21
-msgid "Language"
-msgstr "Язык"
 
 #: snippet/templates/snippet/inc/_header.html:24
 #: snippet/templates/snippet/snippet/add_snippet.html:5
