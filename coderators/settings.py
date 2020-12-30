@@ -168,5 +168,5 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'snippet/static')
 ]
 
-# Default login url
-LOGIN_URL = "/auth/login"
+# # Default login url
+# LOGIN_URL = "/auth/login"

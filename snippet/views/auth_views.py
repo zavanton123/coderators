@@ -34,15 +34,12 @@ class RegisterView(View):
 class UserLoginView(LoginView):
     template_name = 'snippet/authentication/login.html'
     authentication_form = AuthenticationForm
-    redirect_field_name = 'next'
+    redirect_field_name = 'redirect_to'
     redirect_authenticated_user = True
-
-    def get_success_url(self):
-        return reverse('snippet:home')
 
 
 class UserLogoutView(LogoutView):
-    redirect_field_name = 'next'
+    redirect_field_name = 'redirect_to'
     next_page = 'snippet:login'
 
 

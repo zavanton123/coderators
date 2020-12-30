@@ -1,5 +1,3 @@
-import logging
-
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
@@ -10,8 +8,6 @@ from snippet.models.category_models import Category
 from snippet.models.snippet_models import Snippet
 from snippet.models.tag_models import Tag
 
-log = logging.getLogger(__name__)
-
 
 class ShowSnippet(DetailView):
     template_name = 'snippet/snippet/show_snippet.html'
@@ -20,6 +16,8 @@ class ShowSnippet(DetailView):
 
 
 class AddSnippet(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('snippet:login')
+    redirect_field_name = 'redirect_to'
     template_name = 'snippet/snippet/add_snippet.html'
     context_object_name = 'snippet'
     model = Snippet
