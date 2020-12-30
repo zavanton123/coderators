@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, ListView, DeleteView, UpdateView
 
@@ -17,20 +18,26 @@ class ShowCategory(DetailView):
     model = Category
 
 
-class AddCategory(CreateView):
+class AddCategory(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('snippet:login')
+    redirect_field_name = 'redirect_to'
     model = Category
     form_class = CategoryForm
     template_name = 'snippet/category/add_category.html'
 
 
-class UpdateCategory(UpdateView):
+class UpdateCategory(LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('snippet:login')
+    redirect_field_name = 'redirect_to'
     template_name = 'snippet/category/update_category.html'
     success_url = reverse_lazy('snippet:show_categories')
     form_class = CategoryForm
     model = Category
 
 
-class DeleteCategory(DeleteView):
+class DeleteCategory(LoginRequiredMixin, DeleteView):
+    login_url = reverse_lazy('snippet:login')
+    redirect_field_name = 'redirect_to'
     template_name = 'snippet/category/delete_category.html'
     success_url = reverse_lazy('snippet:show_categories')
     model = Category

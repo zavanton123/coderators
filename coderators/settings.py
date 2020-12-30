@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 
 from django.core.exceptions import ImproperlyConfigured
+from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -168,5 +169,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'snippet/static')
 ]
 
-# Default login url
-LOGIN_URL = "/auth/login"
+# Login defaults
+LOGIN_URL = reverse_lazy('snippet:login')
+LOGIN_REDIRECT_URL = reverse_lazy('snippet:home')

@@ -13,17 +13,13 @@
     <div class="fullwidth-block">
         <div class="container">
 
-            <form method="post" action="{% url 'snippet:login' %}">
-
+            <form action="{% url 'snippet:login' %}" method="post">
                 {% csrf_token %}
-
                 {{ form.as_p }}
+                <input name="redirect_to" type="hidden" value="{{ redirect_to }}"/>
 
                 <p><input type="submit" value="{% translate 'Login' %}"></p>
-
-                <input type="hidden" value="{{ next }}"/>
             </form>
-
         </div>
     </div>
 
