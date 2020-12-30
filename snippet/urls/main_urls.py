@@ -16,8 +16,6 @@ urlpatterns = [
     path('tags/', include('snippet.urls.tag_urls')),
 
     # authentication views
-    # todo zavanton - is accounts necessary???
-    path('accounts/', include('django.contrib.auth.urls')),
     path('auth/', include('snippet.urls.auth_urls')),
 
     # misc views

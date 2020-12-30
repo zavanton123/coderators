@@ -2,6 +2,7 @@ import logging
 
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, PasswordResetForm, SetPasswordForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView, \
     PasswordResetView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetCompleteView
 from django.shortcuts import render, redirect
@@ -90,5 +91,7 @@ class UserPasswordResetCompleteView(PasswordResetCompleteView):
     template_name = 'snippet/authentication/user_password_reset_complete.html'
 
 
-class ProfileView(TemplateView):
+class ProfileView(LoginRequiredMixin, TemplateView):
+    login_url = reverse_lazy('snippet:login')
+    redirect_field_name = 'redirect_to'
     template_name = 'snippet/authentication/profile.html'
