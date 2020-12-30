@@ -1,7 +1,7 @@
 from django.urls import path
 
 from snippet.views import ShowSnippet, AddSnippet, UpdateSnippet, DeleteSnippet
-from snippet.views.snippet import ShowSnippetsByCategory, ShowSnippetsByTag
+from snippet.views.snippet_views import ShowSnippetsByCategory, ShowSnippetsByTag
 
 urlpatterns = [
     path('<int:pk>', ShowSnippet.as_view(), name='show_snippet'),

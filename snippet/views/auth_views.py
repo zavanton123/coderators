@@ -2,10 +2,11 @@ import logging
 
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, PasswordResetForm, SetPasswordForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView, \
     PasswordResetView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetCompleteView
 from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.views.generic import TemplateView
 
@@ -32,17 +33,22 @@ class RegisterView(View):
 
 
 class UserLoginView(LoginView):
-    template_name = 'snippet/authentication/login.html'
-    authentication_form = AuthenticationForm
-    redirect_field_name = 'next'
+    form_class = AuthenticationForm
+    redirect_field_name = 'redirect_to'
     redirect_authenticated_user = True
+    template_name = 'snippet/authentication/login.html'
 
-    def get_success_url(self):
-        return reverse('snippet:home')
+    # in the simple case (if we are not redirected to the login page from any other page)
+    # go to the home url after successful login
+    def get_redirect_url(self):
+        redirect_url = super().get_redirect_url()
+        if not redirect_url:
+            redirect_url = reverse_lazy('snippet:home')
+        return redirect_url
 
 
 class UserLogoutView(LogoutView):
-    redirect_field_name = 'next'
+    redirect_field_name = 'redirect_to'
     next_page = 'snippet:login'
 
 
@@ -85,5 +91,7 @@ class UserPasswordResetCompleteView(PasswordResetCompleteView):
     template_name = 'snippet/authentication/user_password_reset_complete.html'
 
 
-class ProfileView(TemplateView):
+class ProfileView(LoginRequiredMixin, TemplateView):
+    login_url = reverse_lazy('snippet:login')
+    redirect_field_name = 'redirect_to'
     template_name = 'snippet/authentication/profile.html'

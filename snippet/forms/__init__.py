@@ -1,4 +1,3 @@
-from .authentication import LoginForm
-from .authentication import RegisterForm
+from .auth_forms import RegisterForm
 
-from .snippet import SnippetForm
+from .snippet_forms import SnippetForm

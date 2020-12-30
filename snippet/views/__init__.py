@@ -1,12 +1,12 @@
-from .snippet import ShowSnippet
-from .snippet import AddSnippet
-from .snippet import UpdateSnippet
-from .snippet import DeleteSnippet
+from .snippet_views import ShowSnippet
+from .snippet_views import AddSnippet
+from .snippet_views import UpdateSnippet
+from .snippet_views import DeleteSnippet
 
-from .authentication import RegisterView
-from .authentication import UserLoginView
-from .authentication import UserLogoutView
-from .authentication import ProfileView
+from .auth_views import RegisterView
+from .auth_views import UserLoginView
+from .auth_views import UserLogoutView
+from .auth_views import ProfileView
 
-from .category import ShowCategory
-from .category import AddCategory
+from .category_views import ShowCategory
+from .category_views import AddCategory

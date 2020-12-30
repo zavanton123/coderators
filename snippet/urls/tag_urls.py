@@ -1,6 +1,6 @@
 from django.urls import path
 
-from snippet.views.tag import ShowTags, AddTag, ShowTag, UpdateTag, DeleteTag
+from snippet.views.tag_views import ShowTags, AddTag, ShowTag, UpdateTag, DeleteTag
 
 urlpatterns = [
     path('', ShowTags.as_view(), name='show_tags'),

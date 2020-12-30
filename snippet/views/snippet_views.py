@@ -1,16 +1,12 @@
-import logging
-
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView, ListView
 
 from snippet.forms import SnippetForm
-from snippet.models.category import Category
-from snippet.models.snippet import Snippet
-from snippet.models.tag import Tag
-
-log = logging.getLogger(__name__)
+from snippet.models.category_models import Category
+from snippet.models.snippet_models import Snippet
+from snippet.models.tag_models import Tag
 
 
 class ShowSnippet(DetailView):
@@ -20,6 +16,8 @@ class ShowSnippet(DetailView):
 
 
 class AddSnippet(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('snippet:login')
+    redirect_field_name = 'redirect_to'
     template_name = 'snippet/snippet/add_snippet.html'
     context_object_name = 'snippet'
     model = Snippet
@@ -30,7 +28,9 @@ class AddSnippet(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class UpdateSnippet(UpdateView):
+class UpdateSnippet(LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('snippet:login')
+    redirect_field_name = 'redirect_to'
     template_name = 'snippet/snippet/update_snippet.html'
     context_object_name = 'snippet'
     model = Snippet
@@ -42,7 +42,9 @@ class UpdateSnippet(UpdateView):
         return snippet.get_absolute_url()
 
 
-class DeleteSnippet(DeleteView):
+class DeleteSnippet(LoginRequiredMixin, DeleteView):
+    login_url = reverse_lazy('snippet:login')
+    redirect_field_name = 'redirect_to'
     template_name = 'snippet/snippet/delete_snippet.html'
     model = Snippet
     success_url = reverse_lazy('snippet:home')

@@ -1,7 +1,7 @@
 from django.urls import path
 
 from snippet.views import ShowCategory, AddCategory
-from snippet.views.category import ShowCategories, UpdateCategory, DeleteCategory
+from snippet.views.category_views import ShowCategories, UpdateCategory, DeleteCategory
 
 urlpatterns = [
     path('', ShowCategories.as_view(), name='show_categories'),

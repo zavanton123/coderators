@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 
 from django.core.exceptions import ImproperlyConfigured
+from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -63,7 +64,7 @@ MIDDLEWARE = [
 # for django debug toolbar
 INTERNAL_IPS = ['127.0.0.1']
 
-ROOT_URLCONF = 'coderators.urls'
+ROOT_URLCONF = 'coderators.root_urls'
 
 TEMPLATES = [
     {
@@ -137,13 +138,12 @@ DEFAULT_FROM_EMAIL = get_secret('DEFAULT_FROM_EMAIL')
 
 # Internationalization and localization
 # Default language
-LANGUAGE_CODE = 'ru'
+LANGUAGE_CODE = 'en'
 
 # Limit available languages to:
 LANGUAGES = [
     ('en', _('English')),
     ('ru', _('Russian')),
-    ('de', _('German')),
 ]
 
 # Translation files (.po and .mo files) location
@@ -157,6 +157,7 @@ LANGUAGE_COOKIE_NAME = 'user-language'
 # Enable i18n and l10n
 USE_I18N = True
 USE_L10N = True
+USE_THOUSAND_SEPARATOR = True
 
 TIME_ZONE = 'Europe/Moscow'
 USE_TZ = True
@@ -168,5 +169,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'snippet/static')
 ]
 
-# Default login url
-LOGIN_URL = "/auth/login"
+# Login defaults
+LOGIN_URL = reverse_lazy('snippet:login')
+LOGIN_REDIRECT_URL = reverse_lazy('snippet:home')

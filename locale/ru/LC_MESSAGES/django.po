@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-27 18:03+0300\n"
+"POT-Creation-Date: 2020-12-29 14:39+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,35 +28,79 @@ msgstr "Английский"
 msgid "Russian"
 msgstr "Русский"
 
-#: coderators/settings.py:146
-msgid "German"
-msgstr "Немецкий"
+#: snippet/forms/auth_forms.py:10
+#: snippet/templates/snippet/authentication/profile.html:16
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: snippet/forms/auth_forms.py:15
+msgid "Enter password"
+msgstr "Ввести пароль"
+
+#: snippet/forms/auth_forms.py:20
+msgid "Confirm password"
+msgstr "Подтвердить пароль"
+
+#: snippet/forms/auth_forms.py:25 snippet/forms/feedback_forms.py:9
+#: snippet/templates/snippet/authentication/profile.html:17
+msgid "Email"
+msgstr "Эл. почта"
+
+#: snippet/forms/category_forms.py:12 snippet/forms/tag_forms.py:10
+msgid "Name"
+msgstr "Название"
+
+#: snippet/forms/category_forms.py:12 snippet/forms/tag_forms.py:10
+msgid "Slug"
+msgstr "Слаг"
+
+#: snippet/forms/feedback_forms.py:15
+msgid "Subject"
+msgstr "Тема"
+
+#: snippet/forms/feedback_forms.py:21 snippet/forms/snippet_forms.py:13
+msgid "Content"
+msgstr "Содержание"
+
+#: snippet/forms/language_forms.py:14
+#: snippet/templates/snippet/inc/_header.html:21
+msgid "Language"
+msgstr "Язык"
+
+#: snippet/forms/snippet_forms.py:12
+msgid "Title"
+msgstr "Заголовок"
+
+#: snippet/forms/snippet_forms.py:14
+#: snippet/templates/snippet/category/show_category.html:4
+#: snippet/templates/snippet/category/show_category.html:7
+#: snippet/templates/snippet/snippet/show_snippet.html:36
+msgid "Category"
+msgstr "Категории"
+
+#: snippet/forms/snippet_forms.py:15
+#: snippet/templates/snippet/inc/_header.html:19
+#: snippet/templates/snippet/snippet/show_snippet.html:43
+msgid "Tags"
+msgstr "Тэги"
 
 #: snippet/templates/snippet/authentication/login.html:5
 #: snippet/templates/snippet/authentication/login.html:8
 #: snippet/templates/snippet/authentication/login.html:22
-#: snippet/templates/snippet/inc/_header.html:29
+#: snippet/templates/snippet/inc/_header.html:30
 msgid "Login"
 msgstr "Войти"
 
 #: snippet/templates/snippet/authentication/profile.html:5
 #: snippet/templates/snippet/authentication/profile.html:8
-#: snippet/templates/snippet/inc/_header.html:25
+#: snippet/templates/snippet/inc/_header.html:26
 msgid "Profile"
 msgstr "Профиль"
-
-#: snippet/templates/snippet/authentication/profile.html:16
-msgid "Username"
-msgstr "Имя пользователя"
-
-#: snippet/templates/snippet/authentication/profile.html:17
-msgid "Email"
-msgstr "Эл. почта"
 
 #: snippet/templates/snippet/authentication/register.html:5
 #: snippet/templates/snippet/authentication/register.html:8
 #: snippet/templates/snippet/authentication/register.html:21
-#: snippet/templates/snippet/inc/_header.html:28
+#: snippet/templates/snippet/inc/_header.html:29
 msgid "Register"
 msgstr "Регистрация"
 
@@ -68,6 +112,7 @@ msgstr "Поменять пароль"
 #: snippet/templates/snippet/authentication/user_password_change.html:22
 #: snippet/templates/snippet/authentication/user_password_reset_confirm.html:19
 #: snippet/templates/snippet/category/delete_category.html:22
+#: snippet/templates/snippet/misc/language_choice.html:19
 #: snippet/templates/snippet/snippet/delete_snippet.html:22
 #: snippet/templates/snippet/tag/delete_tag.html:22
 msgid "Confirm"
@@ -158,12 +203,6 @@ msgstr "удалить"
 #: snippet/templates/snippet/category/show_categories.html:32
 msgid "No category has been created yet..."
 msgstr "Ни одной категории еще не создано..."
-
-#: snippet/templates/snippet/category/show_category.html:4
-#: snippet/templates/snippet/category/show_category.html:7
-#: snippet/templates/snippet/snippet/show_snippet.html:36
-msgid "Category"
-msgstr "Категории"
 
 #: snippet/templates/snippet/category/show_category.html:17
 #: snippet/templates/snippet/tag/show_tag.html:17
@@ -270,20 +309,20 @@ msgstr "Подписывайтесь на нас"
 msgid "Categories"
 msgstr "Категории"
 
-#: snippet/templates/snippet/inc/_header.html:19
-#: snippet/templates/snippet/snippet/show_snippet.html:43
-msgid "Tags"
-msgstr "Тэги"
-
-#: snippet/templates/snippet/inc/_header.html:23
+#: snippet/templates/snippet/inc/_header.html:24
 #: snippet/templates/snippet/snippet/add_snippet.html:5
 #: snippet/templates/snippet/snippet/add_snippet.html:8
 msgid "Add Snippet"
 msgstr "Добавить сниппет"
 
-#: snippet/templates/snippet/inc/_header.html:26
+#: snippet/templates/snippet/inc/_header.html:27
 msgid "Logout"
 msgstr "Выйти"
+
+#: snippet/templates/snippet/misc/language_choice.html:5
+#: snippet/templates/snippet/misc/language_choice.html:8
+msgid "Choose Language"
+msgstr "Выберите язык"
 
 #: snippet/templates/snippet/misc/send_feedback.html:4
 #: snippet/templates/snippet/misc/send_feedback.html:7
@@ -390,3 +429,7 @@ msgstr "Ни одного тэга еще не создано..."
 #: snippet/templates/snippet/tag/update_tag.html:8
 msgid "Update Tag"
 msgstr "Обновить тэг"
+
+#: snippet/urls/main_urls.py:25
+msgid "about"
+msgstr "о_нас"
