@@ -2,9 +2,10 @@ from django.urls import path
 
 from snippet.views import UserLoginView, UserLogoutView, RegisterView
 from snippet.views.auth_views import UserPasswordChangeView, UserPasswordChangeDoneView, UserPasswordResetView, \
-    UserPasswordResetConfirmView, UserPasswordResetDoneView, UserPasswordResetCompleteView
+    UserPasswordResetConfirmView, UserPasswordResetDoneView, UserPasswordResetCompleteView, ProfileView
 
 urlpatterns = [
+    path('profile', ProfileView.as_view(), name='profile'),
     path('login', UserLoginView.as_view(), name='login'),
     path('logout', UserLogoutView.as_view(), name='logout'),
     path('password_change', UserPasswordChangeView.as_view(), name='password_change'),

@@ -5,7 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, Pa
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView, \
     PasswordResetView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetCompleteView
 from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.views.generic import TemplateView
 
@@ -32,10 +32,18 @@ class RegisterView(View):
 
 
 class UserLoginView(LoginView):
-    template_name = 'snippet/authentication/login.html'
-    authentication_form = AuthenticationForm
+    form_class = AuthenticationForm
     redirect_field_name = 'redirect_to'
     redirect_authenticated_user = True
+    template_name = 'snippet/authentication/login.html'
+
+    # in the simple case (if we are not redirected to the login page from any other page)
+    # go to the home url after successful login
+    def get_redirect_url(self):
+        redirect_url = super().get_redirect_url()
+        if not redirect_url:
+            redirect_url = reverse_lazy('snippet:home')
+        return redirect_url
 
 
 class UserLogoutView(LogoutView):
