@@ -28,7 +28,9 @@ class AddSnippet(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class UpdateSnippet(UpdateView):
+class UpdateSnippet(LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('snippet:login')
+    redirect_field_name = 'redirect_to'
     template_name = 'snippet/snippet/update_snippet.html'
     context_object_name = 'snippet'
     model = Snippet
@@ -40,7 +42,9 @@ class UpdateSnippet(UpdateView):
         return snippet.get_absolute_url()
 
 
-class DeleteSnippet(DeleteView):
+class DeleteSnippet(LoginRequiredMixin, DeleteView):
+    login_url = reverse_lazy('snippet:login')
+    redirect_field_name = 'redirect_to'
     template_name = 'snippet/snippet/delete_snippet.html'
     model = Snippet
     success_url = reverse_lazy('snippet:home')
