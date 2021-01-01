@@ -172,3 +172,6 @@ STATICFILES_DIRS = [
 # Login defaults
 LOGIN_URL = reverse_lazy('snippet:login')
 LOGIN_REDIRECT_URL = reverse_lazy('snippet:home')
+
+# Setup custom user model
+AUTH_USER_MODEL = 'snippet.CustomUser'
