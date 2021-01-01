@@ -93,6 +93,13 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     )
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
 
+    # custom fields
+    description = models.TextField(
+        max_length=1000,
+        null=True,
+        blank=True,
+    )
+
     objects = CustomUserManager()
 
     EMAIL_FIELD = 'email'
