@@ -169,6 +169,13 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'snippet/static')
 ]
 
+# image files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # Login defaults
 LOGIN_URL = reverse_lazy('snippet:login')
 LOGIN_REDIRECT_URL = reverse_lazy('snippet:home')
+
+# Setup custom user model
+AUTH_USER_MODEL = 'snippet.CustomUser'

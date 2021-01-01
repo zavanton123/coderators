@@ -15,8 +15,9 @@ urlpatterns = [
     path('categories/', include('snippet.urls.category_urls')),
     path('tags/', include('snippet.urls.tag_urls')),
 
-    # authentication views
+    # auth and user views
     path('auth/', include('snippet.urls.auth_urls')),
+    path('user/', include('snippet.urls.user_urls')),
 
     # misc views
     path(_('about'), AboutView.as_view(), name='about'),
