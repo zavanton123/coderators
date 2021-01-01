@@ -23,13 +23,16 @@
                 <p>{% translate 'Last name' %}: {{ user.last_name }}</p>
             {% endif %}
 
+            {% if user.experience %}
+                <p>{% translate 'Experience' %}: {{ user.get_experience_display }}</p>
+            {% endif %}
+
             {% if user.description %}
                 <p>{% translate 'Description' %}: {{ user.description }}</p>
             {% endif %}
 
             {% if user.date_joined %}
                 <p>{% translate 'Registration date' %}: {{ user.date_joined }}</p>
-
             {% endif %}
 
             {% if user.email %}

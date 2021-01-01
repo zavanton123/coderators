@@ -6,4 +6,9 @@ from snippet.models import CustomUser
 class UpdateUserForm(forms.ModelForm):
     class Meta:
         model = CustomUser
-        fields = ['first_name', 'last_name', 'description']
+        fields = [
+            'first_name',
+            'last_name',
+            'experience',
+            'description',
+        ]

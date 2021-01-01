@@ -95,9 +95,25 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     # custom fields
     description = models.TextField(
+        _('description'),
         max_length=1000,
         null=True,
         blank=True,
+    )
+
+    EXPERIENCE_LEVELS = [
+        ('JUNIOR', _('Junior Developer')),
+        ('MIDDLE', _('Middle Developer')),
+        ('SENIOR', _('Senior Developer')),
+    ]
+
+    experience = models.CharField(
+        _('experience'),
+        max_length=100,
+        null=True,
+        blank=True,
+        choices=EXPERIENCE_LEVELS,
+        default='JUNIOR',
     )
 
     objects = CustomUserManager()

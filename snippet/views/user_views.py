@@ -18,6 +18,7 @@ class UpdateUser(View):
         current_user_data = {
             'first_name': request.user.first_name,
             'last_name': request.user.last_name,
+            'experience': request.user.experience,
             'description': request.user.description,
         }
         form = UpdateUserForm(current_user_data)
@@ -28,6 +29,7 @@ class UpdateUser(View):
         if form.is_valid():
             request.user.first_name = form.cleaned_data['first_name']
             request.user.last_name = form.cleaned_data['last_name']
+            request.user.experience = form.cleaned_data['experience']
             request.user.description = form.cleaned_data['description']
             request.user.save()
             return redirect('snippet:view_user')
