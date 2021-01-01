@@ -1,7 +1,7 @@
-from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 
+from snippet.models import CustomUser
 from snippet.models.category_models import Category
 from snippet.models.tag_models import Tag
 
@@ -28,7 +28,7 @@ class Snippet(models.Model):
         blank=True,
     )
     author = models.ForeignKey(
-        to=User,
+        to=CustomUser,
         null=True,
         on_delete=models.SET_NULL
     )

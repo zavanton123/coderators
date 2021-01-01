@@ -153,6 +153,7 @@ pip-selfcheck.json
 
 .idea/*
 static/*
+media/*
 
 secrets-debug.json
 secrets-prod.json
