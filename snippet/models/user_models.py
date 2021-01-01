@@ -116,6 +116,13 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         default='JUNIOR',
     )
 
+    avatar = models.ImageField(
+        _('avatar'),
+        null=True,
+        blank=True,
+        upload_to=f'avatars/%Y/%m/%d'
+    )
+
     objects = CustomUserManager()
 
     EMAIL_FIELD = 'email'

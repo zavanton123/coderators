@@ -1,10 +1,14 @@
+import logging
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import TemplateView
 
-from snippet.forms.user_forms import UpdateUserForm
+from snippet.forms.user_forms import UpdateUserForm, SetAvatarForm
+
+log = logging.getLogger(__name__)
 
 
 class ViewUser(LoginRequiredMixin, TemplateView):
@@ -34,3 +38,19 @@ class UpdateUser(View):
             request.user.save()
             return redirect('snippet:view_user')
         return render(request, 'snippet/user/update_user.html', {'form': form})
+
+
+class SetAvatar(View):
+    def get(self, request, *args, **kwargs):
+        form = SetAvatarForm()
+        return render(request, 'snippet/user/set_avatar.html', {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = SetAvatarForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.cleaned_data['avatar']
+            if image:
+                request.user.avatar = image
+                request.user.save()
+            return redirect('snippet:view_user')
+        return render(request, 'snippet/user/set_avatar.html', {'form': form})

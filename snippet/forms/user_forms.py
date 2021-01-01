@@ -12,3 +12,7 @@ class UpdateUserForm(forms.ModelForm):
             'experience',
             'description',
         ]
+
+
+class SetAvatarForm(forms.Form):
+    avatar = forms.ImageField()

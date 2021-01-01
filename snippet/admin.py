@@ -10,10 +10,18 @@ from snippet.models.tag_models import Tag
 
 class CustomUserAdmin(UserAdmin):
     fieldsets = UserAdmin.fieldsets + (
-        (_('Custom fields'), {'fields': ('description',)}),
+        (_('Custom fields'), {'fields': (
+            'description',
+            'experience',
+            'avatar',
+        )}),
     )
     add_fieldsets = UserAdmin.add_fieldsets + (
-        (_('Custom fields'), {'fields': ('description',)}),
+        (_('Custom fields'), {'fields': (
+            'description',
+            'experience',
+            'avatar',
+        )}),
     )
 
 
