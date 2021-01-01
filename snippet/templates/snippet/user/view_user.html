@@ -1,0 +1,44 @@
+{% extends 'snippet/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block page-title %}{% translate 'Profile' %}{% endblock %}
+
+{% block main-content-header %}
+    <h1 class="page-title">{% translate 'Profile' %}</h1>
+{% endblock %}
+
+{% block main-content-body %}
+
+    <div class="fullwidth-block">
+        <div class="container">
+
+            <p>{% translate 'Username' %}: {{ user.username }}</p>
+
+            {% if user.first_name %}
+                <p>{% translate 'First name' %}: {{ user.first_name }}</p>
+            {% endif %}
+
+            {% if user.last_name %}
+                <p>{% translate 'Last name' %}: {{ user.last_name }}</p>
+            {% endif %}
+
+            {% if user.description %}
+                <p>{% translate 'Description' %}: {{ user.description }}</p>
+            {% endif %}
+
+            {% if user.date_joined %}
+                <p>{% translate 'Registration date' %}: {{ user.date_joined }}</p>
+
+            {% endif %}
+
+            {% if user.email %}
+                <p>{% translate 'Email' %}: {{ user.email }}</p>
+            {% endif %}
+
+            <a href="{% url 'snippet:update_user' %}">{% translate 'Edit' %}</a>
+
+        </div>
+    </div>
+
+{% endblock %}
