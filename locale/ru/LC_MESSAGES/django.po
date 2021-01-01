@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-29 14:39+0300\n"
+"POT-Creation-Date: 2021-01-01 14:40+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,29 +20,33 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: coderators/settings.py:144
+#: coderators/settings.py:145
 msgid "English"
 msgstr "Английский"
 
-#: coderators/settings.py:145
+#: coderators/settings.py:146
 msgid "Russian"
 msgstr "Русский"
 
-#: snippet/forms/auth_forms.py:10
-#: snippet/templates/snippet/authentication/profile.html:16
+#: snippet/admin.py:13 snippet/admin.py:20
+msgid "Custom fields"
+msgstr "Кастомные поля"
+
+#: snippet/forms/auth_forms.py:11
+#: snippet/templates/snippet/user/view_user.html:24
 msgid "Username"
 msgstr "Имя пользователя"
 
-#: snippet/forms/auth_forms.py:15
+#: snippet/forms/auth_forms.py:16
 msgid "Enter password"
 msgstr "Ввести пароль"
 
-#: snippet/forms/auth_forms.py:20
+#: snippet/forms/auth_forms.py:21
 msgid "Confirm password"
 msgstr "Подтвердить пароль"
 
-#: snippet/forms/auth_forms.py:25 snippet/forms/feedback_forms.py:9
-#: snippet/templates/snippet/authentication/profile.html:17
+#: snippet/forms/auth_forms.py:26 snippet/forms/feedback_forms.py:9
+#: snippet/templates/snippet/user/view_user.html:48
 msgid "Email"
 msgstr "Эл. почта"
 
@@ -84,78 +88,178 @@ msgstr "Категории"
 msgid "Tags"
 msgstr "Тэги"
 
-#: snippet/templates/snippet/authentication/login.html:5
-#: snippet/templates/snippet/authentication/login.html:8
-#: snippet/templates/snippet/authentication/login.html:22
+#: snippet/forms/user_forms.py:23
+#: snippet/templates/snippet/user/view_user.html:28
+msgid "First name"
+msgstr "Имя"
+
+#: snippet/forms/user_forms.py:24
+#: snippet/templates/snippet/user/view_user.html:32
+msgid "Last name"
+msgstr "Фамилия"
+
+#: snippet/forms/user_forms.py:25
+#: snippet/templates/snippet/user/view_user.html:36
+msgid "Experience"
+msgstr "Опыт"
+
+#: snippet/forms/user_forms.py:26
+#: snippet/templates/snippet/user/view_user.html:40
+msgid "Description"
+msgstr "Описание"
+
+#: snippet/forms/user_forms.py:36
+msgid "Avatar"
+msgstr "Аватар"
+
+#: snippet/models/user_models.py:69
+msgid "username"
+msgstr "имя пользователя"
+
+#: snippet/models/user_models.py:72
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr "Требуется 150 символов или меньше. Допустимы буквы, цифры и знаки @/./+/-/_"
+
+#: snippet/models/user_models.py:75
+msgid "A user with that username already exists."
+msgstr "Пользователь с этим именем уже существует."
+
+#: snippet/models/user_models.py:78
+msgid "first name"
+msgstr "имя"
+
+#: snippet/models/user_models.py:79
+msgid "last name"
+msgstr "фамилия"
+
+#: snippet/models/user_models.py:80
+msgid "email address"
+msgstr "эл. почта"
+
+#: snippet/models/user_models.py:82
+msgid "staff status"
+msgstr "статус стафа"
+
+#: snippet/models/user_models.py:84
+msgid "Designates whether the user can log into this admin site."
+msgstr "Указывает на то, может ли пользователь заходить в админ панель."
+
+#: snippet/models/user_models.py:87
+msgid "active"
+msgstr "активный"
+
+#: snippet/models/user_models.py:90
+msgid ""
+"Designates whether this user should be treated as active. Unselect this "
+"instead of deleting accounts."
+msgstr ""
+"Указыавет на то, является ли пользователь активным."
+
+
+#: snippet/models/user_models.py:94
+msgid "date joined"
+msgstr "дата регистрации"
+
+#: snippet/models/user_models.py:98
+msgid "description"
+msgstr "описание"
+
+#: snippet/models/user_models.py:105
+msgid "Junior Developer"
+msgstr "Разработчик-джуниор"
+
+#: snippet/models/user_models.py:106
+msgid "Middle Developer"
+msgstr "Разработчик-миддл"
+
+#: snippet/models/user_models.py:107
+msgid "Senior Developer"
+msgstr "Разработчик-сениор"
+
+#: snippet/models/user_models.py:111
+msgid "experience"
+msgstr "опыт"
+
+#: snippet/models/user_models.py:120
+msgid "avatar"
+msgstr "аватар"
+
+#: snippet/models/user_models.py:133
+msgid "user"
+msgstr "пользователь"
+
+#: snippet/models/user_models.py:134
+msgid "users"
+msgstr "пользователи"
+
+#: snippet/templates/snippet/auth/login.html:5
+#: snippet/templates/snippet/auth/login.html:8
+#: snippet/templates/snippet/auth/login.html:21
 #: snippet/templates/snippet/inc/_header.html:30
 msgid "Login"
 msgstr "Войти"
 
-#: snippet/templates/snippet/authentication/profile.html:5
-#: snippet/templates/snippet/authentication/profile.html:8
-#: snippet/templates/snippet/inc/_header.html:26
-msgid "Profile"
-msgstr "Профиль"
-
-#: snippet/templates/snippet/authentication/register.html:5
-#: snippet/templates/snippet/authentication/register.html:8
-#: snippet/templates/snippet/authentication/register.html:21
+#: snippet/templates/snippet/auth/register.html:5
+#: snippet/templates/snippet/auth/register.html:8
+#: snippet/templates/snippet/auth/register.html:21
 #: snippet/templates/snippet/inc/_header.html:29
 msgid "Register"
 msgstr "Регистрация"
 
-#: snippet/templates/snippet/authentication/user_password_change.html:5
-#: snippet/templates/snippet/authentication/user_password_change.html:8
+#: snippet/templates/snippet/auth/user_password_change.html:5
+#: snippet/templates/snippet/auth/user_password_change.html:8
 msgid "Password Change"
 msgstr "Поменять пароль"
 
-#: snippet/templates/snippet/authentication/user_password_change.html:22
-#: snippet/templates/snippet/authentication/user_password_reset_confirm.html:19
+#: snippet/templates/snippet/auth/user_password_change.html:22
+#: snippet/templates/snippet/auth/user_password_reset_confirm.html:19
 #: snippet/templates/snippet/category/delete_category.html:22
 #: snippet/templates/snippet/misc/language_choice.html:19
 #: snippet/templates/snippet/snippet/delete_snippet.html:22
 #: snippet/templates/snippet/tag/delete_tag.html:22
+#: snippet/templates/snippet/user/set_avatar.html:25
+#: snippet/templates/snippet/user/update_user.html:21
 msgid "Confirm"
 msgstr "Подтвердить"
 
-#: snippet/templates/snippet/authentication/user_password_change_done.html:5
-#: snippet/templates/snippet/authentication/user_password_change_done.html:8
+#: snippet/templates/snippet/auth/user_password_change_done.html:5
+#: snippet/templates/snippet/auth/user_password_change_done.html:8
 msgid "Password Changed"
 msgstr "Изменение пароля"
 
-#: snippet/templates/snippet/authentication/user_password_change_done.html:16
+#: snippet/templates/snippet/auth/user_password_change_done.html:16
 msgid "Password is changed!"
 msgstr "Пароль успешно изменен!"
 
-#: snippet/templates/snippet/authentication/user_password_reset.html:5
-#: snippet/templates/snippet/authentication/user_password_reset.html:8
+#: snippet/templates/snippet/auth/user_password_reset.html:5
+#: snippet/templates/snippet/auth/user_password_reset.html:8
 msgid "Password Reset"
 msgstr "Сброс пароля"
 
-#: snippet/templates/snippet/authentication/user_password_reset.html:22
+#: snippet/templates/snippet/auth/user_password_reset.html:22
 msgid "Reset"
 msgstr "Сбросить"
 
-#: snippet/templates/snippet/authentication/user_password_reset_complete.html:5
-#: snippet/templates/snippet/authentication/user_password_reset_complete.html:8
+#: snippet/templates/snippet/auth/user_password_reset_complete.html:5
+#: snippet/templates/snippet/auth/user_password_reset_complete.html:8
 msgid "Password Reset Complete"
 msgstr "Завершение сброса пароля"
 
-#: snippet/templates/snippet/authentication/user_password_reset_complete.html:16
+#: snippet/templates/snippet/auth/user_password_reset_complete.html:16
 msgid "Your password has been reset!"
 msgstr "Ваш пароль успешно обновлен!"
 
-#: snippet/templates/snippet/authentication/user_password_reset_confirm.html:5
-#: snippet/templates/snippet/authentication/user_password_reset_confirm.html:8
+#: snippet/templates/snippet/auth/user_password_reset_confirm.html:5
+#: snippet/templates/snippet/auth/user_password_reset_confirm.html:8
 msgid "Password Reset Confirm"
 msgstr "Подтверждение сброса пароля"
 
-#: snippet/templates/snippet/authentication/user_password_reset_done.html:5
-#: snippet/templates/snippet/authentication/user_password_reset_done.html:8
+#: snippet/templates/snippet/auth/user_password_reset_done.html:5
+#: snippet/templates/snippet/auth/user_password_reset_done.html:8
 msgid "Password Reset Done"
 msgstr "Сброс пароля завершен"
 
-#: snippet/templates/snippet/authentication/user_password_reset_done.html:16
+#: snippet/templates/snippet/auth/user_password_reset_done.html:16
 msgid "An email with password reset link has been sent to your email!"
 msgstr "Вам на почту было отправлено письмо со ссылкой на сброс пароля!"
 
@@ -315,6 +419,12 @@ msgstr "Категории"
 msgid "Add Snippet"
 msgstr "Добавить сниппет"
 
+#: snippet/templates/snippet/inc/_header.html:26
+#: snippet/templates/snippet/user/view_user.html:5
+#: snippet/templates/snippet/user/view_user.html:8
+msgid "Profile"
+msgstr "Профиль"
+
 #: snippet/templates/snippet/inc/_header.html:27
 msgid "Logout"
 msgstr "Выйти"
@@ -430,6 +540,32 @@ msgstr "Ни одного тэга еще не создано..."
 msgid "Update Tag"
 msgstr "Обновить тэг"
 
-#: snippet/urls/main_urls.py:25
+#: snippet/templates/snippet/user/set_avatar.html:5
+#: snippet/templates/snippet/user/set_avatar.html:8
+msgid "Set Avatar"
+msgstr "Выбрать аватар"
+
+#: snippet/templates/snippet/user/update_user.html:5
+#: snippet/templates/snippet/user/update_user.html:8
+msgid "Update Profile"
+msgstr "Обновить профиль"
+
+#: snippet/templates/snippet/user/view_user.html:18
+msgid "Change avatar"
+msgstr "Поменять аватар"
+
+#: snippet/templates/snippet/user/view_user.html:20
+msgid "Set avatar"
+msgstr "Установить аватар"
+
+#: snippet/templates/snippet/user/view_user.html:44
+msgid "Registration date"
+msgstr "Дата регистрации"
+
+#: snippet/templates/snippet/user/view_user.html:51
+msgid "Edit"
+msgstr "Редактировать"
+
+#: snippet/urls/main_urls.py:23
 msgid "about"
 msgstr "о_нас"
