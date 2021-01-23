@@ -1,7 +1,7 @@
 {% load static %}
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
     {# Required meta tags #}
     <meta charset="utf-8">
@@ -16,31 +16,36 @@
     <title>{% block page-title %}Title{% endblock %}</title>
 </head>
 
-<body>
+<body class="d-flex flex-column h-100">
+
 {# top navigation bar #}
 {% include 'core/inc/_header.html' %}
 
-{# page header #}
-<h1 class="page-title">
-    {% block main-content-header %}Page Header{% endblock %}
-</h1>
+<main>
+    <div class="container">
+        {# page header #}
+        <h1 class="page-title">
+            {% block main-content-header %}Page Header{% endblock %}
+        </h1>
 
-{# show messages #}
-<div class="container">
-    {% if messages %}
-        <br>
-        {% for message in messages %}
-            {% if message.tag == 'error' %}
-                <p style="color: red">{{ message }}</p>
-            {% else %}
-                <p>{{ message }}</p>
+        {# show messages #}
+        <div class="container">
+            {% if messages %}
+                <br>
+                {% for message in messages %}
+                    {% if message.tag == 'error' %}
+                        <p style="color: red">{{ message }}</p>
+                    {% else %}
+                        <p>{{ message }}</p>
+                    {% endif %}
+                {% endfor %}
             {% endif %}
-        {% endfor %}
-    {% endif %}
-</div>
+        </div>
 
-{# main content body #}
-{% block main-content-body %}{% endblock %}
+        {# main content body #}
+        {% block main-content-body %}{% endblock %}
+    </div>
+</main>
 
 {# footer #}
 {% include 'core/inc/_footer.html' %}
