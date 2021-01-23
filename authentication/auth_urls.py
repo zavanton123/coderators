@@ -1,8 +1,8 @@
 from django.urls import path
 
-from snippet.views import UserLoginView, UserLogoutView, RegisterView
-from snippet.views.auth_views import UserPasswordChangeView, UserPasswordChangeDoneView, UserPasswordResetView, \
-    UserPasswordResetConfirmView, UserPasswordResetDoneView, UserPasswordResetCompleteView
+from authentication.auth_views import UserPasswordChangeView, UserPasswordChangeDoneView, UserPasswordResetView, \
+    UserPasswordResetConfirmView, UserPasswordResetDoneView, UserPasswordResetCompleteView, UserLoginView, \
+    UserLogoutView, RegisterView
 
 urlpatterns = [
     path('login', UserLoginView.as_view(), name='login'),

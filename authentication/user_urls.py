@@ -1,7 +1,6 @@
 from django.urls import path
 
-from snippet.views import ViewUser
-from snippet.views.user_views import UpdateUser, SetAvatar
+from authentication.views import ViewUser, UpdateUser, SetAvatar
 
 urlpatterns = [
     path('', ViewUser.as_view(), name='view_user'),

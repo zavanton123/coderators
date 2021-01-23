@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
-from snippet.models import CustomUser
+from authentication.models import CustomUser
 from snippet.models.category_models import Category
 from snippet.models.tag_models import Tag
 
