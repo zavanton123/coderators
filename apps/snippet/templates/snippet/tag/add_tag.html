@@ -7,18 +7,12 @@
 {% block main-content-header %}{% translate 'Add Tag' %}{% endblock %}
 
 {% block main-content-body %}
-
-    <div class="fullwidth-block">
-        <div class="container">
-
-            <form method="post">
-                {% csrf_token %}
-
-                {{ form.as_p }}
-
-                <p><input type="submit" value="{% translate 'Create' %}"></p>
-            </form>
-        </div>
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <p><input type="submit" class="btn btn-primary" value="{% translate 'Create' %}"></p>
+        </form>
     </div>
 
 {% endblock %}

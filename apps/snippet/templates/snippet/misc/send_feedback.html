@@ -6,14 +6,11 @@
 {% block main-content-header %}{% translate 'Contact Form' %}{% endblock %}
 
 {% block main-content-body %}
-    <div class="fullwidth-block">
-        <div class="container">
-
-            <form method="post" action="{% url 'snippet:feedback' %}">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" value="{% translate 'Send' %}"/>
-            </form>
-        </div>
+    <div class="container">
+        <form method="post" action="{% url 'snippet:feedback' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" class="btn btn-primary" value="{% translate 'Send' %}"/>
+        </form>
     </div>
 {% endblock %}

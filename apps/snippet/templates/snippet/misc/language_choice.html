@@ -14,7 +14,7 @@
             <form action="{% url 'snippet:language' %}" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <p><input type="submit" value="{% translate 'Confirm' %}"></p>
+                <p><input type="submit" class="btn btn-primary" value="{% translate 'Confirm' %}"></p>
             </form>
         </div>
     </div>
