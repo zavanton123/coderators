@@ -1,5 +1,10 @@
 {% extends 'core/base.html' %}
+{% load static %}
 {% load i18n %}
+
+{% block head-elements %}
+    <link href="{% static 'snippet/prism/prism-all.css' %}" rel="stylesheet"/>
+{% endblock %}
 
 {% block page-title %}{% translate 'Snippet' %}{% endblock %}
 
@@ -17,7 +22,8 @@
 
             {# show author and publication date #}
             <p>
-                {% translate 'By' context 'created-by' %} <a href="{% url 'snippet:home' %}">{{ snippet.author.username }}</a>
+                {% translate 'By' context 'created-by' %} <a
+                    href="{% url 'snippet:home' %}">{{ snippet.author.username }}</a>
                 {% translate 'on' context 'creation-date' %} {{ snippet.published_at|date:'d.m.y' }}
             </p>
             {# show edit/delete snippet #}
@@ -50,9 +56,13 @@
                 <br/>
             {% endif %}
 
-            {# show snippet content #}
+            {# show snippet content highlighted by prism#}
             <pre><code class="language-css">{{ snippet.content }}</code></pre>
         </div>
     </div>
 
+{% endblock %}
+
+{% block bottom-elements %}
+    <script src="{% static 'snippet/prism/prism-all.js' %}"></script>
 {% endblock %}

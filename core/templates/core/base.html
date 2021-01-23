@@ -13,6 +13,9 @@
     {# custom styles #}
     <link href="{% static 'core/styles/styles.css' %}" rel="stylesheet">
 
+    {# for optional links and other elements #}
+    {% block head-elements %}{% endblock %}
+
     <title>{% block page-title %}Title{% endblock %}</title>
 </head>
 
@@ -52,6 +55,9 @@
 
 {# bootstrap bundle js #}
 <script src="{% static 'core/bootstrap-5.0.0/js/bootstrap.bundle.min.js' %}"></script>
+
+{# for optional scripts and other elements #}
+{% block bottom-elements %}{% endblock %}
 
 </body>
 
