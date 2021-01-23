@@ -17,7 +17,7 @@ urlpatterns = [
 
     # auth and user views
     path('auth/', include('authentication.auth_urls')),
-    path('user/', include('authentication.user_urls')),
+    path('profiles/', include('profiles.profile_urls')),
 
     # misc views
     path(_('about'), AboutView.as_view(), name='about'),

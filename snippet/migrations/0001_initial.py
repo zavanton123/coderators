@@ -5,7 +5,7 @@ import django.utils.timezone
 from django.conf import settings
 from django.db import migrations, models
 
-import authentication.models
+import authentication.auth_models
 
 
 class Migration(migrations.Migration):
@@ -53,7 +53,7 @@ class Migration(migrations.Migration):
                 'verbose_name_plural': 'users',
             },
             managers=[
-                ('objects', authentication.models.CustomUserManager()),
+                ('objects', authentication.auth_models.CustomUserManager()),
             ],
         ),
         migrations.CreateModel(

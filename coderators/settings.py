@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     # my apps
     'snippet.apps.SnippetConfig',
     'authentication.apps.AuthenticationConfig',
+    'profiles.apps.ProfilesConfig',
 ]
 
 MIDDLEWARE = [

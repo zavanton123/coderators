@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
-from authentication.models import CustomUser
+from authentication.auth_models import CustomUser
 
 
 class UpdateUserForm(forms.ModelForm):

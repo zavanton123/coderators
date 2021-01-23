@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import gettext_lazy as _
 
-from authentication.models import CustomUser
+from authentication.auth_models import CustomUser
 from snippet.models.category_models import Category
 from snippet.models.snippet_models import Snippet
 from snippet.models.tag_models import Tag

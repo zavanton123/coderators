@@ -2,24 +2,22 @@ import logging
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
-
-# Create your views here.
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import TemplateView
 
-from authentication.user_forms import UpdateUserForm, SetAvatarForm
+from profiles.profile_forms import UpdateUserForm, SetAvatarForm
 
 log = logging.getLogger(__name__)
 
 
-class ViewUser(LoginRequiredMixin, TemplateView):
+class ViewProfile(LoginRequiredMixin, TemplateView):
     login_url = reverse_lazy('snippet:login')
     redirect_field_name = 'redirect_to'
-    template_name = 'authentication/user/view_user.html'
+    template_name = 'profiles/view_profile.html'
 
 
-class UpdateUser(View):
+class UpdateProfile(View):
     def get(self, request, *args, **kwargs):
         current_user_data = {
             'first_name': request.user.first_name,
@@ -28,7 +26,7 @@ class UpdateUser(View):
             'description': request.user.description,
         }
         form = UpdateUserForm(current_user_data)
-        return render(request, 'authentication/user/update_user.html', {'form': form})
+        return render(request, 'profiles/update_profile.html', {'form': form})
 
     def post(self, request, *args, **kwargs):
         form = UpdateUserForm(request.POST)
@@ -39,13 +37,13 @@ class UpdateUser(View):
             request.user.description = form.cleaned_data['description']
             request.user.save()
             return redirect('snippet:view_user')
-        return render(request, 'authentication/user/update_user.html', {'form': form})
+        return render(request, 'profiles/update_profile.html', {'form': form})
 
 
 class SetAvatar(View):
     def get(self, request, *args, **kwargs):
         form = SetAvatarForm()
-        return render(request, 'authentication/user/set_avatar.html', {'form': form})
+        return render(request, 'profiles/set_avatar.html', {'form': form})
 
     def post(self, request, *args, **kwargs):
         form = SetAvatarForm(request.POST, request.FILES)
@@ -55,4 +53,4 @@ class SetAvatar(View):
                 request.user.avatar = image
                 request.user.save()
             return redirect('snippet:view_user')
-        return render(request, 'authentication/user/set_avatar.html', {'form': form})
+        return render(request, 'profiles/set_avatar.html', {'form': form})
