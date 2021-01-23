@@ -26,11 +26,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'snippet.apps.SnippetConfig',
+
+    # django extensions
+    'django_extensions',
     # simple captcha
     'captcha',
     # django debug toolbar
-    'debug_toolbar'
+    'debug_toolbar',
+
+    # my apps
+    'snippet.apps.SnippetConfig',
 ]
 
 MIDDLEWARE = [
