@@ -1,0 +1,38 @@
+{% load static %}
+{% load i18n %}
+
+<header class="site-header">
+    <div class="container">
+        <a href="{% url 'snippet:home' %}" class="logo">
+            <img src="{% static 'core/theme/images/logo.png' %}" alt="Perfect Lab">
+        </a>
+
+        <!-- Default snippet for navigation -->
+        <div class="main-navigation">
+            <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+            <ul class="menu">
+                <li class="menu-item current-menu-item"><a href="{% url 'snippet:home' %}">{% translate 'Home' %}</a>
+                </li>
+
+                <li class="menu-item"><a href="{% url 'snippet:show_categories' %}">{% translate 'Categories' %}</a>
+                </li>
+                <li class="menu-item"><a href="{% url 'snippet:show_tags' %}">{% translate 'Tags' %}</a></li>
+                <li class="menu-item"><a href="{% url 'snippet:feedback' %}">{% translate 'Feedback' %}</a></li>
+                <li class="menu-item"><a href="{% url 'snippet:language' %}">{% translate 'Language' %}</a></li>
+
+                {% if request.user.is_authenticated %}
+                    <li class="menu-item"><a href="{% url 'snippet:add_snippet' %}">{% translate 'Add Snippet' %}</a>
+                    </li>
+                    <li class="menu-item"><a href="{% url 'snippet:view_user' %}">{% translate 'Profile' %}</a></li>
+                    <li class="menu-item"><a href="{% url 'snippet:logout' %}">{% translate 'Logout' %}</a></li>
+                {% else %}
+                    <li class="menu-item"><a href="{% url 'snippet:register' %}">{% translate 'Register' %}</a></li>
+                    <li class="menu-item"><a href="{% url 'snippet:login' %}">{% translate 'Login' %}</a></li>
+                {% endif %}
+
+            </ul> <!-- .menu -->
+        </div> <!-- .main-navigation -->
+
+        <div class="mobile-navigation"></div>
+    </div> <!-- .container -->
+</header>

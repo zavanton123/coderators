@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
 
     # my apps
+    'core.apps.CoreConfig',
     'snippet.apps.SnippetConfig',
     'authentication.apps.AuthenticationConfig',
     'profiles.apps.ProfilesConfig',
@@ -159,7 +160,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'snippet/static')
+    os.path.join(BASE_DIR, 'core/static'),
+    os.path.join(BASE_DIR, 'snippet/static'),
 ]
 
 # image files
