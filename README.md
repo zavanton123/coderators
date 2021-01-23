@@ -37,6 +37,11 @@ python manage.py migrate
 python manage.py collectstatic
 
 
+# create translations
+python manage.py makemessages -l ru
+python manage.py compilemessages
+
+
 # create admin user
 python manage.py createsuperuser
 
