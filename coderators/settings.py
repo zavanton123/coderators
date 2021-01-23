@@ -35,10 +35,10 @@ INSTALLED_APPS = [
     'debug_toolbar',
 
     # my apps
-    'core.apps.CoreConfig',
-    'snippet.apps.SnippetConfig',
-    'authentication.apps.AuthenticationConfig',
-    'profiles.apps.ProfilesConfig',
+    'apps.core.apps.CoreConfig',
+    'apps.snippet.apps.SnippetConfig',
+    'apps.authentication.apps.AuthenticationConfig',
+    'apps.profiles.apps.ProfilesConfig',
 ]
 
 MIDDLEWARE = [
@@ -160,8 +160,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'core/static'),
-    os.path.join(BASE_DIR, 'core/static'),
+    os.path.join(BASE_DIR, 'apps/core/static'),
+    os.path.join(BASE_DIR, 'apps/snippet/static'),
 ]
 
 # image files

@@ -1,0 +1,24 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{% block page-title %}{% translate 'Tag' %}{% endblock %}
+
+{% block main-content-header %}{% translate 'Tag' %}{% endblock %}
+
+{% block main-content-body %}
+
+    <div class="fullwidth-block">
+        <div class="container">
+
+            <h1>{{ tag }}</h1>
+
+            <p>{% translate 'Created at' %}: {{ tag.created_at|date:'d.m.y' }}</p>
+            <p>{% translate 'Updated at' %}: {{ tag.updated_at|date:'d.m.y' }}</p>
+
+            <p><a href="{{ tag.get_delete_url }}">{% translate 'Delete' %}</a></p>
+            <p><a href="{{ tag.get_update_url }}">{% translate 'Update' %}</a></p>
+
+        </div>
+    </div>
+
+{% endblock %}
