@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-23 13:35+0300\n"
+"POT-Creation-Date: 2021-01-23 16:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,516 +20,513 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: authentication/auth_forms.py:11
-#: profiles/templates/profiles/view_profile.html:24
+#: apps/authentication/auth_forms.py:11
+#: apps/profiles/templates/profiles/view_profile.html:24
 msgid "Username"
 msgstr "Имя пользователя"
 
-#: authentication/auth_forms.py:16
+#: apps/authentication/auth_forms.py:16
 msgid "Enter password"
 msgstr "Ввести пароль"
 
-#: authentication/auth_forms.py:21
+#: apps/authentication/auth_forms.py:21
 msgid "Confirm password"
 msgstr "Подтвердить пароль"
 
-#: authentication/auth_forms.py:26
-#: profiles/templates/profiles/view_profile.html:48
-#: snippet/forms/feedback_forms.py:9
+#: apps/authentication/auth_forms.py:26
+#: apps/profiles/templates/profiles/view_profile.html:48
+#: apps/snippet/forms/feedback_forms.py:9
 msgid "Email"
 msgstr "Эл. почта"
 
-#: authentication/auth_models.py:70
+#: apps/authentication/auth_models.py:70
 msgid "username"
 msgstr "имя пользователя"
 
-#: authentication/auth_models.py:73
+#: apps/authentication/auth_models.py:73
 msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
-msgstr "Требуется 150 символов или меньше. Допустимы буквы, цифры и знаки @/./+/-/_"
+msgstr ""
+"Требуется 150 символов или меньше. Допустимы буквы, цифры и знаки @/./+/-/_"
 
-#: authentication/auth_models.py:76
+#: apps/authentication/auth_models.py:76
 msgid "A user with that username already exists."
 msgstr "Пользователь с этим именем уже существует."
 
-#: authentication/auth_models.py:79
+#: apps/authentication/auth_models.py:79
 msgid "first name"
 msgstr "имя"
 
-#: authentication/auth_models.py:80
+#: apps/authentication/auth_models.py:80
 msgid "last name"
 msgstr "фамилия"
 
-#: authentication/auth_models.py:81
+#: apps/authentication/auth_models.py:81
 msgid "email address"
 msgstr "эл. почта"
 
-#: authentication/auth_models.py:83
+#: apps/authentication/auth_models.py:83
 msgid "staff status"
 msgstr "статус стафа"
 
-#: authentication/auth_models.py:85
+#: apps/authentication/auth_models.py:85
 msgid "Designates whether the user can log into this admin site."
 msgstr "Указывает на то, может ли пользователь заходить в админ панель."
 
-#: authentication/auth_models.py:88
+#: apps/authentication/auth_models.py:88
 msgid "active"
 msgstr "активный"
 
-#: authentication/auth_models.py:91
+#: apps/authentication/auth_models.py:91
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
 msgstr "Указывает на то, является ли пользователь активным."
 
-#: authentication/auth_models.py:95
+#: apps/authentication/auth_models.py:95
 msgid "date joined"
 msgstr "дата регистрации"
 
-#: authentication/auth_models.py:99
+#: apps/authentication/auth_models.py:99
 msgid "description"
 msgstr "описание"
 
-#: authentication/auth_models.py:106
+#: apps/authentication/auth_models.py:106
 msgid "Junior Developer"
 msgstr "Разработчик-джуниор"
 
-#: authentication/auth_models.py:107
+#: apps/authentication/auth_models.py:107
 msgid "Middle Developer"
 msgstr "Разработчик-миддл"
 
-#: authentication/auth_models.py:108
+#: apps/authentication/auth_models.py:108
 msgid "Senior Developer"
 msgstr "Разработчик-сениор"
 
-#: authentication/auth_models.py:112
+#: apps/authentication/auth_models.py:112
 msgid "experience"
 msgstr "опыт"
 
-#: authentication/auth_models.py:121
+#: apps/authentication/auth_models.py:121
 msgid "avatar"
 msgstr "аватар"
 
-#: authentication/auth_models.py:134
+#: apps/authentication/auth_models.py:134
 msgid "user"
 msgstr "пользователь"
 
-#: authentication/auth_models.py:135
+#: apps/authentication/auth_models.py:135
 msgid "users"
 msgstr "пользователи"
 
-#: authentication/templates/authentication/auth/login.html:5
-#: authentication/templates/authentication/auth/login.html:8
-#: authentication/templates/authentication/auth/login.html:21
-#: core/templates/core/inc/_header.html:84
-#: core/templates/core/inc/_header.html:88
+#: apps/authentication/templates/authentication/auth/login.html:5
+#: apps/authentication/templates/authentication/auth/login.html:8
+#: apps/authentication/templates/authentication/auth/login.html:21
+#: apps/core/templates/core/inc/_header.html:84
+#: apps/core/templates/core/inc/_header.html:88
 msgid "Login"
 msgstr "Войти"
 
-#: authentication/templates/authentication/auth/register.html:5
-#: authentication/templates/authentication/auth/register.html:8
-#: authentication/templates/authentication/auth/register.html:21
-#: core/templates/core/inc/_header.html:92
+#: apps/authentication/templates/authentication/auth/register.html:5
+#: apps/authentication/templates/authentication/auth/register.html:8
+#: apps/authentication/templates/authentication/auth/register.html:21
+#: apps/core/templates/core/inc/_header.html:92
 msgid "Register"
 msgstr "Регистрация"
 
-#: authentication/templates/authentication/auth/user_password_change.html:5
-#: authentication/templates/authentication/auth/user_password_change.html:8
+#: apps/authentication/templates/authentication/auth/user_password_change.html:5
+#: apps/authentication/templates/authentication/auth/user_password_change.html:8
 msgid "Password Change"
 msgstr "Поменять пароль"
 
-#: authentication/templates/authentication/auth/user_password_change.html:22
-#: authentication/templates/authentication/auth/user_password_reset_confirm.html:19
-#: profiles/templates/profiles/set_avatar.html:25
-#: profiles/templates/profiles/update_profile.html:21
-#: snippet/templates/snippet/category/delete_category.html:22
-#: snippet/templates/snippet/misc/language_choice.html:19
-#: snippet/templates/snippet/snippet/delete_snippet.html:22
-#: snippet/templates/snippet/tag/delete_tag.html:22
+#: apps/authentication/templates/authentication/auth/user_password_change.html:22
+#: apps/authentication/templates/authentication/auth/user_password_reset_confirm.html:19
+#: apps/profiles/templates/profiles/set_avatar.html:25
+#: apps/profiles/templates/profiles/update_profile.html:21
+#: apps/snippet/templates/snippet/category/delete_category.html:22
+#: apps/snippet/templates/snippet/misc/language_choice.html:19
+#: apps/snippet/templates/snippet/snippet/delete_snippet.html:22
+#: apps/snippet/templates/snippet/tag/delete_tag.html:22
 msgid "Confirm"
 msgstr "Подтвердить"
 
-#: authentication/templates/authentication/auth/user_password_change_done.html:5
-#: authentication/templates/authentication/auth/user_password_change_done.html:8
+#: apps/authentication/templates/authentication/auth/user_password_change_done.html:5
+#: apps/authentication/templates/authentication/auth/user_password_change_done.html:8
 msgid "Password Changed"
 msgstr "Изменение пароля"
 
-#: authentication/templates/authentication/auth/user_password_change_done.html:16
+#: apps/authentication/templates/authentication/auth/user_password_change_done.html:16
 msgid "Password is changed!"
 msgstr "Пароль успешно изменен!"
 
-#: authentication/templates/authentication/auth/user_password_reset.html:5
-#: authentication/templates/authentication/auth/user_password_reset.html:8
+#: apps/authentication/templates/authentication/auth/user_password_reset.html:5
+#: apps/authentication/templates/authentication/auth/user_password_reset.html:8
 msgid "Password Reset"
 msgstr "Сброс пароля"
 
-#: authentication/templates/authentication/auth/user_password_reset.html:22
+#: apps/authentication/templates/authentication/auth/user_password_reset.html:22
 msgid "Reset"
 msgstr "Сбросить"
 
-#: authentication/templates/authentication/auth/user_password_reset_complete.html:5
-#: authentication/templates/authentication/auth/user_password_reset_complete.html:8
+#: apps/authentication/templates/authentication/auth/user_password_reset_complete.html:5
+#: apps/authentication/templates/authentication/auth/user_password_reset_complete.html:8
 msgid "Password Reset Complete"
 msgstr "Завершение сброса пароля"
 
-#: authentication/templates/authentication/auth/user_password_reset_complete.html:16
+#: apps/authentication/templates/authentication/auth/user_password_reset_complete.html:16
 msgid "Your password has been reset!"
 msgstr "Ваш пароль успешно обновлен!"
 
-#: authentication/templates/authentication/auth/user_password_reset_confirm.html:5
-#: authentication/templates/authentication/auth/user_password_reset_confirm.html:8
+#: apps/authentication/templates/authentication/auth/user_password_reset_confirm.html:5
+#: apps/authentication/templates/authentication/auth/user_password_reset_confirm.html:8
 msgid "Password Reset Confirm"
 msgstr "Подтверждение сброса пароля"
 
-#: authentication/templates/authentication/auth/user_password_reset_done.html:5
-#: authentication/templates/authentication/auth/user_password_reset_done.html:8
+#: apps/authentication/templates/authentication/auth/user_password_reset_done.html:5
+#: apps/authentication/templates/authentication/auth/user_password_reset_done.html:8
 msgid "Password Reset Done"
 msgstr "Сброс пароля завершен"
 
-#: authentication/templates/authentication/auth/user_password_reset_done.html:16
+#: apps/authentication/templates/authentication/auth/user_password_reset_done.html:16
 msgid "An email with password reset link has been sent to your email!"
 msgstr "Вам на почту было отправлено письмо со ссылкой на сброс пароля!"
 
-#: coderators/settings.py:139
-msgid "English"
-msgstr "Английский"
-
-#: coderators/settings.py:140
-msgid "Russian"
-msgstr "Русский"
-
-#: core/templates/core/inc/_header.html:21
+#: apps/core/templates/core/inc/_header.html:21
 msgid "Categories"
 msgstr "Категории"
 
-#: core/templates/core/inc/_header.html:26 snippet/forms/snippet_forms.py:15
-#: snippet/templates/snippet/snippet/show_snippet.html:49
+#: apps/core/templates/core/inc/_header.html:26
+#: apps/snippet/forms/snippet_forms.py:15
+#: apps/snippet/templates/snippet/snippet/show_snippet.html:49
 msgid "Tags"
 msgstr "Тэги"
 
-#: core/templates/core/inc/_header.html:31
+#: apps/core/templates/core/inc/_header.html:31
 msgid "Feedback"
 msgstr "Фидбэк"
 
-#: core/templates/core/inc/_header.html:36 snippet/forms/language_forms.py:14
+#: apps/core/templates/core/inc/_header.html:36
+#: apps/snippet/forms/language_forms.py:14
 msgid "Language"
 msgstr "Язык"
 
-#: core/templates/core/inc/_header.html:42
-#: snippet/templates/snippet/snippet/add_snippet.html:5
-#: snippet/templates/snippet/snippet/add_snippet.html:8
+#: apps/core/templates/core/inc/_header.html:42
+#: apps/snippet/templates/snippet/snippet/add_snippet.html:5
+#: apps/snippet/templates/snippet/snippet/add_snippet.html:8
 msgid "Add Snippet"
 msgstr "Добавить сниппет"
 
-#: core/templates/core/inc/_header.html:48
+#: apps/core/templates/core/inc/_header.html:48
 msgid "About"
 msgstr "О нас"
 
-#: core/templates/core/inc/_header.html:54
-#: core/templates/core/inc/_header.html:59
-#: profiles/templates/profiles/view_profile.html:5
-#: profiles/templates/profiles/view_profile.html:8
+#: apps/core/templates/core/inc/_header.html:54
+#: apps/core/templates/core/inc/_header.html:59
+#: apps/profiles/templates/profiles/view_profile.html:5
+#: apps/profiles/templates/profiles/view_profile.html:8
 msgid "Profile"
 msgstr "Профиль"
 
-#: core/templates/core/inc/_header.html:64
+#: apps/core/templates/core/inc/_header.html:64
 msgid "Change Password"
 msgstr "Поменять пароль"
 
-#: core/templates/core/inc/_header.html:68
+#: apps/core/templates/core/inc/_header.html:68
 msgid "Reset Password"
 msgstr "Сбросить пароль"
 
-#: core/templates/core/inc/_header.html:77
+#: apps/core/templates/core/inc/_header.html:77
 msgid "Logout"
 msgstr "Выйти"
 
-#: core/templates/core/inc/_header.html:102
+#: apps/core/templates/core/inc/_header.html:102
 msgid "Search"
 msgstr ""
 
-#: profiles/profile_forms.py:23
-#: profiles/templates/profiles/view_profile.html:28
+#: apps/profiles/profile_forms.py:23
+#: apps/profiles/templates/profiles/view_profile.html:28
 msgid "First name"
 msgstr "Имя"
 
-#: profiles/profile_forms.py:24
-#: profiles/templates/profiles/view_profile.html:32
+#: apps/profiles/profile_forms.py:24
+#: apps/profiles/templates/profiles/view_profile.html:32
 msgid "Last name"
 msgstr "Фамилия"
 
-#: profiles/profile_forms.py:25
-#: profiles/templates/profiles/view_profile.html:36
+#: apps/profiles/profile_forms.py:25
+#: apps/profiles/templates/profiles/view_profile.html:36
 msgid "Experience"
 msgstr "Опыт"
 
-#: profiles/profile_forms.py:26
-#: profiles/templates/profiles/view_profile.html:40
+#: apps/profiles/profile_forms.py:26
+#: apps/profiles/templates/profiles/view_profile.html:40
 msgid "Description"
 msgstr "Описание"
 
-#: profiles/profile_forms.py:32
+#: apps/profiles/profile_forms.py:32
 msgid "Avatar"
 msgstr "Аватар"
 
-#: profiles/templates/profiles/set_avatar.html:5
-#: profiles/templates/profiles/set_avatar.html:8
+#: apps/profiles/templates/profiles/set_avatar.html:5
+#: apps/profiles/templates/profiles/set_avatar.html:8
 msgid "Set Avatar"
 msgstr "Выбрать аватар"
 
-#: profiles/templates/profiles/update_profile.html:5
-#: profiles/templates/profiles/update_profile.html:8
+#: apps/profiles/templates/profiles/update_profile.html:5
+#: apps/profiles/templates/profiles/update_profile.html:8
 msgid "Update Profile"
 msgstr "Обновить профиль"
 
-#: profiles/templates/profiles/view_profile.html:18
+#: apps/profiles/templates/profiles/view_profile.html:18
 msgid "Change avatar"
 msgstr "Поменять аватар"
 
-#: profiles/templates/profiles/view_profile.html:20
+#: apps/profiles/templates/profiles/view_profile.html:20
 msgid "Set avatar"
 msgstr "Установить аватар"
 
-#: profiles/templates/profiles/view_profile.html:44
+#: apps/profiles/templates/profiles/view_profile.html:44
 msgid "Registration date"
 msgstr "Дата регистрации"
 
-#: profiles/templates/profiles/view_profile.html:51
+#: apps/profiles/templates/profiles/view_profile.html:51
 msgid "Edit"
 msgstr "Редактировать"
 
-#: snippet/admin.py:13 snippet/admin.py:20
+#: apps/snippet/admin.py:13 apps/snippet/admin.py:20
 msgid "Custom fields"
 msgstr "Кастомные поля"
 
-#: snippet/forms/category_forms.py:12 snippet/forms/tag_forms.py:10
+#: apps/snippet/forms/category_forms.py:12 apps/snippet/forms/tag_forms.py:10
 msgid "Name"
 msgstr "Название"
 
-#: snippet/forms/category_forms.py:12 snippet/forms/tag_forms.py:10
+#: apps/snippet/forms/category_forms.py:12 apps/snippet/forms/tag_forms.py:10
 msgid "Slug"
 msgstr "Слаг"
 
-#: snippet/forms/feedback_forms.py:15
+#: apps/snippet/forms/feedback_forms.py:15
 msgid "Subject"
 msgstr "Тема"
 
-#: snippet/forms/feedback_forms.py:21 snippet/forms/snippet_forms.py:13
+#: apps/snippet/forms/feedback_forms.py:21
+#: apps/snippet/forms/snippet_forms.py:13
 msgid "Content"
 msgstr "Содержание"
 
-#: snippet/forms/snippet_forms.py:12
+#: apps/snippet/forms/snippet_forms.py:12
 msgid "Title"
 msgstr "Заголовок"
 
-#: snippet/forms/snippet_forms.py:14
-#: snippet/templates/snippet/category/show_category.html:4
-#: snippet/templates/snippet/category/show_category.html:7
-#: snippet/templates/snippet/snippet/show_snippet.html:42
+#: apps/snippet/forms/snippet_forms.py:14
+#: apps/snippet/templates/snippet/category/show_category.html:4
+#: apps/snippet/templates/snippet/category/show_category.html:7
+#: apps/snippet/templates/snippet/snippet/show_snippet.html:42
 msgid "Category"
 msgstr "Категории"
 
-#: snippet/templates/snippet/category/add_category.html:5
-#: snippet/templates/snippet/category/add_category.html:8
-#: snippet/templates/snippet/category/show_categories.html:15
+#: apps/snippet/templates/snippet/category/add_category.html:5
+#: apps/snippet/templates/snippet/category/add_category.html:8
+#: apps/snippet/templates/snippet/category/show_categories.html:15
 msgid "Add Category"
 msgstr "Добавить категорию"
 
-#: snippet/templates/snippet/category/add_category.html:21
-#: snippet/templates/snippet/tag/add_tag.html:21
+#: apps/snippet/templates/snippet/category/add_category.html:21
+#: apps/snippet/templates/snippet/tag/add_tag.html:21
 msgid "Create"
 msgstr "Создать"
 
-#: snippet/templates/snippet/category/delete_category.html:5
-#: snippet/templates/snippet/category/delete_category.html:8
+#: apps/snippet/templates/snippet/category/delete_category.html:5
+#: apps/snippet/templates/snippet/category/delete_category.html:8
 msgid "Delete Category"
 msgstr "Удалить категорию"
 
-#: snippet/templates/snippet/category/delete_category.html:17
+#: apps/snippet/templates/snippet/category/delete_category.html:17
 msgid "Are you sure you want to delete this Category?"
 msgstr "Вы уверены, что хотите удалить эту категорию?"
 
-#: snippet/templates/snippet/category/show_categories.html:4
-#: snippet/templates/snippet/category/show_categories.html:7
+#: apps/snippet/templates/snippet/category/show_categories.html:4
+#: apps/snippet/templates/snippet/category/show_categories.html:7
 msgid "All Categories"
 msgstr "Все категории"
 
-#: snippet/templates/snippet/category/show_categories.html:23
+#: apps/snippet/templates/snippet/category/show_categories.html:23
 msgid "view"
 msgstr "просмотреть"
 
-#: snippet/templates/snippet/category/show_categories.html:25
-#: snippet/templates/snippet/snippet/show_snippet.html:32
-#: snippet/templates/snippet/tag/show_tags.html:25
+#: apps/snippet/templates/snippet/category/show_categories.html:25
+#: apps/snippet/templates/snippet/snippet/show_snippet.html:32
+#: apps/snippet/templates/snippet/tag/show_tags.html:25
 msgid "edit"
 msgstr "редактировать"
 
-#: snippet/templates/snippet/category/show_categories.html:27
-#: snippet/templates/snippet/snippet/show_snippet.html:34
-#: snippet/templates/snippet/tag/show_tags.html:27
+#: apps/snippet/templates/snippet/category/show_categories.html:27
+#: apps/snippet/templates/snippet/snippet/show_snippet.html:34
+#: apps/snippet/templates/snippet/tag/show_tags.html:27
 msgid "delete"
 msgstr "удалить"
 
-#: snippet/templates/snippet/category/show_categories.html:32
+#: apps/snippet/templates/snippet/category/show_categories.html:32
 msgid "No category has been created yet..."
 msgstr "Ни одной категории еще не создано..."
 
-#: snippet/templates/snippet/category/show_category.html:17
-#: snippet/templates/snippet/tag/show_tag.html:17
+#: apps/snippet/templates/snippet/category/show_category.html:17
+#: apps/snippet/templates/snippet/tag/show_tag.html:17
 msgid "Created at"
 msgstr "Создано"
 
-#: snippet/templates/snippet/category/show_category.html:19
-#: snippet/templates/snippet/tag/show_tag.html:18
+#: apps/snippet/templates/snippet/category/show_category.html:19
+#: apps/snippet/templates/snippet/tag/show_tag.html:18
 msgid "Updated at"
 msgstr "Обновлено"
 
-#: snippet/templates/snippet/category/show_category.html:21
-#: snippet/templates/snippet/tag/show_tag.html:20
+#: apps/snippet/templates/snippet/category/show_category.html:21
+#: apps/snippet/templates/snippet/tag/show_tag.html:20
 #: venv/lib/python3.8/site-packages/django/forms/formsets.py:391
 msgid "Delete"
 msgstr "Удалить"
 
-#: snippet/templates/snippet/category/show_category.html:22
-#: snippet/templates/snippet/category/update_category.html:21
-#: snippet/templates/snippet/snippet/update_snippet.html:21
-#: snippet/templates/snippet/tag/show_tag.html:21
-#: snippet/templates/snippet/tag/update_tag.html:21
+#: apps/snippet/templates/snippet/category/show_category.html:22
+#: apps/snippet/templates/snippet/category/update_category.html:21
+#: apps/snippet/templates/snippet/snippet/update_snippet.html:21
+#: apps/snippet/templates/snippet/tag/show_tag.html:21
+#: apps/snippet/templates/snippet/tag/update_tag.html:21
 msgid "Update"
 msgstr "Обновить"
 
-#: snippet/templates/snippet/category/update_category.html:5
-#: snippet/templates/snippet/category/update_category.html:8
+#: apps/snippet/templates/snippet/category/update_category.html:5
+#: apps/snippet/templates/snippet/category/update_category.html:8
 msgid "Update Category"
 msgstr "Обновить категорию"
 
-#: snippet/templates/snippet/home.html:4 snippet/templates/snippet/home.html:7
+#: apps/snippet/templates/snippet/home.html:4
+#: apps/snippet/templates/snippet/home.html:7
 msgid "Home"
 msgstr "Главная"
 
-#: snippet/templates/snippet/home.html:16
+#: apps/snippet/templates/snippet/home.html:16
 msgid "Snippets by"
 msgstr "Сниппеты пользователя"
 
-#: snippet/templates/snippet/home.html:18
+#: apps/snippet/templates/snippet/home.html:18
 msgid "Snippets by all users"
 msgstr "Сниппеты всех пользователей"
 
-#: snippet/templates/snippet/home.html:25
-#: snippet/templates/snippet/snippet/show_snippets.html:33
+#: apps/snippet/templates/snippet/home.html:25
+#: apps/snippet/templates/snippet/snippet/show_snippets.html:33
 msgid "You have no snippets yet..."
 msgstr "Вы еще не сохранили ни одного сниппета..."
 
-#: snippet/templates/snippet/misc/language_choice.html:5
-#: snippet/templates/snippet/misc/language_choice.html:8
+#: apps/snippet/templates/snippet/misc/language_choice.html:5
+#: apps/snippet/templates/snippet/misc/language_choice.html:8
 msgid "Choose Language"
 msgstr "Выберите язык"
 
-#: snippet/templates/snippet/misc/send_feedback.html:4
-#: snippet/templates/snippet/misc/send_feedback.html:7
+#: apps/snippet/templates/snippet/misc/send_feedback.html:4
+#: apps/snippet/templates/snippet/misc/send_feedback.html:7
 msgid "Contact Form"
 msgstr "Контакты"
 
-#: snippet/templates/snippet/misc/send_feedback.html:17
+#: apps/snippet/templates/snippet/misc/send_feedback.html:17
 msgid "Send"
 msgstr "Отправить"
 
-#: snippet/templates/snippet/snippet/add_snippet.html:21
+#: apps/snippet/templates/snippet/snippet/add_snippet.html:21
 msgid "Publish"
 msgstr "Опубликовать"
 
-#: snippet/templates/snippet/snippet/delete_snippet.html:5
-#: snippet/templates/snippet/snippet/delete_snippet.html:8
+#: apps/snippet/templates/snippet/snippet/delete_snippet.html:5
+#: apps/snippet/templates/snippet/snippet/delete_snippet.html:8
 msgid "Delete Snippet"
 msgstr "Удалить сниппет"
 
-#: snippet/templates/snippet/snippet/delete_snippet.html:17
+#: apps/snippet/templates/snippet/snippet/delete_snippet.html:17
 msgid "Are you sure you want to delete this snippet?"
 msgstr "Вы уверены, что хотите удалить этот сниппет?"
 
-#: snippet/templates/snippet/snippet/show_snippet.html:9
-#: snippet/templates/snippet/snippet/show_snippet.html:12
+#: apps/snippet/templates/snippet/snippet/show_snippet.html:9
+#: apps/snippet/templates/snippet/snippet/show_snippet.html:12
 msgid "Snippet"
 msgstr "Сниппет"
 
-#: snippet/templates/snippet/snippet/show_snippet.html:25
+#: apps/snippet/templates/snippet/snippet/show_snippet.html:25
 msgctxt "created-by"
 msgid "By"
 msgstr "Автор:"
 
-#: snippet/templates/snippet/snippet/show_snippet.html:27
+#: apps/snippet/templates/snippet/snippet/show_snippet.html:27
 msgctxt "creation-date"
 msgid "on"
 msgstr "дата:"
 
-#: snippet/templates/snippet/snippet/show_snippet.html:43
+#: apps/snippet/templates/snippet/snippet/show_snippet.html:43
 msgid "Create new category"
 msgstr "Создать новую категорию"
 
-#: snippet/templates/snippet/snippet/show_snippet.html:50
+#: apps/snippet/templates/snippet/snippet/show_snippet.html:50
 msgid "Create new tag"
 msgstr "Создать новый тэг"
 
-#: snippet/templates/snippet/snippet/show_snippets.html:4
-#: snippet/templates/snippet/snippet/show_snippets.html:7
+#: apps/snippet/templates/snippet/snippet/show_snippets.html:4
+#: apps/snippet/templates/snippet/snippet/show_snippets.html:7
 msgid "Snippets"
 msgstr "Сниппеты"
 
-#: snippet/templates/snippet/snippet/show_snippets.html:20
+#: apps/snippet/templates/snippet/snippet/show_snippets.html:20
 msgid "category"
 msgstr "категория"
 
-#: snippet/templates/snippet/snippet/show_snippets.html:21
+#: apps/snippet/templates/snippet/snippet/show_snippets.html:21
 msgid "tag"
 msgstr "тэг"
 
-#: snippet/templates/snippet/snippet/show_snippets.html:24
+#: apps/snippet/templates/snippet/snippet/show_snippets.html:24
 #, python-format
 msgid "Snippets by %(translated_taxonomy_type)s: %(taxonomy_name)s"
 msgstr "Сниппеты • %(translated_taxonomy_type)s: %(taxonomy_name)s"
 
-#: snippet/templates/snippet/snippet/update_snippet.html:5
-#: snippet/templates/snippet/snippet/update_snippet.html:8
+#: apps/snippet/templates/snippet/snippet/update_snippet.html:5
+#: apps/snippet/templates/snippet/snippet/update_snippet.html:8
 msgid "Update Snippet"
 msgstr "Обновить сниппет"
 
-#: snippet/templates/snippet/tag/add_tag.html:5
-#: snippet/templates/snippet/tag/add_tag.html:8
+#: apps/snippet/templates/snippet/tag/add_tag.html:5
+#: apps/snippet/templates/snippet/tag/add_tag.html:8
 msgid "Add Tag"
 msgstr "Добавить тэг"
 
-#: snippet/templates/snippet/tag/delete_tag.html:5
-#: snippet/templates/snippet/tag/delete_tag.html:8
+#: apps/snippet/templates/snippet/tag/delete_tag.html:5
+#: apps/snippet/templates/snippet/tag/delete_tag.html:8
 msgid "Delete Tag"
 msgstr "Удалить тэг"
 
-#: snippet/templates/snippet/tag/delete_tag.html:17
+#: apps/snippet/templates/snippet/tag/delete_tag.html:17
 msgid "Are you sure you want to delete this Tag?"
 msgstr "Вы уверены, что хотите удалить этот тэг?"
 
-#: snippet/templates/snippet/tag/show_tag.html:4
-#: snippet/templates/snippet/tag/show_tag.html:7
+#: apps/snippet/templates/snippet/tag/show_tag.html:4
+#: apps/snippet/templates/snippet/tag/show_tag.html:7
 msgid "Tag"
 msgstr "Тэг"
 
-#: snippet/templates/snippet/tag/show_tags.html:4
-#: snippet/templates/snippet/tag/show_tags.html:7
-#: snippet/templates/snippet/tag/show_tags.html:15
+#: apps/snippet/templates/snippet/tag/show_tags.html:4
+#: apps/snippet/templates/snippet/tag/show_tags.html:7
+#: apps/snippet/templates/snippet/tag/show_tags.html:15
 msgid "All Tags"
 msgstr "Все тэги"
 
-#: snippet/templates/snippet/tag/show_tags.html:17
+#: apps/snippet/templates/snippet/tag/show_tags.html:17
 msgid "Create New Tag"
 msgstr "Создать новый тэг"
 
-#: snippet/templates/snippet/tag/show_tags.html:32
+#: apps/snippet/templates/snippet/tag/show_tags.html:32
 msgid "No tag has been created yet..."
 msgstr "Ни одного тэга еще не создано..."
 
-#: snippet/templates/snippet/tag/update_tag.html:5
-#: snippet/templates/snippet/tag/update_tag.html:8
+#: apps/snippet/templates/snippet/tag/update_tag.html:5
+#: apps/snippet/templates/snippet/tag/update_tag.html:8
 msgid "Update Tag"
 msgstr "Обновить тэг"
 
-#: snippet/urls/main_urls.py:23
+#: apps/snippet/urls/main_urls.py:23
 msgid "about"
 msgstr "о_нас"

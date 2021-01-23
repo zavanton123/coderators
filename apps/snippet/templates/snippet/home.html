@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{% block page-title %}{% translate 'Home' %}{% endblock %}
+
+{% block main-content-header %}
+    <h1 class="page-title">{% translate 'Home' %}</h1>
+{% endblock %}
+
+{% block main-content-body %}
+
+    <div class="fullwidth-block">
+        <div class="container">
+
+            {% if request.user.is_authenticated %}
+                <h1>{% translate 'Snippets by' %} {{ request.user }}</h1>
+            {% else %}
+                <h1>{% translate 'Snippets by all users' %}</h1>
+            {% endif %}
+
+            <ul>
+                {% for snippet in snippets %}
+                    <li><a href="{{ snippet.get_absolute_url }}">{{ snippet }}</a></li>
+                {% empty %}
+                    <h2>{% translate 'You have no snippets yet...' %}</h2>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+
+{% endblock %}

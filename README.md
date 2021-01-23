@@ -22,11 +22,14 @@ source venv/bin/activate
 # install the dependencies
 pip install -r requirements.txt
 
-# add the secret json files to the project root
-secret-debug.json
-secret-prod.json
+# add private data to env/.env
+DEBUG=on
+SECRET_KEY=some-key
+DATABASE_URL=some-db-url
+SQLITE_URL=some-db-url
+CACHE_URL=some-cache-url
+REDIS_URL=some-redis-url
 
-# set DEBUG=True in coderators/settings.py
 
 # migrate DB
 python manage.py makemigrations
