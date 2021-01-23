@@ -2,34 +2,20 @@ import json
 import os
 from pathlib import Path
 
+import environ
 from django.core.exceptions import ImproperlyConfigured
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DEBUG = True
+# setup django-environ
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, 'env/.env'))
 
-# Choose debug or prod secrets
-if DEBUG:
-    secrets_filename = 'secrets-debug.json'
-else:
-    secrets_filename = 'secrets-prod.json'
+DEBUG = env('DEBUG')
 
-# get private data from json file (untracked by git)
-with open(os.path.join(BASE_DIR, secrets_filename)) as secrets_file:
-    secrets = json.load(secrets_file)
-
-
-def get_secret(setting, source=secrets):
-    """Get secret setting or fail with ImproperlyConfigured"""
-    try:
-        return source[setting]
-    except KeyError:
-        raise ImproperlyConfigured("Set the {} setting".format(setting))
-
-
-SECRET_KEY = get_secret('SECRET_KEY')
+SECRET_KEY = env('SECRET_KEY')
 
 ALLOWED_HOSTS = ["*"]
 
@@ -40,11 +26,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'snippet.apps.SnippetConfig',
+
+    # django extensions
+    'django_extensions',
     # simple captcha
     'captcha',
     # django debug toolbar
-    'debug_toolbar'
+    'debug_toolbar',
+
+    # my apps
+    'core.apps.CoreConfig',
+    'snippet.apps.SnippetConfig',
+    'authentication.apps.AuthenticationConfig',
+    'profiles.apps.ProfilesConfig',
 ]
 
 MIDDLEWARE = [
@@ -87,12 +81,12 @@ WSGI_APPLICATION = 'coderators.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': get_secret('ENGINE'),
-        'NAME': get_secret('NAME'),
-        "HOST": get_secret('HOST'),
-        "PORT": get_secret('PORT'),
-        "USER": get_secret('USER'),
-        "PASSWORD": get_secret('PASSWORD')
+        'ENGINE': env('ENGINE'),
+        'NAME': env('NAME'),
+        "HOST": env('HOST'),
+        "PORT": env('PORT'),
+        "USER": env('USER'),
+        "PASSWORD": env('PASSWORD')
     }
 }
 
@@ -128,13 +122,13 @@ LOGGING = {
 
 # Email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_SSL = False
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = get_secret('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = get_secret('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = get_secret('DEFAULT_FROM_EMAIL')
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_USE_SSL = env('EMAIL_USE_SSL', default=False)
+EMAIL_USE_TLS = env('EMAIL_USE_TLS', default=False)
+EMAIL_PORT = env('EMAIL_PORT')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
 
 # Internationalization and localization
 # Default language
@@ -166,7 +160,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'snippet/static')
+    os.path.join(BASE_DIR, 'core/static'),
+    os.path.join(BASE_DIR, 'core/static'),
 ]
 
 # image files
@@ -178,4 +173,4 @@ LOGIN_URL = reverse_lazy('snippet:login')
 LOGIN_REDIRECT_URL = reverse_lazy('snippet:home')
 
 # Setup custom user model
-AUTH_USER_MODEL = 'snippet.CustomUser'
+AUTH_USER_MODEL = 'authentication.CustomUser'
