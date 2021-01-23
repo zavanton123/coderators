@@ -1,0 +1,36 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{% block page-title %}{% translate 'All Categories' %}{% endblock %}
+
+{% block main-content-header %}{% translate 'All Categories' %}{% endblock %}
+
+{% block main-content-body %}
+
+    <div class="fullwidth-block">
+        <div class="container">
+
+            <h3><a href="{% url 'snippet:add_category' %}">{% translate 'Add Category' %}</a></h3>
+
+            <ul>
+                {% for category in categories %}
+                    <li>
+                        <p><a href="{{ category.get_snippets_url }}">{{ category }}</a></p>
+                        <p>
+                            (
+                            <a href="{{ category.get_show_url }}">{% translate 'view' %}</a>
+                            •
+                            <a href="{{ category.get_update_url }}">{% translate 'edit' %}</a>
+                            •
+                            <a href="{{ category.get_delete_url }}">{% translate 'delete' %}</a>
+                            )
+                        </p>
+                    </li>
+                {% empty %}
+                    <h2>{% translate 'No category has been created yet...' %}</h2>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}

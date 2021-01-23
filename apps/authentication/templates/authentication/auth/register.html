@@ -1,0 +1,24 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block page-title %}{% translate 'Register' %}{% endblock %}
+
+{% block main-content-header %}{% translate 'Register' %}{% endblock %}
+
+{% block main-content-body %}
+
+    <div class="fullwidth-block">
+        <div class="container">
+
+            <form method="POST">
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <p><input type="submit" value="{% translate 'Register' %}"/></p>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

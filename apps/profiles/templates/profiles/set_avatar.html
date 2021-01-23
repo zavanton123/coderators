@@ -1,0 +1,28 @@
+{% extends 'snippet/../../../core/templates/core/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block page-title %}{% translate 'Set Avatar' %}{% endblock %}
+
+{% block main-content-header %}{% translate 'Set Avatar' %}{% endblock %}
+
+{% block main-content-body %}
+
+    <div class="fullwidth-block">
+        <div class="container">
+
+            {% if user.avatar %}
+                <img src="{{ user.avatar.url }}" width="200" alt="avatar"/>
+            {% endif %}
+
+            <form action="{% url 'snippet:set_avatar' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <p><input type="submit" class="btn btn-primary" value="{% translate 'Confirm' %}"/></p>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block page-title %}{% translate 'Update Tag' %}{% endblock %}
+
+{% block main-content-header %}{% translate 'Update Tag' %}{% endblock %}
+
+{% block main-content-body %}
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <p><input type="submit" class="btn btn-primary" value="{% translate 'Update' %}"></p>
+        </form>
+    </div>
+{% endblock %}
