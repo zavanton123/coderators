@@ -20,13 +20,7 @@
                     <h3 class="widget-title">{% translate 'Pages' %}</h3>
                     <ul class="dash-list">
                         <li><a href="{% url 'snippet:home' %}">{% translate 'Home' %}</a></li>
-                        <li><a href="{% url 'snippet:clients' %}">{% translate 'Clients' %}</a></li>
-                        <li><a href="{% url 'snippet:about' %}">{% translate 'About' %}</a></li>
                         <li><a href="{% url 'snippet:feedback' %}">{% translate 'Feedback' %}</a></li>
-                        {% if user.is_authenticated %}
-                            <li><a href="{% url 'snippet:password_change' %}">{% translate 'Change Password' %}</a></li>
-                            <li><a href="{% url 'snippet:password_reset' %}">{% translate 'Reset Password' %}</a></li>
-                        {% endif %}
                     </ul>
                 </div>
             </div>

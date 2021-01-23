@@ -15,10 +15,6 @@ class AboutView(TemplateView):
     template_name = 'snippet/misc/about.html'
 
 
-class ClientView(TemplateView):
-    template_name = 'snippet/misc/clients.html'
-
-
 class SendFeedback(FormView):
     template_name = 'snippet/misc/send_feedback.html'
     success_url = reverse_lazy('snippet:home')

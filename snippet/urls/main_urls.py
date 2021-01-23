@@ -2,7 +2,7 @@ from django.urls import path, include
 from django.utils.translation import gettext_lazy as _
 
 from snippet.views.home_views import HomeView
-from snippet.views.misc_views import AboutView, ClientView, SendFeedback, ChooseLanguage
+from snippet.views.misc_views import AboutView, SendFeedback, ChooseLanguage
 
 app_name = 'snippet'
 
@@ -21,7 +21,6 @@ urlpatterns = [
 
     # misc views
     path(_('about'), AboutView.as_view(), name='about'),
-    path('clients', ClientView.as_view(), name='clients'),
     path('feedback', SendFeedback.as_view(), name='feedback'),
     path('language', ChooseLanguage.as_view(), name='language'),
 ]
