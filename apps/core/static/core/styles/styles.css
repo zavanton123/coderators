@@ -1,3 +1,7 @@
 #top-navigation-bar {
     background-color: blueviolet;
 }
+
+.form-validation-error {
+    color: #cc0000;
+}

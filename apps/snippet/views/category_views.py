@@ -19,16 +19,16 @@ class ShowCategory(DetailView):
 
 
 class AddCategory(LoginRequiredMixin, CreateView):
-    login_url = reverse_lazy('snippet:login')
-    redirect_field_name = 'redirect_to'
+    login_url = reverse_lazy('authentication:login')
+    redirect_field_name = 'next'
     model = Category
     form_class = CategoryForm
     template_name = 'snippet/category/add_category.html'
 
 
 class UpdateCategory(LoginRequiredMixin, UpdateView):
-    login_url = reverse_lazy('snippet:login')
-    redirect_field_name = 'redirect_to'
+    login_url = reverse_lazy('authentication:login')
+    redirect_field_name = 'next'
     template_name = 'snippet/category/update_category.html'
     success_url = reverse_lazy('snippet:show_categories')
     form_class = CategoryForm
@@ -36,8 +36,8 @@ class UpdateCategory(LoginRequiredMixin, UpdateView):
 
 
 class DeleteCategory(LoginRequiredMixin, DeleteView):
-    login_url = reverse_lazy('snippet:login')
-    redirect_field_name = 'redirect_to'
+    login_url = reverse_lazy('authentication:login')
+    redirect_field_name = 'next'
     template_name = 'snippet/category/delete_category.html'
     success_url = reverse_lazy('snippet:show_categories')
     model = Category

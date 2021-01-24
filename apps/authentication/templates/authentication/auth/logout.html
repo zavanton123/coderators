@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block page-title %}{% translate 'Logout' %}{% endblock %}
+
+{% block main-content-header %}{% translate 'Logout' %}{% endblock %}
+
+{% block main-content-body %}
+
+    <div class="container">
+
+        <p>{% translate 'Are you sure you want to log out?' %}</p>
+
+        <form method="post" action="{% url 'account_logout' %}">
+            {% csrf_token %}
+
+            {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+            {% endif %}
+
+            <button type="submit" class="btn btn-primary">{% translate 'Confirm' %}</button>
+        </form>
+    </div>
+
+{% endblock %}

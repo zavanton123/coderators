@@ -17,35 +17,41 @@
                 {# navigation links #}
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     {% if request.user.is_authenticated %}
+                        {% url 'snippet:add_snippet' as add_snippet_url %}
                         <li class="nav-item">
-                            <a class="nav-link"
-                               href="{% url 'snippet:add_snippet' %}">{% translate 'Add Snippet' %}</a>
+                            <a class="nav-link {% if request.path == add_snippet_url %}active{% endif %}"
+                               href="{{ add_snippet_url }}">{% translate 'Add Snippet' %}</a>
                         </li>
                     {% endif %}
 
                     <li class="nav-item">
-                        <a class="nav-link"
-                           href="{% url 'snippet:show_categories' %}">{% translate 'Categories' %}</a>
+                        {% url 'snippet:show_categories' as categories_url %}
+                        <a class="nav-link {% if request.path == categories_url %}active{% endif %}"
+                           href="{{ categories_url }}">{% translate 'Categories' %}</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link"
-                           href="{% url 'snippet:show_tags' %}">{% translate 'Tags' %}</a>
+                        {% url 'snippet:show_tags' as tags_url %}
+                        <a class="nav-link {% if request.path == tags_url %}active{% endif %}"
+                           href="{{ tags_url }}">{% translate 'Tags' %}</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link"
-                           href="{% url 'snippet:feedback' %}">{% translate 'Feedback' %}</a>
+                        {% url 'snippet:feedback' as feedback_url %}
+                        <a class="nav-link {% if request.path == feedback_url %}active{% endif %}"
+                           href="{{ feedback_url }}">{% translate 'Feedback' %}</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link"
-                           href="{% url 'snippet:language' %}">{% translate 'Language' %}</a>
+                        {% url 'snippet:language' as language_url %}
+                        <a class="nav-link {% if request.path == language_url %}active{% endif %}"
+                           href="{{ language_url }}">{% translate 'Language' %}</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link"
-                           href="{% url 'snippet:about' %}">{% translate 'About' %}</a>
+                        {% url 'snippet:about' as about_url %}
+                        <a class="nav-link {% if request.path == about_url %}active{% endif %}"
+                           href="{{ about_url }}">{% translate 'About' %}</a>
                     </li>
 
                     {% if request.user.is_authenticated %}
@@ -56,16 +62,16 @@
 
                                 <li>
                                     <a class="dropdown-item"
-                                       href="{% url 'snippet:view_user' %}">{% translate 'Profile' %}</a>
+                                       href="{% url 'profiles:view_user' %}">{% translate 'Profile' %}</a>
                                 </li>
 
                                 <li>
                                     <a class="dropdown-item"
-                                       href="{% url 'snippet:password_change' %}">{% translate 'Change Password' %}</a>
+                                       href="{% url 'authentication:password_change' %}">{% translate 'Change Password' %}</a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item"
-                                       href="{% url 'snippet:password_reset' %}">{% translate 'Reset Password' %}</a>
+                                       href="{% url 'authentication:password_reset' %}">{% translate 'Reset Password' %}</a>
                                 </li>
 
                                 <li>
@@ -74,7 +80,7 @@
 
                                 <li>
                                     <a class="dropdown-item"
-                                       href="{% url 'snippet:logout' %}">{% translate 'Logout' %}</a>
+                                       href="{% url 'authentication:logout' %}?next={{ request.path }}">{% translate 'Logout' %}</a>
                                 </li>
                             </ul>
                         </li>
@@ -85,11 +91,11 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li>
                                     <a class="dropdown-item"
-                                       href="{% url 'snippet:login' %}">{% translate 'Login' %}</a>
+                                       href="{% url 'authentication:login' %}?next={{ request.path }}">{% translate 'Login' %}</a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item"
-                                       href="{% url 'snippet:register' %}">{% translate 'Register' %}</a>
+                                       href="{% url 'authentication:register' %}">{% translate 'Register' %}</a>
                                 </li>
                             </ul>
                         </li>
