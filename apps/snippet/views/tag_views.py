@@ -1,9 +1,13 @@
+import logging
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 
 from apps.snippet.forms.tag_forms import TagForm
 from apps.snippet.models.tag_models import Tag
+
+log = logging.getLogger(__name__)
 
 
 class ShowTags(ListView):
@@ -16,6 +20,11 @@ class ShowTag(DetailView):
     template_name = 'snippet/tag/show_tag.html'
     context_object_name = 'tag'
     model = Tag
+
+    def dispatch(self, request, *args, **kwargs):
+        path = request.get_full_path()
+        log.debug(f'zavanton - path: {path}')
+        return super().dispatch(request, *args, **kwargs)
 
 
 class AddTag(LoginRequiredMixin, CreateView):
