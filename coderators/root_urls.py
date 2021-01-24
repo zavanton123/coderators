@@ -11,6 +11,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # simple captcha
     path('captcha/', include('captcha.urls')),
+    # todo zavanton - examine the reason why an error is thrown when this url pattern is deleted
     # django-allauth
     path('accounts/', include('allauth.urls')),
 ]
@@ -19,6 +20,8 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     # snippets app
     path('', include('apps.snippet.urls.main_urls', namespace='first-snippet')),
+    path('auth/', include('apps.authentication.auth_urls', namespace='first-authentication')),
+    path('profiles/', include('apps.profiles.profile_urls', namespace='first-profiles')),
     prefix_default_language=False
 )
 

@@ -19,8 +19,8 @@ class ShowTag(DetailView):
 
 
 class AddTag(LoginRequiredMixin, CreateView):
-    login_url = reverse_lazy('snippet:login')
-    redirect_field_name = 'redirect_to'
+    login_url = reverse_lazy('authentication:login')
+    redirect_field_name = 'next'
     template_name = 'snippet/tag/add_tag.html'
     form_class = TagForm
     success_url = reverse_lazy('snippet:home')
@@ -28,8 +28,8 @@ class AddTag(LoginRequiredMixin, CreateView):
 
 
 class UpdateTag(LoginRequiredMixin, UpdateView):
-    login_url = reverse_lazy('snippet:login')
-    redirect_field_name = 'redirect_to'
+    login_url = reverse_lazy('authentication:login')
+    redirect_field_name = 'next'
     template_name = 'snippet/tag/update_tag.html'
     success_url = reverse_lazy('snippet:show_tags')
     form_class = TagForm
@@ -37,8 +37,8 @@ class UpdateTag(LoginRequiredMixin, UpdateView):
 
 
 class DeleteTag(LoginRequiredMixin, DeleteView):
-    login_url = reverse_lazy('snippet:login')
-    redirect_field_name = 'redirect_to'
+    login_url = reverse_lazy('authentication:login')
+    redirect_field_name = 'next'
     model = Tag
     success_url = reverse_lazy('snippet:show_tags')
     template_name = 'snippet/tag/delete_tag.html'

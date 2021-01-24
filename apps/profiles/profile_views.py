@@ -12,8 +12,8 @@ log = logging.getLogger(__name__)
 
 
 class ViewProfile(LoginRequiredMixin, TemplateView):
-    login_url = reverse_lazy('snippet:login')
-    redirect_field_name = 'redirect_to'
+    login_url = reverse_lazy('authentication:login')
+    redirect_field_name = 'next'
     template_name = 'profiles/view_profile.html'
 
 
@@ -36,7 +36,7 @@ class UpdateProfile(View):
             request.user.experience = form.cleaned_data['experience']
             request.user.description = form.cleaned_data['description']
             request.user.save()
-            return redirect('snippet:view_user')
+            return redirect('profiles:view_user')
         return render(request, 'profiles/update_profile.html', {'form': form})
 
 
@@ -52,5 +52,5 @@ class SetAvatar(View):
             if image:
                 request.user.avatar = image
                 request.user.save()
-            return redirect('snippet:view_user')
+            return redirect('profiles:view_user')
         return render(request, 'profiles/set_avatar.html', {'form': form})

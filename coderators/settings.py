@@ -194,7 +194,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Login defaults
-LOGIN_URL = reverse_lazy('snippet:login')
+LOGIN_URL = reverse_lazy('authentication:login')
 LOGIN_REDIRECT_URL = reverse_lazy('snippet:home')
 
 # Setup custom user model

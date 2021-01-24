@@ -4,6 +4,8 @@ from apps.authentication.auth_views import UserLoginView, UserLogoutView, UserPa
     UserPasswordChangeDoneView, UserPasswordResetView, UserPasswordResetDoneView, UserPasswordResetConfirmView, \
     UserPasswordResetCompleteView, RegisterView
 
+app_name = 'authentication'
+
 urlpatterns = [
     path('register', RegisterView.as_view(), name='register'),
     path('login', UserLoginView.as_view(), name='login'),
