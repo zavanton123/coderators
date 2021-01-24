@@ -26,19 +26,44 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
+    # django allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
     # django extensions
     'django_extensions',
-    # simple captcha
-    'captcha',
     # django debug toolbar
     'debug_toolbar',
+    # simple captcha
+    'captcha',
 
     # my apps
     'apps.core.apps.CoreConfig',
     'apps.snippet.apps.SnippetConfig',
     'apps.authentication.apps.AuthenticationConfig',
     'apps.profiles.apps.ProfilesConfig',
+]
+
+SITE_ID = 1
+
+# setup django-allauth google provider
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': '583031924238-2sntg2osu8b3q17u0kc3qf0pd0t7oop7.apps.googleusercontent.com',
+            'secret': '5MoGSEpDZSO-2eo1A3MGDXzC',
+            'key': ''
+        }
+    }
+}
+
+AUTHENTICATION_BACKENDS = [
+    # required by django-allauth
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 MIDDLEWARE = [
@@ -174,3 +199,10 @@ LOGIN_REDIRECT_URL = reverse_lazy('snippet:home')
 
 # Setup custom user model
 AUTH_USER_MODEL = 'authentication.CustomUser'
+
+# Setup django-allauth with custom user
+ACCOUNT_AUTHENTICATION_METHOD = 'username'
+ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_USER_MODEL_EMAIL_FIELD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True

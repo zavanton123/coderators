@@ -11,6 +11,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # simple captcha
     path('captcha/', include('captcha.urls')),
+    # django-allauth
+    path('accounts/', include('allauth.urls')),
 ]
 
 # add i18n to urls

@@ -1,5 +1,6 @@
 import logging
 
+from allauth.account.views import SignupView
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, PasswordResetForm, SetPasswordForm
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView, \
@@ -13,21 +14,24 @@ from apps.authentication.auth_forms import RegisterForm
 log = logging.getLogger(__name__)
 
 
-class RegisterView(View):
-    def get(self, request, *args, **kwargs):
-        form = RegisterForm()
-        return render(request, 'authentication/auth/register.html', context={'form': form})
+class RegisterView(SignupView):
+    form_class = RegisterForm
+    template_name = 'authentication/auth/register.html'
 
-    def post(self, request, *args, **kwargs):
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Congrats! You have registered!')
-            return redirect('snippet:login')
-        else:
-            messages.error(request, "Epic fail! You haven't registered yet!")
-            form = RegisterForm()
-            return render(request, 'authentication/auth/register.html', context={'form': form})
+    # def get(self, request, *args, **kwargs):
+    #     form = RegisterForm()
+    #     return render(request, 'authentication/auth/register.html', context={'form': form})
+    #
+    # def post(self, request, *args, **kwargs):
+    #     form = RegisterForm(request.POST)
+    #     if form.is_valid():
+    #         form.save()
+    #         messages.success(request, 'Congrats! You have registered!')
+    #         return redirect('snippet:login')
+    #     else:
+    #         messages.error(request, "Epic fail! You haven't registered yet!")
+    #         form = RegisterForm()
+    #         return render(request, 'authentication/auth/register.html', context={'form': form})
 
 
 class UserLoginView(LoginView):
