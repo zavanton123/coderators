@@ -11,13 +11,9 @@ class TagForm(forms.ModelForm):
             'class': 'form-control',
             'style': 'max-width: 50%',
         })
-        self.fields['slug'].widget.attrs.update({
-            'class': 'form-control',
-            'style': 'max-width: 50%',
-        })
 
     class Meta:
         model = Tag
-        fields = ['name', 'slug']
-        localized_fields = ['name', 'slug']
-        labels = {'name': _('Name'), 'slug': _('Slug')}
+        fields = ['name']
+        localized_fields = ['name']
+        labels = {'name': _('Name')}
