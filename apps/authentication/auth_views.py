@@ -6,7 +6,7 @@ from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView
     PasswordResetView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetCompleteView
 from django.urls import reverse, reverse_lazy
 
-from apps.authentication.auth_forms import RegisterForm, CustomLoginForm
+from apps.authentication.auth_forms import RegisterForm, CustomLoginForm, CustomPasswordChangeForm
 
 log = logging.getLogger(__name__)
 
@@ -28,7 +28,7 @@ class UserLogoutView(LogoutView):
 
 
 class UserPasswordChangeView(PasswordChangeView):
-    form_class = PasswordChangeForm
+    form_class = CustomPasswordChangeForm
     template_name = 'authentication/auth/user_password_change.html'
 
     def get_success_url(self):
