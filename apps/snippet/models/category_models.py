@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django_extensions.db.fields import AutoSlugField
 
 
 class Category(models.Model):
@@ -8,9 +9,9 @@ class Category(models.Model):
         null=False,
         blank=False,
     )
-    slug = models.SlugField(
+    slug = AutoSlugField(
         unique=True,
-        max_length=100,
+        populate_from=['name']
     )
     created_at = models.DateTimeField(
         auto_now_add=True

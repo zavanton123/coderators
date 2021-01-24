@@ -1,5 +1,4 @@
 from django import forms
-from django.utils.translation import gettext_lazy as _
 
 from apps.snippet.models.category_models import Category
 
@@ -11,13 +10,8 @@ class CategoryForm(forms.ModelForm):
             'class': 'form-control',
             'style': 'max-width: 50%',
         })
-        self.fields['slug'].widget.attrs.update({
-            'class': 'form-control',
-            'style': 'max-width: 50%',
-        })
 
     class Meta:
         model = Category
-        fields = ['name', 'slug']
-        localized_fields = ('name', 'slug')
-        labels = {'name': _('Name'), 'slug': _('Slug')}
+        fields = ['name']
+        localized_fields = ['name']
