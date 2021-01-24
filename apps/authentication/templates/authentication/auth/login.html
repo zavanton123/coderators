@@ -32,7 +32,9 @@
                            for="{{ form.remember.id_for_label }}">{% translate 'Remember Me' %}</label>
                 </div>
 
-                <input name="{{ redirect_field_name }}" type="hidden" value="{{ redirect_field_value }}"/>
+                {% if redirect_field_value %}
+                    <input name="{{ redirect_field_name }}" type="hidden" value="{{ redirect_field_value }}"/>
+                {% endif %}
 
                 <p><input type="submit" class="btn btn-primary" value="{% translate 'Login' %}"></p>
             </div>

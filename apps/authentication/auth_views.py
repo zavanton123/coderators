@@ -1,8 +1,8 @@
 import logging
 
-from allauth.account.views import SignupView, LoginView
+from allauth.account.views import SignupView, LoginView, LogoutView
 from django.contrib.auth.forms import PasswordChangeForm, PasswordResetForm, SetPasswordForm
-from django.contrib.auth.views import LogoutView, PasswordChangeView, PasswordChangeDoneView, \
+from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, \
     PasswordResetView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetCompleteView
 from django.urls import reverse, reverse_lazy
 
@@ -22,16 +22,9 @@ class UserLoginView(LoginView):
     redirect_url = reverse_lazy('snippet:home')
     redirect_authenticated_user = True
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        if context['redirect_field_value'] is None:
-            context['redirect_field_value'] = self.redirect_url
-        return context
-
 
 class UserLogoutView(LogoutView):
-    redirect_field_name = 'next'
-    next_page = 'authentication:login'
+    template_name = 'authentication/auth/logout.html'
 
 
 class UserPasswordChangeView(PasswordChangeView):
