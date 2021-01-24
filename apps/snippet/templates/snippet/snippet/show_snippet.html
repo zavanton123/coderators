@@ -3,7 +3,7 @@
 {% load i18n %}
 
 {% block head-elements %}
-    <link href="{% static 'snippet/prism/../../../static/snippet/prism/prism-all.css' %}" rel="stylesheet"/>
+    <link href="{% static 'snippet/prism/prism-all.css' %}" rel="stylesheet"/>
 {% endblock %}
 
 {% block page-title %}{% translate 'Snippet' %}{% endblock %}
@@ -12,55 +12,63 @@
 
 {% block main-content-body %}
 
-    <div class="fullwidth-block">
-        <div class="container">
+    <div class="container">
 
-            {# show title #}
-            <h1>{{ snippet.title }}</h1>
+        <div class="row">
 
-            {# show author and publication date #}
-            <p>
-                {% translate 'By' context 'created-by' %} <a
-                    href="{% url 'snippet:home' %}">{{ snippet.author.username }}</a>
-                {% translate 'on' context 'creation-date' %} {{ snippet.published_at|date:'d.m.y' }}
-            </p>
-            {# show edit/delete snippet #}
-            {% if request.user.is_authenticated %}
-                <p><a href="{{ snippet.get_edit_url }}">(
-                    {% translate 'edit' %}</a> •
-                    <a href="{{ snippet.get_delete_url }}">
-                        {% translate 'delete' %}
-                        )
-                    </a>
+            <div class="col-9 pe-5 mb-5">
+                {# show title #}
+                <h1 class="mb-5">{{ snippet.title }}</h1>
+
+                {# show snippet content highlighted by prism#}
+                <pre><code class="language-css">{{ snippet.content }}</code></pre>
+            </div>
+
+            <div class="col-3">
+                {# show author and publication date #}
+                <p>
+                    {% translate 'By' context 'created-by' %} <a
+                        href="{% url 'snippet:home' %}">{{ snippet.author.username }}</a>
+                    {% translate 'on' context 'creation-date' %} {{ snippet.published_at|date:'d.m.y' }}
                 </p>
-                <br/>
-            {% endif %}
+                {# show edit/delete snippet #}
+                {% if request.user.is_authenticated %}
+                    <p><a href="{{ snippet.get_edit_url }}">(
+                        {% translate 'edit' %}</a> •
+                        <a href="{{ snippet.get_delete_url }}">
+                            {% translate 'delete' %}
+                            )
+                        </a>
+                    </p>
+                    <br/>
+                {% endif %}
 
-            {# show category #}
-            <h3>{% translate 'Category' %}:</h3>
-            <p><a href="{% url 'snippet:add_category' %}">({% translate 'Create new category' %})</a></p>
-            <p><a href="{{ snippet.category.get_snippets_url }}">{{ snippet.category }}</a></p>
+                {# show category #}
+                <h3>{% translate 'Category' %}:</h3>
+                <p><a href="{% url 'snippet:add_category' %}">({% translate 'Create new category' %})</a></p>
+                <p><a href="{{ snippet.category.get_snippets_url }}">{{ snippet.category }}</a></p>
 
-            {# show tags #}
-            {% if snippet.tags.all %}
-                <br/>
-                <h3>{% translate 'Tags' %}</h3>
-                <p><a href="{% url 'snippet:add_tag' %}">({% translate 'Create new tag' %})</a></p>
-                <ul>
-                    {% for tag in snippet.tags.all %}
-                        <li><a href="{{ tag.get_snippets_url }}">{{ tag }}</a></li>
-                    {% endfor %}
-                </ul>
-                <br/>
-            {% endif %}
+                {# show tags #}
+                {% if snippet.tags.all %}
+                    <br/>
+                    <h3>{% translate 'Tags' %}</h3>
+                    <p><a href="{% url 'snippet:add_tag' %}">({% translate 'Create new tag' %})</a></p>
+                    <ul>
+                        {% for tag in snippet.tags.all %}
+                            <li><a href="{{ tag.get_snippets_url }}">{{ tag }}</a></li>
+                        {% endfor %}
+                    </ul>
+                    <br/>
+                {% endif %}
+            </div>
 
-            {# show snippet content highlighted by prism#}
-            <pre><code class="language-css">{{ snippet.content }}</code></pre>
         </div>
+
+
     </div>
 
 {% endblock %}
 
 {% block bottom-elements %}
-    <script src="{% static 'snippet/prism/../../../static/snippet/prism/prism-all.js' %}"></script>
+    <script src="{% static 'snippet/prism/prism-all.js' %}"></script>
 {% endblock %}

@@ -1,13 +1,15 @@
 from django.db import models
 from django.urls import reverse
+from django_extensions.db.fields import AutoSlugField
 
 
 class Tag(models.Model):
     name = models.CharField(
         max_length=100,
     )
-    slug = models.SlugField(
-        max_length=100,
+    slug = AutoSlugField(
+        populate_from=['name'],
+        unique=True,
     )
     created_at = models.DateTimeField(
         auto_now_add=True

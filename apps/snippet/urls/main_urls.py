@@ -15,10 +15,6 @@ urlpatterns = [
     path('categories/', include('apps.snippet.urls.category_urls')),
     path('tags/', include('apps.snippet.urls.tag_urls')),
 
-    # auth and user views
-    path('auth/', include('apps.authentication.auth_urls')),
-    path('profiles/', include('apps.profiles.profile_urls')),
-
     # misc views
     path(_('about'), AboutView.as_view(), name='about'),
     path('feedback', SendFeedback.as_view(), name='feedback'),

@@ -7,18 +7,56 @@
 {% block main-content-header %}{% translate 'Register' %}{% endblock %}
 
 {% block main-content-body %}
+    <div class="container">
 
-    <div class="fullwidth-block">
-        <div class="container">
-
-            <form method="POST">
+        <form class="row" method="post" action="{% url 'authentication:register' %}">
+            <div class="col-6">
                 {% csrf_token %}
 
-                {{ form.as_p }}
+                <div class="form-validation-error">
+                    <p>{{ form.non_field_errors }}</p>
+                </div>
 
-                <p><input type="submit" value="{% translate 'Register' %}"/></p>
-            </form>
-        </div>
+                <div class="col mb-3">
+                    <label for="{{ form.username.id_for_label }}">{% translate 'Username' %}</label>
+                    {{ form.username }}
+                    <div class="form-validation-error">
+                        {{ form.username.errors }}
+                    </div>
+                </div>
+
+                <div class="col mb-3">
+                    <label for="{{ form.email.id_for_label }}">{% translate 'Email' %}</label>
+                    {{ form.email }}
+                    <div class="form-validation-error">
+                        {{ form.email.errors }}
+                    </div>
+                </div>
+
+                <div class="col-6 mb-3">
+                    <label for="{{ form.password1.id_for_label }}">{% translate 'Password' %}</label>
+                    {{ form.password1 }}
+                    <div class="form-validation-error">
+                        {{ form.password1.errors }}
+                    </div>
+                </div>
+
+                <div class="col-6 mb-3">
+                    <label for="{{ form.password2.id_for_label }}">{% translate 'Confirm password' %}</label>
+                    {{ form.password2 }}
+                    <div class="form-validation-error">
+                        {{ form.password2.errors }}
+                    </div>
+                </div>
+
+                <div class="col-9 mb-3">
+                    <label for="{{ form.captcha.id_for_label }}" class="form-label">{% translate 'Captcha' %}</label>
+                    {{ form.captcha }}
+                    {{ form.captcha.errors }}
+                </div>
+
+                <button type="submit" class="btn btn-primary">{% trans 'Register' %} &raquo;</button>
+            </div>
+        </form>
     </div>
-
 {% endblock %}

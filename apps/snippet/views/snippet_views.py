@@ -16,8 +16,8 @@ class ShowSnippet(DetailView):
 
 
 class AddSnippet(LoginRequiredMixin, CreateView):
-    login_url = reverse_lazy('snippet:login')
-    redirect_field_name = 'redirect_to'
+    login_url = reverse_lazy('authentication:login')
+    redirect_field_name = 'next'
     template_name = 'snippet/snippet/add_snippet.html'
     context_object_name = 'snippet'
     model = Snippet
@@ -29,8 +29,8 @@ class AddSnippet(LoginRequiredMixin, CreateView):
 
 
 class UpdateSnippet(LoginRequiredMixin, UpdateView):
-    login_url = reverse_lazy('snippet:login')
-    redirect_field_name = 'redirect_to'
+    login_url = reverse_lazy('authentication:login')
+    redirect_field_name = 'next'
     template_name = 'snippet/snippet/update_snippet.html'
     context_object_name = 'snippet'
     model = Snippet
@@ -43,8 +43,8 @@ class UpdateSnippet(LoginRequiredMixin, UpdateView):
 
 
 class DeleteSnippet(LoginRequiredMixin, DeleteView):
-    login_url = reverse_lazy('snippet:login')
-    redirect_field_name = 'redirect_to'
+    login_url = reverse_lazy('authentication:login')
+    redirect_field_name = 'next'
     template_name = 'snippet/snippet/delete_snippet.html'
     model = Snippet
     success_url = reverse_lazy('snippet:home')

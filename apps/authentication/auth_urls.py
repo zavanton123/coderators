@@ -4,7 +4,10 @@ from apps.authentication.auth_views import UserLoginView, UserLogoutView, UserPa
     UserPasswordChangeDoneView, UserPasswordResetView, UserPasswordResetDoneView, UserPasswordResetConfirmView, \
     UserPasswordResetCompleteView, RegisterView
 
+app_name = 'authentication'
+
 urlpatterns = [
+    path('register', RegisterView.as_view(), name='register'),
     path('login', UserLoginView.as_view(), name='login'),
     path('logout', UserLogoutView.as_view(), name='logout'),
     path('password_change', UserPasswordChangeView.as_view(), name='password_change'),
@@ -14,5 +17,4 @@ urlpatterns = [
     path('password_reset_confirm/<uidb64>/<token>', UserPasswordResetConfirmView.as_view(),
          name='password_reset_confirm'),
     path('password_reset_complete', UserPasswordResetCompleteView.as_view(), name='password_reset_complete'),
-    path('register', RegisterView.as_view(), name='register'),
 ]
