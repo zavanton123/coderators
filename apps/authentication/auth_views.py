@@ -1,12 +1,13 @@
 import logging
 
 from allauth.account.views import SignupView, LoginView, LogoutView
-from django.contrib.auth.forms import PasswordChangeForm, PasswordResetForm, SetPasswordForm
+from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, \
     PasswordResetView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetCompleteView
 from django.urls import reverse, reverse_lazy
 
-from apps.authentication.auth_forms import RegisterForm, CustomLoginForm, CustomPasswordChangeForm
+from apps.authentication.auth_forms import RegisterForm, CustomLoginForm, CustomPasswordChangeForm, \
+    CustomSetPasswordForm, CustomPasswordResetForm
 
 log = logging.getLogger(__name__)
 
@@ -41,9 +42,9 @@ class UserPasswordChangeDoneView(PasswordChangeDoneView):
 
 class UserPasswordResetView(PasswordResetView):
     template_name = 'authentication/auth/user_password_reset.html'
-    form_class = PasswordResetForm
+    form_class = CustomPasswordResetForm
     from_email = 'zavialov2010@gmail.com'
-    email_template_name = 'snippet/auth/user_password_reset_email.html'
+    email_template_name = 'authentication/auth/user_password_reset_email.html'
 
     def get_success_url(self):
         return reverse('authentication:password_reset_done')
@@ -55,7 +56,7 @@ class UserPasswordResetDoneView(PasswordResetDoneView):
 
 class UserPasswordResetConfirmView(PasswordResetConfirmView):
     template_name = 'authentication/auth/user_password_reset_confirm.html'
-    form_class = SetPasswordForm
+    form_class = CustomSetPasswordForm
     post_reset_login = False
 
     def get_success_url(self):
