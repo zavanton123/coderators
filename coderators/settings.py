@@ -1,5 +1,6 @@
 import json
 import os
+from datetime import timedelta
 from pathlib import Path
 
 import environ
@@ -28,6 +29,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
+    # django rest framework
+    'rest_framework',
+    'rest_framework.authtoken',
+    # drf authentication
+    'djoser',
+    # swagger generator
+    'drf_yasg',
     # django allauth
     'allauth',
     'allauth.account',
@@ -69,6 +77,8 @@ AUTHENTICATION_BACKENDS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # CORS headers
+    'corsheaders.middleware.CorsMiddleware',
     # middleware for url i18n
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -206,3 +216,41 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
 ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_USER_MODEL_EMAIL_FIELD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
+
+# Setup django rest framework
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+# CORS headers
+CORS_ALLOWED_ORIGINS = [
+    "https://zavanton.ru",
+    "http://localhost:9999",
+    "http://127.0.0.1:9999",
+]
+
+# CORS headers
+CSRF_TRUSTED_ORIGINS = [
+    'http://127.0.0.1:9999',
+]
+
+# setup simple jwt
+SIMPLE_JWT = {
+    'AUTH_HEADER_TYPES': ('JWT',),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=5),
+}
+# djoser settings
+DJOSER = {
+    # note: you will have to send mock POST requests from these urls
+    'PASSWORD_RESET_CONFIRM_URL': 'password/reset/confirm/{uid}/{token}',
+    'USERNAME_RESET_CONFIRM_URL': 'username/reset/confirm/{uid}/{token}',
+    'ACTIVATION_URL': 'activate/{uid}/{token}',
+    'SEND_ACTIVATION_EMAIL': True,
+    'SERIALIZERS': {},
+}
