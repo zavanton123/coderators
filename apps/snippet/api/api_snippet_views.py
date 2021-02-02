@@ -1,4 +1,5 @@
 from rest_framework import viewsets, permissions, status
+from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -31,3 +32,29 @@ class SnippetsApiView(APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(status=status.HTTP_200_OK)
+
+
+class SnippetApiView(APIView):
+    def get(self, request, pk, *args, **kwargs):
+        snippet = get_object_or_404(Snippet, pk=pk)
+        serializer = SnippetSerializer(instance=snippet)
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+    def put(self, request, pk, *args, **kwargs):
+        snippet = get_object_or_404(Snippet, pk=pk)
+        serializer = SnippetSerializer(data=request.data, instance=snippet, context={'request': request})
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+    def patch(self, request, pk, *args, **kwargs):
+        snippet = get_object_or_404(Snippet, pk=pk)
+        serializer = SnippetSerializer(data=request.data, instance=snippet, context={'request': request})
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+    def delete(self, request, pk, *args, **kwargs):
+        snippet = get_object_or_404(Snippet, pk=pk)
+        snippet.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

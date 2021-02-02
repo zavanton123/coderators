@@ -1,6 +1,3 @@
-import logging
-from datetime import datetime
-
 from django.template.defaultfilters import slugify
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
@@ -8,8 +5,6 @@ from rest_framework.exceptions import ValidationError
 from apps.snippet.models import Snippet
 from apps.snippet.models.category_models import Category
 from apps.snippet.models.tag_models import Tag
-
-log = logging.getLogger(__name__)
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -56,17 +51,32 @@ class TagSerializer(serializers.ModelSerializer):
         return instance
 
 
+class CategoryField(serializers.RelatedField):
+    def get_queryset(self):
+        return Category.objects.all()
+
+    def to_internal_value(self, data):
+        categories = Category.objects.filter(name=data)
+        if categories.count() > 0:
+            category = categories.first()
+        else:
+            category = Category.objects.create(name=data)
+        return category
+
+    def to_representation(self, value):
+        return value.name
+
+
 class TagField(serializers.RelatedField):
     def get_queryset(self):
         return Tag.objects.all()
 
     def to_internal_value(self, data):
-        tag = Tag(
-            name=data,
-            slug=slugify(data),
-            created_at=datetime.now(),
-            updated_at=datetime.now()
-        )
+        tags = Tag.objects.filter(name=data)
+        if tags.count() > 0:
+            tag = tags.first()
+        else:
+            tag = Tag.objects.create(name=data)
         return tag
 
     def to_representation(self, value):
@@ -74,7 +84,7 @@ class TagField(serializers.RelatedField):
 
 
 class SnippetSerializer(serializers.ModelSerializer):
-    category = serializers.StringRelatedField()
+    category = CategoryField()
 
     tags = TagField(
         many=True,
@@ -100,30 +110,41 @@ class SnippetSerializer(serializers.ModelSerializer):
         ]
 
     def create(self, validated_data):
-        log.debug('zavanton - create')
-
-        target_tags = []
-        for tag in validated_data.pop('tags'):
-            tags = Tag.objects.filter(name=tag.name)
-            if tags.count() > 0:
-                target_tag = tags.first()
-            else:
-                target_tag = Tag.objects.create(name=tag.name)
-            target_tags.append(target_tag)
-
         request = self.context.get('request', None)
         if request is None:
             raise ValidationError('request must be provided to SnippetSerializer')
 
-        # Snippet.objects.create(category=self._get_category(validated_data))
+        user = request.user
+        if not user.is_authenticated:
+            raise ValidationError('user must be logged in to create new snippets')
 
-        return 'ok'
+        tags = validated_data.pop('tags')
+        category = validated_data.pop('category')
 
-    def _get_category(self, validated_data):
-        category_name = validated_data.pop('category')
-        category_slug = slugify(category_name)
-        categories = Category.objects.filter(slug=category_slug)
-        if categories.count() > 0:
-            return categories.first()
-        else:
-            return Category.objects.create(name=category_name)
+        snippet = Snippet.objects.create(
+            category=category,
+            author=user,
+            **validated_data
+        )
+        snippet.tags.set(tags)
+        return snippet
+
+    def update(self, instance, validated_data):
+        request = self.context.get('request', None)
+        if request is None:
+            raise ValidationError('request must be provided to SnippetSerializer')
+
+        user = request.user
+        if not user.is_authenticated:
+            raise ValidationError('user must be logged in to update new snippets')
+
+        author = instance.author
+        if author is None or user.pk != author.pk:
+            raise ValidationError('snippet can be updated only by its author.')
+
+        instance.title = validated_data.get('title', instance.title)
+        instance.content = validated_data.get('content', instance.content)
+        instance.category = validated_data.get('category', instance.category)
+        instance.tags.set(validated_data.pop('tags'))
+        instance.save()
+        return instance

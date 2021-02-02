@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework import routers
 
-from apps.snippet.api.api_snippet_views import CategoriesViewSet, TagsViewSet, SnippetsApiView
+from apps.snippet.api.api_snippet_views import CategoriesViewSet, TagsViewSet, SnippetsApiView, SnippetApiView
 
 name = 'api_snippet'
 
@@ -12,4 +12,5 @@ router.register(r'tags', TagsViewSet, basename='tags')
 urlpatterns = [
     path('', include(router.urls)),
     path('snippets/', SnippetsApiView.as_view(), name='api-snippets'),
+    path('snippets/<int:pk>/', SnippetApiView.as_view(), name='api-snippet'),
 ]
