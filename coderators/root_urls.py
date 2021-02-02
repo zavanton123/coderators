@@ -23,7 +23,7 @@ schema_view = get_schema_view(
     permission_classes=(permissions.AllowAny,),
 )
 
-# my api urls
+# my mock urls
 api_urlpatterns = [
     # yasg (swagger and redoc urls)
     re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
@@ -32,21 +32,29 @@ api_urlpatterns = [
 
     # my urls
     path('api/', include('apps.authentication.api.api_auth_urls')),
+    path('api/', include('apps.snippet.api.api_snippet_urls')),
+]
+
+# todo zavanton - remove mocks
+mock_api_urlpatterns = [
+    path('mock/', include('apps.snippet.api.mock.mock_snippet_urls')),
 ]
 
 urlpatterns = [
     # admin
     path('admin/', admin.site.urls),
     # django rest framework login/logout
-    path('api-auth', include('rest_framework.urls')),
+    path('mock-auth', include('rest_framework.urls')),
     # simple captcha
     path('captcha/', include('captcha.urls')),
     # todo zavanton - examine the reason why an error is thrown when this url pattern is deleted
     # django-allauth
     path('accounts/', include('allauth.urls')),
 
-    # my api urls
+    # my mock urls
     path('', include(api_urlpatterns)),
+    # todo zavanton - remove mocks
+    path('', include(mock_api_urlpatterns)),
 ]
 
 # add i18n to urls
