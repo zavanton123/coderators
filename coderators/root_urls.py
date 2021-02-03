@@ -33,11 +33,13 @@ api_urlpatterns = [
     # my urls
     path('api/', include('apps.authentication.api.api_auth_urls')),
     path('api/', include('apps.snippet.api.api_snippet_urls')),
+    path('api/', include('apps.profiles.api.api_profiles_urls')),
 ]
 
 # todo zavanton - remove mocks
 mock_api_urlpatterns = [
     path('mock/', include('apps.snippet.api.mock.mock_snippet_urls')),
+    path('mock/', include('apps.profiles.api.mock.mock_profiles_urls')),
 ]
 
 urlpatterns = [
